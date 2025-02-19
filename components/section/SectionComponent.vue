@@ -1,5 +1,5 @@
 <template>
-  <div class="ml-16 mr-16 flex h-screen flex-col xl:ml-64 xl:mr-32" :class="classes">
+  <div class="flex h-screen flex-col" :class="classes">
     <slot />
   </div>
 </template>

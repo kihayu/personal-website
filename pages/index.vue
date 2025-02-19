@@ -1,5 +1,5 @@
 <template>
-  <MainSection />
+  <MainSection class="mx-auto max-w-[1440px]" />
 </template>
 
 <script setup lang="ts">
