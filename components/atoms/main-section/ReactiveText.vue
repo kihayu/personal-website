@@ -1,6 +1,6 @@
 <template>
   <span
-    class="relative inline-block w-fit select-none text-5xl font-bold transition duration-300 after:absolute after:-bottom-4 after:left-0 after:h-1 after:w-0 after:bg-current after:transition-all after:duration-300 after:content-[''] hover:scale-110 hover:cursor-pointer hover:after:w-full xl:text-6xl"
+    class="relative inline-block w-fit text-5xl font-bold transition duration-300 select-none before:absolute before:-translate-x-16 before:opacity-0 before:transition-all before:duration-300 before:content-['→'] hover:translate-x-8 hover:cursor-pointer hover:before:opacity-100 xl:text-6xl"
     @mouseover="onMouseEnter"
     @mouseleave="onMouseLeave"
   >
