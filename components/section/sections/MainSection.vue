@@ -95,7 +95,7 @@ import LinkedInIcon from '~/assets/icons/brands/linkedin.svg'
 
 // Handle hover over reactive text
 const hoveredOverSection = ref(false)
-const hoveredSection: Ref<string> = ref('deploy')
+const hoveredSection: Ref<string> = ref('')
 
 const watchedAnimations = ref({
   develop: false,
