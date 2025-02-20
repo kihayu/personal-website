@@ -17,6 +17,13 @@
         :class="mainContentBoxClasses"
       >
         <template v-if="hoveredSection === 'design' || hoveredSection === 'develop' || hoveredSection === 'deploy'">
+          <FigmaAnimation
+            v-if="hoveredSection === 'design'"
+            class="animate-fadein opacity-0 duration-100 ease-in-out"
+            :class="{ 'opacity-100': hoveredSection === 'design' }"
+            :auto-start="hoveredSection === 'design'"
+            :auto-fill="watchedAnimations.design"
+          />
           <TypeWriter
             v-if="hoveredSection === 'develop'"
             class="code-box animate-fadein opacity-0 duration-100 ease-in-out"
@@ -26,12 +33,12 @@
             :delay="45"
             :auto-fill="watchedAnimations.develop"
           />
-          <FigmaAnimation
-            v-if="hoveredSection === 'design'"
+          <DeployAnimation
+            v-if="hoveredSection === 'deploy'"
             class="animate-fadein opacity-0 duration-100 ease-in-out"
-            :class="{ 'opacity-100': hoveredSection === 'design' }"
-            :auto-start="hoveredSection === 'design'"
-            :auto-fill="watchedAnimations.design"
+            :class="{ 'opacity-100': hoveredSection === 'deploy' }"
+            :auto-start="hoveredSection === 'deploy'"
+            :auto-fill="watchedAnimations.deploy"
           />
         </template>
       </MainContentBox>
@@ -45,9 +52,9 @@ import MainContentBox from '~/components/MainContentBox.vue'
 import ReactiveText from '~/components/main-section/ReactiveText.vue'
 import TypeWriter from '~/components/main-section/TypeWriter.vue'
 import FigmaAnimation from '~/components/main-section/FigmaAnimation.vue'
+import DeployAnimation from '~/components/main-section/DeployAnimation.vue'
 
 // Handle hover over reactive text
-
 const hoveredOverSection = ref(false)
 const hoveredSection = ref('')
 
