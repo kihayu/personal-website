@@ -1,5 +1,5 @@
 <template>
-  <div class="figma-window rounded-lg bg-neutral-800 p-4">
+  <div class="figma-window rounded-lg bg-neutral-800 p-4 shadow-[0px_0px_0px_1px_rgba(255_255_255_0.1)]">
     <div class="mb-4 flex items-center gap-2">
       <div class="h-3 w-3 rounded-full bg-red-500" />
       <div class="h-3 w-3 rounded-full bg-yellow-500" />
@@ -223,9 +223,3 @@ defineExpose({
   startAnimation,
 })
 </script>
-
-<style>
-.figma-window {
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
-}
-</style>
