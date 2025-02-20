@@ -71,12 +71,10 @@ import RectangleToolIcon from '~/assets/icons/figma/rectangle-tool.svg'
 import TextToolIcon from '~/assets/icons/figma/text-tool.svg'
 
 export interface FigmaAnimationProps {
-  autoStart?: boolean
   autoFill?: boolean
 }
 
 const props = withDefaults(defineProps<FigmaAnimationProps>(), {
-  autoStart: false,
   autoFill: false,
 })
 
@@ -169,9 +167,12 @@ const animate = () => {
   steps[currentStep]()
   currentStep++
 
-  animationFrame = setTimeout(() => {
-    requestAnimationFrame(animate)
-  }, 1000) as unknown as number
+  animationFrame = setTimeout(
+    () => {
+      requestAnimationFrame(animate)
+    },
+    currentStep <= 2 ? 350 : 1000,
+  ) as unknown as number
 }
 
 const startAnimation = () => {
@@ -200,9 +201,7 @@ const startAnimation = () => {
 }
 
 onMounted(() => {
-  if (props.autoStart) {
-    startAnimation()
-  }
+  startAnimation()
 })
 
 onBeforeUnmount(() => {

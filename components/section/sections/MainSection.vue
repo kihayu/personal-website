@@ -58,7 +58,6 @@
             v-if="hoveredSection === 'design'"
             class="animate-fadein opacity-0 duration-100 ease-in-out"
             :class="{ 'opacity-100': hoveredSection === 'design' }"
-            :auto-start="hoveredSection === 'design'"
             :auto-fill="watchedAnimations.design"
           />
           <TypeWriter
