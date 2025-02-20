@@ -87,7 +87,7 @@ const startAnimation = () => {
 }
 
 onMounted(() => {
-  setTimeout(startAnimation, props.autoFill ? 0 : 1000)
+  setTimeout(startAnimation, props.autoFill ? 0 : 300)
 })
 
 onUnmounted(() => {
