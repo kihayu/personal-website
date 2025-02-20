@@ -1,72 +1,64 @@
 <template>
-  <div class="figma-window rounded-lg bg-neutral-800 p-4 shadow-[0px_0px_0px_1px_rgba(255_255_255_0.1)]">
-    <div class="mb-4 flex items-center gap-2">
-      <div class="h-3 w-3 rounded-full bg-red-500" />
-      <div class="h-3 w-3 rounded-full bg-yellow-500" />
-      <div class="h-3 w-3 rounded-full bg-green-500" />
+  <div class="relative h-full rounded-md bg-neutral-900">
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-800 p-1.5">
+      <div class="flex gap-1">
+        <ToolbarIcon :active="currentTool === 'move'">
+          <MoveToolIcon />
+        </ToolbarIcon>
+        <ToolbarIcon :active="currentTool === 'frame'">
+          <FrameToolIcon />
+        </ToolbarIcon>
+        <ToolbarIcon :active="currentTool === 'rectangle'">
+          <RectangleToolIcon />
+        </ToolbarIcon>
+        <ToolbarIcon :active="currentTool === 'text'">
+          <TextToolIcon />
+        </ToolbarIcon>
+      </div>
     </div>
 
-    <div class="relative h-[300px] rounded-md bg-neutral-900 p-4">
-      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-800 p-1.5">
-        <div class="flex gap-1">
-          <ToolbarIcon :active="currentTool === 'move'">
-            <MoveToolIcon />
-          </ToolbarIcon>
-          <ToolbarIcon :active="currentTool === 'frame'">
-            <FrameToolIcon />
-          </ToolbarIcon>
-          <ToolbarIcon :active="currentTool === 'rectangle'">
-            <RectangleToolIcon />
-          </ToolbarIcon>
-          <ToolbarIcon :active="currentTool === 'text'">
-            <TextToolIcon />
-          </ToolbarIcon>
-        </div>
-      </div>
+    <div
+      class="pointer-events-none absolute top-0 left-0 z-10 h-6 w-6 transition-all duration-300 ease-out"
+      :style="{ transform: `translate(${cursorPos.x}px, ${cursorPos.y}px)` }"
+    >
+      <!-- SVG for cursor (could be in seperate file?) -->
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 4L20 12L12 14L10 22L4 4Z" fill="white" />
+      </svg>
+    </div>
 
-      <div
-        class="pointer-events-none absolute top-0 left-0 z-10 h-6 w-6 transition-all duration-300 ease-out"
-        :style="{ transform: `translate(${cursorPos.x}px, ${cursorPos.y}px)` }"
-      >
-        <!-- SVG for cursor (could be in seperate file?) -->
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4 4L20 12L12 14L10 22L4 4Z" fill="white" />
-        </svg>
+    <div
+      class="absolute z-20 transition-opacity duration-300"
+      :class="'opacity-' + (showRadiusControl ? 1 : 0)"
+      :style="{
+        left: `${rectPos.x - 24}px`,
+        top: `${rectPos.y + rectSize.height}px`,
+      }"
+    >
+      <div class="flex items-center gap-2 rounded bg-neutral-800 px-2 py-1 text-xs text-white">
+        <span class="text-neutral-400">R</span>
+        <span>{{ borderRadius }}px</span>
       </div>
+    </div>
 
-      <div
-        class="absolute z-20 transition-opacity duration-300"
-        :class="'opacity-' + (showRadiusControl ? 1 : 0)"
-        :style="{
-          left: `${rectPos.x - 24}px`,
-          top: `${rectPos.y + rectSize.height}px`,
-        }"
+    <div
+      class="absolute border-white bg-blue-500 transition-all duration-300"
+      :class="'opacity-' + rectOpacity"
+      :style="{
+        left: `${rectPos.x}px`,
+        top: `${rectPos.y}px`,
+        width: `${rectSize.width}px`,
+        height: `${rectSize.height}px`,
+        borderRadius: `${borderRadius}px`,
+        borderWidth: `${borderWidth}px`,
+      }"
+    >
+      <span
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-medium text-white transition-opacity duration-300"
+        :class="'opacity-' + textOpacity"
       >
-        <div class="flex items-center gap-2 rounded bg-neutral-800 px-2 py-1 text-xs text-white">
-          <span class="text-neutral-400">R</span>
-          <span>{{ borderRadius }}px</span>
-        </div>
-      </div>
-
-      <div
-        class="absolute border-white bg-blue-500 transition-all duration-300"
-        :class="'opacity-' + rectOpacity"
-        :style="{
-          left: `${rectPos.x}px`,
-          top: `${rectPos.y}px`,
-          width: `${rectSize.width}px`,
-          height: `${rectSize.height}px`,
-          borderRadius: `${borderRadius}px`,
-          borderWidth: `${borderWidth}px`,
-        }"
-      >
-        <span
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-medium text-white transition-opacity duration-300"
-          :class="'opacity-' + textOpacity"
-        >
-          Button
-        </span>
-      </div>
+        Button
+      </span>
     </div>
   </div>
 </template>

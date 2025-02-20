@@ -12,35 +12,30 @@
           Deploy Section
         </ReactiveText>
       </div>
-      <MainContentBox
-        class="hidden w-0 max-w-[960px] transition-all duration-300 ease-in-out lg:block lg:w-[65%]"
-        :class="mainContentBoxClasses"
-      >
-        <template v-if="hoveredSection === 'design' || hoveredSection === 'develop' || hoveredSection === 'deploy'">
-          <FigmaAnimation
-            v-if="hoveredSection === 'design'"
-            class="animate-fadein opacity-0 duration-100 ease-in-out"
-            :class="{ 'opacity-100': hoveredSection === 'design' }"
-            :auto-start="hoveredSection === 'design'"
-            :auto-fill="watchedAnimations.design"
-          />
-          <TypeWriter
-            v-if="hoveredSection === 'develop'"
-            class="code-box animate-fadein opacity-0 duration-100 ease-in-out"
-            :class="{ 'opacity-100': hoveredSection === 'develop' }"
-            :auto-start="hoveredSection === 'develop'"
-            :code="codeData"
-            :delay="45"
-            :auto-fill="watchedAnimations.develop"
-          />
-          <DeployAnimation
-            v-if="hoveredSection === 'deploy'"
-            class="animate-fadein opacity-0 duration-100 ease-in-out"
-            :class="{ 'opacity-100': hoveredSection === 'deploy' }"
-            :auto-start="hoveredSection === 'deploy'"
-            :auto-fill="watchedAnimations.deploy"
-          />
-        </template>
+      <MainContentBox class="flex" :class="mainContentBoxClasses">
+        <FigmaAnimation
+          v-if="hoveredSection === 'design'"
+          class="animate-fadein opacity-0 duration-100 ease-in-out"
+          :class="{ 'opacity-100': hoveredSection === 'design' }"
+          :auto-start="hoveredSection === 'design'"
+          :auto-fill="watchedAnimations.design"
+        />
+        <TypeWriter
+          v-if="hoveredSection === 'develop'"
+          class="code-box animate-fadein opacity-0 duration-100 ease-in-out"
+          :class="{ 'opacity-100': hoveredSection === 'develop' }"
+          :auto-start="hoveredSection === 'develop'"
+          :code="codeData"
+          :delay="45"
+          :auto-fill="watchedAnimations.develop"
+        />
+        <DeployAnimation
+          v-if="hoveredSection === 'deploy'"
+          class="animate-fadein opacity-0 duration-100 ease-in-out"
+          :class="{ 'opacity-100': hoveredSection === 'deploy' }"
+          :auto-start="hoveredSection === 'deploy'"
+          :auto-fill="watchedAnimations.deploy"
+        />
       </MainContentBox>
     </div>
   </SectionComponent>
@@ -67,7 +62,7 @@ const watchedAnimations = ref({
 const mainContentBoxClasses = computed(() => {
   let classes = ''
 
-  if (hoveredSection.value === 'develop') {
+  if (hoveredSection.value !== '') {
     classes += ' lg:w-[85%] 2xl:w-[65%]'
   }
 
