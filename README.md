@@ -1,75 +1,62 @@
-# Nuxt Minimal Starter
+# 🎨 Personal Website
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A modern, interactive personal website built with Nuxt 3, featuring animated showcases of design and development skills.
 
-## Setup
+## 🛠️ Tech Stack
 
-Make sure to install dependencies:
+- **Framework**: Nuxt 3
+- **Styling**: Tailwind CSS
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Bun package manager
+
+### Installation
+
+1. Clone the repository
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+git clone git@github.com:kihayu/personal-website.git
+cd personal-website
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+2. Install dependencies
 
 ```bash
-# npm
-npm run dev
+bun install --frozen-lockfile
+```
 
-# pnpm
-pnpm dev
+### Development
 
-# yarn
-yarn dev
+Start the development server:
 
-# bun
+```bash
 bun run dev
 ```
 
-## Production
+The application will be available at `http://localhost:3000`
 
-Build the application for production:
+### Production
+
+Build for production:
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
 bun run build
 ```
 
-Locally preview production build:
+## 📁 Project Structure (WIP)
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+```
+├── assets/            # Static assets (icons, css)
+├── components/        # Vue components
+│   ├── main-section/  # Main section components
+│   └── section/       # General section components
+├── pages/             # Application pages
+└── public/            # Public static files
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
