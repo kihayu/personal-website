@@ -65,10 +65,10 @@
 
 <script setup lang="ts">
 import ToolbarIcon from '~/components/main-section/figma-animation/ToolbarIcon.vue'
-import FrameToolIcon from '~/assets/icons/figma/FrameTool.svg'
-import MoveToolIcon from '~/assets/icons/figma/MoveTool.svg'
-import RectangleToolIcon from '~/assets/icons/figma/RectangleTool.svg'
-import TextToolIcon from '~/assets/icons/figma/TextTool.svg'
+import FrameToolIcon from '~/assets/icons/figma/frame-tool.svg'
+import MoveToolIcon from '~/assets/icons/figma/move-tool.svg'
+import RectangleToolIcon from '~/assets/icons/figma/rectangle-tool.svg'
+import TextToolIcon from '~/assets/icons/figma/text-tool.svg'
 
 export interface FigmaAnimationProps {
   autoStart?: boolean

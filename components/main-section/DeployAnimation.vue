@@ -29,10 +29,10 @@
 <script setup lang="ts">
 import DeployIcon from '~/components/main-section/deploy/DeployIcon.vue'
 import DotSpinner from '~/components/main-section/deploy/DotSpinner.vue'
-import CodeIcon from '~/assets/icons/deploy/Code.svg'
-import ServerIcon from '~/assets/icons/deploy/Server.svg'
-import VercelIcon from '~/assets/icons/deploy/Vercel.svg'
-import VersionControlIcon from '~/assets/icons/deploy/VersionControl.svg'
+import CodeIcon from '~/assets/icons/deploy/code.svg'
+import ServerIcon from '~/assets/icons/deploy/server.svg'
+import VercelIcon from '~/assets/icons/deploy/vercel.svg'
+import VersionControlIcon from '~/assets/icons/deploy/version-control.svg'
 
 const props = defineProps<{
   autoFill?: boolean
