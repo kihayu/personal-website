@@ -64,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-import ToolbarIcon from '~/components/main-section/figma-animation/ToolbarIcon.vue'
+import ToolbarIcon from '~/components/figma-animation/ToolbarIcon.vue'
 import FrameToolIcon from '~/assets/icons/figma/frame-tool.svg'
 import MoveToolIcon from '~/assets/icons/figma/move-tool.svg'
 import RectangleToolIcon from '~/assets/icons/figma/rectangle-tool.svg'

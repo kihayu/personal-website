@@ -39,8 +39,8 @@
 </template>
 
 <script setup lang="ts">
-import DeployIcon from '~/components/main-section/deploy/DeployIcon.vue'
-import DotSpinner from '~/components/main-section/deploy/DotSpinner.vue'
+import DeployIcon from '~/components/deploy/DeployIcon.vue'
+import DotSpinner from '~/components/deploy/DotSpinner.vue'
 import CodeIcon from '~/assets/icons/deploy/code.svg'
 import ServerIcon from '~/assets/icons/deploy/server.svg'
 import VercelIcon from '~/assets/icons/deploy/vercel.svg'

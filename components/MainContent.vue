@@ -3,13 +3,32 @@
     class="flex w-full flex-col items-center justify-between lg:flex-row lg:px-[12.5%]"
     @mouseleave="resetHoveredSection(false)"
   >
-    <ReactiveText name="design" @mouseover="setHoveredSection" @mouseleave="resetHoveredSection"> Design </ReactiveText>
-    <ReactiveText name="develop" @mouseover="setHoveredSection" @mouseleave="resetHoveredSection">
+    <ReactiveText
+      name="design"
+      @mouseover="setHoveredSection"
+      @mouseleave="resetHoveredSection"
+      @click="emit('click:reactive-text', 'design')"
+    >
+      Design
+    </ReactiveText>
+    <ReactiveText
+      name="develop"
+      @mouseover="setHoveredSection"
+      @mouseleave="resetHoveredSection"
+      @click="emit('click:reactive-text', 'develop')"
+    >
       Develop
     </ReactiveText>
-    <ReactiveText name="deploy" @mouseover="setHoveredSection" @mouseleave="resetHoveredSection"> Deploy </ReactiveText>
+    <ReactiveText
+      name="deploy"
+      @mouseover="setHoveredSection"
+      @mouseleave="resetHoveredSection"
+      @click="emit('click:reactive-text', 'deploy')"
+    >
+      Deploy
+    </ReactiveText>
   </div>
-  <MainContentBox class="mx-auto hidden lg:flex" :class="mainContentBoxClasses" :title="sectionToSectionName">
+  <MainContentWindow class="mx-auto hidden lg:flex" :class="mainContentBoxClasses" :title="sectionToSectionName">
     <FigmaAnimation
       v-if="hoveredSection === 'design'"
       class="animate-fadein opacity-0 duration-100 ease-in-out"
@@ -31,13 +50,18 @@
       :auto-start="hoveredSection === 'deploy'"
       :auto-fill="watchedAnimations.deploy"
     />
-  </MainContentBox>
+  </MainContentWindow>
 </template>
 <script setup lang="ts">
-import ReactiveText from '~/components/main-section/ReactiveText.vue'
-import FigmaAnimation from '~/components/main-section/FigmaAnimation.vue'
-import CodeAnimation from '~/components/main-section/CodeAnimation.vue'
-import DeployAnimation from '~/components/main-section/DeployAnimation.vue'
+import ReactiveText from '~/components/ReactiveText.vue'
+import FigmaAnimation from '~/components/FigmaAnimation.vue'
+import CodeAnimation from '~/components/CodeAnimation.vue'
+import DeployAnimation from '~/components/DeployAnimation.vue'
+import MainContentWindow from '~/components/MainContentWindow.vue'
+
+const emit = defineEmits<{
+  'click:reactive-text': [name: string]
+}>()
 
 const hoveredOverSection = ref(false)
 const hoveredSection: Ref<string> = ref('')
