@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       bodyAttrs: {
-        class: 'font-primary box-border bg-stone-900 text-white lg:px-32',
+        class: 'font-primary box-border bg-stone-900 text-white lg:px-16 xl:px-32',
       },
     },
   },

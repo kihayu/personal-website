@@ -2,7 +2,7 @@
   <div class="">
     <SectionComponent class="gap-y-8">
       <div
-        class="flex h-fit w-full flex-col justify-center gap-x-8 gap-y-8 md:grid md:grid-cols-[350px_1fr] md:grid-rows-1"
+        class="flex h-fit w-full flex-col justify-center gap-x-8 gap-y-8 sm:grid sm:grid-cols-[250px_1fr] md:grid-rows-1 lg:grid-cols-[300px_1fr]"
       >
         <div class="flex w-full flex-col items-center rounded-md bg-stone-800 p-4 shadow-md">
           <img
@@ -12,7 +12,7 @@
           />
           <h1 class="font-title mt-2 text-3xl font-semibold">Keanu Hie</h1>
           <span class="font-subtitle mt-2 text-center text-base text-neutral-300">
-            Frontend & Backend Developer<br />from Vienna, Austria
+            Frontend & Backend Developer<br />located in Vienna, Austria
           </span>
           <div class="mt-12 flex items-center justify-center gap-6">
             <a href="https://github.com/kihayu" target="_blank" rel="noopener noreferrer">
@@ -25,9 +25,9 @@
         </div>
         <div class="h-full w-full rounded-md bg-stone-800 p-4 shadow-md">
           <h2 class="font-title text-3xl font-semibold">About me</h2>
-          <p class="font-paragraph mt-2 text-lg lg:text-xl">
+          <p class="font-paragraph mt-2 text-lg md:text-xl">
             Hi, I'm a Frontend/Fullstack Developer with a focus on Web-Development, specifically UI/UX, functionality
-            and clean code.<br />
+            and clean code.<br /><br />
             With over 7 years of professional experience, I have a good understanding of diverse frontend topics such as
             Styleguides, Accessibility, Responsive Design, Component-Driven Development and more. Most of this
             experience was done in Vue.js with SCSS or Tailwind, as well as Storybook on larger projects, including
@@ -95,7 +95,7 @@ import LinkedInIcon from '~/assets/icons/brands/linkedin.svg'
 
 // Handle hover over reactive text
 const hoveredOverSection = ref(false)
-const hoveredSection: Ref<string> = ref('')
+const hoveredSection: Ref<string> = ref('deploy')
 
 const watchedAnimations = ref({
   develop: false,
