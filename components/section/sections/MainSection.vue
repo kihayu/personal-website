@@ -1,7 +1,7 @@
 <template>
-  <SectionComponent>
-    <div class="grid h-full grid-cols-[auto_1fr] grid-rows-1 items-center gap-x-16">
-      <div class="flex flex-col gap-8" @mouseleave="resetHoveredSection(false)">
+  <SectionComponent vertical-center>
+    <div class="grid grid-cols-1 grid-rows-[auto_1fr] items-center justify-center gap-x-16 gap-y-32">
+      <div class="flex flex-row justify-evenly gap-8" @mouseleave="resetHoveredSection(false)">
         <ReactiveText name="design" @mouseover="setHoveredSection" @mouseleave="resetHoveredSection">
           Design Section
         </ReactiveText>
@@ -12,7 +12,7 @@
           Deploy Section
         </ReactiveText>
       </div>
-      <MainContentBox class="flex" :class="mainContentBoxClasses">
+      <MainContentBox class="mx-auto flex" :class="mainContentBoxClasses">
         <FigmaAnimation
           v-if="hoveredSection === 'design'"
           class="animate-fadein opacity-0 duration-100 ease-in-out"

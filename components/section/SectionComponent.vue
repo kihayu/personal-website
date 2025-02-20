@@ -1,5 +1,10 @@
 <template>
-  <div class="flex h-screen flex-col" :class="classes">
+  <div
+    class="flex h-screen flex-col"
+    :class="{
+      'justify-center': verticalCenter,
+    }"
+  >
     <slot />
   </div>
 </template>
