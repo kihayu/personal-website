@@ -54,9 +54,9 @@
 </template>
 <script setup lang="ts">
 import ReactiveText from '~/components/ReactiveText.vue'
-import FigmaAnimation from '~/components/FigmaAnimation.vue'
-import CodeAnimation from '~/components/CodeAnimation.vue'
-import DeployAnimation from '~/components/DeployAnimation.vue'
+import FigmaAnimation from '~/components/animations/FigmaAnimation.vue'
+import CodeAnimation from '~/components/animations/CodeAnimation.vue'
+import DeployAnimation from '~/components/animations/DeployAnimation.vue'
 import MainContentWindow from '~/components/MainContentWindow.vue'
 
 const emit = defineEmits<{
