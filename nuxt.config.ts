@@ -12,4 +12,8 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  svgo: {
+    svgo: false,
+    defaultImport: 'component',
+  },
 })
