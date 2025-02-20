@@ -1,12 +1,17 @@
 <template>
-  <div
-    class="relative z-10 flex h-12 w-12 items-center justify-center rounded-lg transition-all duration-300"
-    :class="{
-      [activeColorClassNames[color]]: currentStep >= activateStep,
-      [colorClassNames[color]]: true,
-    }"
-  >
-    <slot />
+  <div class="relative flex flex-col items-center gap-y-2">
+    <div
+      class="relative z-10 flex h-12 w-12 items-center justify-center rounded-lg transition-all duration-300"
+      :class="{
+        [activeColorClassNames[color]]: currentStep >= activateStep,
+        [colorClassNames[color]]: true,
+      }"
+    >
+      <slot />
+    </div>
+    <div class="absolute translate-y-14">
+      <slot name="label" />
+    </div>
   </div>
 </template>
 

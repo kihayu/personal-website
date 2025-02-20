@@ -3,24 +3,36 @@
     <div class="relative flex h-full items-center justify-between px-12">
       <DeployIcon :current-step="currentStep" :activate-step="0" color="blue">
         <CodeIcon />
+        <template #label>
+          <span class="flex items-center text-center text-neutral-400">Code</span>
+        </template>
       </DeployIcon>
 
       <DotSpinner />
 
       <DeployIcon :current-step="currentStep" :activate-step="1" color="orange">
         <VersionControlIcon />
+        <template #label>
+          <span class="flex items-center text-center text-neutral-400">Version Control</span>
+        </template>
       </DeployIcon>
 
       <DotSpinner />
 
       <DeployIcon :current-step="currentStep" :activate-step="2" color="red">
         <VercelIcon />
+        <template #label>
+          <span class="flex items-center text-center text-neutral-400">Distribution Server</span>
+        </template>
       </DeployIcon>
 
       <DotSpinner />
 
       <DeployIcon :current-step="currentStep" :activate-step="3" color="green">
         <ServerIcon />
+        <template #label>
+          <span class="flex items-center text-center text-neutral-400">Server</span>
+        </template>
       </DeployIcon>
     </div>
   </div>
