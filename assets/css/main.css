@@ -3,6 +3,7 @@
 @theme {
   /* Fonts */
   --font-title: 'Satoshi-Bold', sans-serif;
+  --font-subtitle: 'Satoshi-Medium', sans-serif;
   --font-paragraph: 'Erode-Regular', 'Roboto', sans-serif;
 
   --animate-deploy-looping-dot: deploy-looping-dot 2500ms linear infinite;

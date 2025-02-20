@@ -1,13 +1,31 @@
 <template>
   <div class="">
     <SectionComponent class="gap-y-8">
-      <div class="flex h-fit w-full flex-col justify-center gap-x-8 gap-y-8 lg:flex-row">
-        <div class="flex w-full flex-col items-center rounded-md bg-stone-800 p-4 shadow-md lg:w-1/2 xl:w-1/4">
-          <h1 class="font-title text-3xl font-semibold">Keanu Hie</h1>
+      <div
+        class="flex h-fit w-full flex-col justify-center gap-x-8 gap-y-8 md:grid md:grid-cols-[350px_1fr] md:grid-rows-1"
+      >
+        <div class="flex w-full flex-col items-center rounded-md bg-stone-800 p-4 shadow-md">
+          <img
+            src="https://picsum.photos/512/512?blur=2&random=1"
+            alt="Profile Picture"
+            class="h-24 w-24 rounded-full object-cover"
+          />
+          <h1 class="font-title mt-2 text-3xl font-semibold">Keanu Hie</h1>
+          <span class="font-subtitle mt-2 text-center text-base text-neutral-300">
+            Frontend & Backend Developer<br />from Vienna, Austria
+          </span>
+          <div class="mt-12 flex items-center justify-center gap-6">
+            <a href="https://github.com/kihayu" target="_blank" rel="noopener noreferrer">
+              <GitHubIcon class="w-8 fill-white transition-transform duration-150 ease-out active:scale-90" />
+            </a>
+            <a href="https://linkedin.com/in/keanu-hie-0750a2184/" target="_blank" rel="noopener noreferrer">
+              <LinkedInIcon class="w-8 fill-white transition-transform duration-150 ease-out active:scale-90" />
+            </a>
+          </div>
         </div>
-        <div class="h-full w-full rounded-md bg-stone-800 p-4 shadow-md lg:w-1/2 xl:w-3/4">
+        <div class="h-full w-full rounded-md bg-stone-800 p-4 shadow-md">
           <h2 class="font-title text-3xl font-semibold">About me</h2>
-          <p class="font-paragraph mt-2 text-xl">
+          <p class="font-paragraph mt-2 text-lg lg:text-xl">
             Hi, I'm a Frontend/Fullstack Developer with a focus on Web-Development, specifically UI/UX, functionality
             and clean code.<br />
             With over 7 years of professional experience, I have a good understanding of diverse frontend topics such as
@@ -72,6 +90,8 @@ import ReactiveText from '~/components/main-section/ReactiveText.vue'
 import TypeWriter from '~/components/main-section/TypeWriter.vue'
 import FigmaAnimation from '~/components/main-section/FigmaAnimation.vue'
 import DeployAnimation from '~/components/main-section/DeployAnimation.vue'
+import GitHubIcon from '~/assets/icons/brands/github.svg'
+import LinkedInIcon from '~/assets/icons/brands/linkedin.svg'
 
 // Handle hover over reactive text
 const hoveredOverSection = ref(false)
