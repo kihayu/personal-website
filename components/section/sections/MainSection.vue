@@ -6,7 +6,7 @@
       >
         <div class="flex w-full flex-col items-center rounded-md bg-stone-800 p-4 shadow-md">
           <img
-            src="https://picsum.photos/512/512?blur=2&random=1"
+            src="~/assets/images/profile_image.jpg"
             alt="Profile Picture"
             class="h-24 w-24 rounded-full object-cover"
           />
