@@ -1,44 +1,68 @@
 <template>
-  <SectionComponent vertical-center>
-    <div class="grid grid-cols-1 grid-rows-[auto_1fr] items-center justify-center gap-x-16 gap-y-32">
-      <div class="flex flex-row justify-evenly gap-8" @mouseleave="resetHoveredSection(false)">
-        <ReactiveText name="design" @mouseover="setHoveredSection" @mouseleave="resetHoveredSection">
-          Design Section
-        </ReactiveText>
-        <ReactiveText name="develop" @mouseover="setHoveredSection" @mouseleave="resetHoveredSection">
-          Develop Section
-        </ReactiveText>
-        <ReactiveText name="deploy" @mouseover="setHoveredSection" @mouseleave="resetHoveredSection">
-          Deploy Section
-        </ReactiveText>
+  <div class="">
+    <SectionComponent class="gap-y-8">
+      <div class="flex h-fit w-full flex-col justify-center gap-x-8 gap-y-8 lg:flex-row">
+        <div class="flex w-full flex-col items-center rounded-md bg-stone-800 p-4 shadow-md lg:w-1/2 xl:w-1/4">
+          <h1 class="font-title text-3xl font-semibold">Keanu Hie</h1>
+        </div>
+        <div class="h-full w-full rounded-md bg-stone-800 p-4 shadow-md lg:w-1/2 xl:w-3/4">
+          <h2 class="font-title text-3xl font-semibold">About me</h2>
+          <p class="font-paragraph mt-2 text-xl">
+            Hi, I'm a Frontend/Fullstack Developer with a focus on Web-Development, specifically UI/UX, functionality
+            and clean code.<br />
+            With over 7 years of professional experience, I have a good understanding of diverse frontend topics such as
+            Styleguides, Accessibility, Responsive Design, Component-Driven Development and more. Most of this
+            experience was done in Vue.js with SCSS or Tailwind, as well as Storybook on larger projects, including
+            React and Next.js on a smaller scale. Also working on backend technologies is nothing new for me as I've
+            already built diverse API's and Microservices, as well as helped with the architecture of complex systems.
+          </p>
+        </div>
       </div>
-      <MainContentBox class="mx-auto flex" :class="mainContentBoxClasses">
-        <FigmaAnimation
-          v-if="hoveredSection === 'design'"
-          class="animate-fadein opacity-0 duration-100 ease-in-out"
-          :class="{ 'opacity-100': hoveredSection === 'design' }"
-          :auto-start="hoveredSection === 'design'"
-          :auto-fill="watchedAnimations.design"
-        />
-        <TypeWriter
-          v-if="hoveredSection === 'develop'"
-          class="code-box animate-fadein opacity-0 duration-100 ease-in-out"
-          :class="{ 'opacity-100': hoveredSection === 'develop' }"
-          :auto-start="hoveredSection === 'develop'"
-          :code="codeData"
-          :delay="45"
-          :auto-fill="watchedAnimations.develop"
-        />
-        <DeployAnimation
-          v-if="hoveredSection === 'deploy'"
-          class="animate-fadein opacity-0 duration-100 ease-in-out"
-          :class="{ 'opacity-100': hoveredSection === 'deploy' }"
-          :auto-start="hoveredSection === 'deploy'"
-          :auto-fill="watchedAnimations.deploy"
-        />
-      </MainContentBox>
-    </div>
-  </SectionComponent>
+      <div
+        class="flex w-full flex-col items-center justify-center gap-x-16 gap-y-10 rounded-md bg-stone-800 p-6 py-4 pb-8"
+      >
+        <div
+          class="flex w-full flex-col items-center justify-between lg:flex-row lg:px-[12.5%]"
+          @mouseleave="resetHoveredSection(false)"
+        >
+          <ReactiveText name="design" @mouseover="setHoveredSection" @mouseleave="resetHoveredSection">
+            Design
+          </ReactiveText>
+          <ReactiveText name="develop" @mouseover="setHoveredSection" @mouseleave="resetHoveredSection">
+            Develop
+          </ReactiveText>
+          <ReactiveText name="deploy" @mouseover="setHoveredSection" @mouseleave="resetHoveredSection">
+            Deploy
+          </ReactiveText>
+        </div>
+        <MainContentBox class="mx-auto hidden lg:flex" :class="mainContentBoxClasses" :title="sectionToSectionName">
+          <FigmaAnimation
+            v-if="hoveredSection === 'design'"
+            class="animate-fadein opacity-0 duration-100 ease-in-out"
+            :class="{ 'opacity-100': hoveredSection === 'design' }"
+            :auto-start="hoveredSection === 'design'"
+            :auto-fill="watchedAnimations.design"
+          />
+          <TypeWriter
+            v-if="hoveredSection === 'develop'"
+            class="code-box animate-fadein opacity-0 duration-100 ease-in-out"
+            :class="{ 'opacity-100': hoveredSection === 'develop' }"
+            :auto-start="hoveredSection === 'develop'"
+            :code="codeData"
+            :delay="45"
+            :auto-fill="watchedAnimations.develop"
+          />
+          <DeployAnimation
+            v-if="hoveredSection === 'deploy'"
+            class="animate-fadein opacity-0 duration-100 ease-in-out"
+            :class="{ 'opacity-100': hoveredSection === 'deploy' }"
+            :auto-start="hoveredSection === 'deploy'"
+            :auto-fill="watchedAnimations.deploy"
+          />
+        </MainContentBox>
+      </div>
+    </SectionComponent>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -51,7 +75,7 @@ import DeployAnimation from '~/components/main-section/DeployAnimation.vue'
 
 // Handle hover over reactive text
 const hoveredOverSection = ref(false)
-const hoveredSection = ref('')
+const hoveredSection: Ref<string> = ref('')
 
 const watchedAnimations = ref({
   develop: false,
@@ -64,11 +88,6 @@ const mainContentBoxClasses = computed(() => {
 
   if (hoveredSection.value !== '') {
     classes += ' lg:w-[85%] 2xl:w-[65%]'
-  }
-
-  if (!hoveredOverSection.value && hoveredSection.value === '') {
-    classes += ' scale-0'
-    return classes
   }
 
   classes += ' opacity-100 scale-100'
@@ -85,12 +104,16 @@ const setHoveredSection = async (name: string) => {
 
 const resetHoveredSection = async (withDelay = true) => {
   hoveredOverSection.value = false
-  await new Promise((resolve) => setTimeout(resolve, withDelay ? 350 : 0))
+  await new Promise((resolve) => setTimeout(resolve, withDelay ? 750 : 0))
 
   if (!hoveredOverSection.value) {
     hoveredSection.value = ''
   }
 }
+
+const sectionToSectionName = computed(
+  () => hoveredSection.value.charAt(0).toUpperCase() + hoveredSection.value.slice(1),
+)
 
 const codeData = ref(`class Greeter {
   private greeting: string

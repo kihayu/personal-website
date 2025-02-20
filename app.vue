@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen bg-neutral-900 text-white">
-    <NuxtPage />
-  </div>
+  <NuxtPage />
 </template>
+
+<script setup lang="ts"></script>

@@ -1,9 +1,7 @@
 <template>
-  <MainSection class="mx-auto max-w-[1440px]" />
+  <MainSection class="mx-4 max-w-[1440px] py-4 lg:mx-auto lg:pt-8" />
 </template>
 
 <script setup lang="ts">
 import MainSection from '~/components/section/sections/MainSection.vue'
 </script>
-
-<style lang="css" scoped></style>
