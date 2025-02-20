@@ -30,10 +30,10 @@ const colorClassNames = computed(() => {
 
 const activeColorClassNames = computed(() => {
   return {
-    blue: '!bg-blue-500/50 !text-blue-300',
-    orange: '!bg-orange-500/50 !text-orange-300',
-    red: '!bg-red-500/50 !text-red-300',
-    green: '!bg-green-500/50 !text-green-300',
+    blue: '!bg-blue-500/50 !text-blue-300 scale-110',
+    orange: '!bg-orange-500/50 !text-orange-300 scale-110',
+    red: '!bg-red-500/50 !text-red-300 scale-110',
+    green: '!bg-green-500/50 !text-green-300 scale-110',
   }
 })
 </script>
