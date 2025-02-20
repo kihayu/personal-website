@@ -4,6 +4,10 @@
       class="font-title reactive-text relative inline-block w-fit text-2xl font-bold transition duration-300 select-none before:absolute before:-left-12 before:opacity-0 before:transition-all before:duration-300 before:content-['→'] hover:translate-x-3 hover:cursor-pointer hover:before:opacity-100 md:text-3xl xl:text-4xl"
       @mouseover="onMouseEnter"
       @mouseleave="onMouseLeave"
+      @keydown.enter="onMouseEnter"
+      @keydown.space.prevent="onMouseEnter"
+      role="button"
+      tabindex="0"
     >
       <slot />
     </h3>
