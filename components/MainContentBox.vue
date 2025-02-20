@@ -9,7 +9,7 @@
         <div class="h-3 w-3 rounded-full bg-yellow-500" />
         <div class="h-3 w-3 rounded-full bg-green-500" />
       </div>
-      <span class="flex justify-center text-xs text-neutral-200" :class="{ italic: !title }">
+      <span class="flex justify-center text-xs text-neutral-200 select-none" :class="{ italic: !title }">
         {{ title || 'Hover over the Titles' }}
       </span>
     </div>
