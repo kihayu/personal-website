@@ -18,12 +18,20 @@
       >
         <template v-if="hoveredSection === 'design' || hoveredSection === 'develop' || hoveredSection === 'deploy'">
           <TypeWriter
+            v-if="hoveredSection === 'develop'"
             class="code-box animate-fadein opacity-0 duration-100 ease-in-out"
             :class="{ 'opacity-100': hoveredSection === 'develop' }"
             :auto-start="hoveredSection === 'develop'"
             :code="codeData"
             :delay="45"
             :auto-fill="watchedAnimations.develop"
+          />
+          <FigmaAnimation
+            v-if="hoveredSection === 'design'"
+            class="animate-fadein opacity-0 duration-100 ease-in-out"
+            :class="{ 'opacity-100': hoveredSection === 'design' }"
+            :auto-start="hoveredSection === 'design'"
+            :auto-fill="watchedAnimations.design"
           />
         </template>
       </MainContentBox>
@@ -34,8 +42,9 @@
 <script setup lang="ts">
 import SectionComponent from '~/components/section/SectionComponent.vue'
 import MainContentBox from '~/components/MainContentBox.vue'
-import ReactiveText from '~/components/atoms/main-section/ReactiveText.vue'
-import TypeWriter from '~/components/atoms/TypeWriter.vue'
+import ReactiveText from '~/components/main-section/ReactiveText.vue'
+import TypeWriter from '~/components/main-section/TypeWriter.vue'
+import FigmaAnimation from '~/components/main-section/FigmaAnimation.vue'
 
 // Handle hover over reactive text
 
