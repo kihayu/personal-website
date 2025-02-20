@@ -1,1 +1,14 @@
 @import 'tailwindcss';
+
+@theme {
+  --animate-deploy-looping-dot: deploy-looping-dot 2500ms linear infinite;
+
+  @keyframes deploy-looping-dot {
+    0% {
+      transform: translateX(-850%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
