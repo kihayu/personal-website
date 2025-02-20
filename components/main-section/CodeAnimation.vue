@@ -24,7 +24,6 @@ import { type BundledLanguage } from 'shiki'
 import { type CSSProperties } from 'vue'
 
 interface TypeWriterProps {
-  code: string
   lang?: BundledLanguage | undefined
   autoStart?: boolean
   delay?: number
@@ -39,6 +38,19 @@ const props = withDefaults(defineProps<TypeWriterProps>(), {
   cursorBlinkSpeed: 530,
   autoFill: false,
 })
+
+const code = ref(`class Greeter {
+  private greeting: string
+
+  constructor(message: string) {
+    this.greeting = message
+  }
+
+  public greet(): string {
+    return this.greeting
+  }
+}
+`)
 
 const codeContainer: Ref<ComponentPublicInstance<HTMLDivElement> | null> = ref(null)
 const shiki: Ref<ComponentPublicInstance<HTMLDivElement> | null> = ref(null)
@@ -95,7 +107,7 @@ watch(typedText, () => {
 
 onMounted(async () => {
   if (props.autoFill) {
-    startTyping({ text: props.code, autoFill: true })
+    startTyping({ text: code.value, autoFill: true })
     return
   }
 
@@ -104,14 +116,14 @@ onMounted(async () => {
   }
 
   await startTyping({
-    text: props.code,
+    text: code.value,
     delay: props.delay,
     cursorBlinkSpeed: props.cursorBlinkSpeed,
   })
 })
 
 watch(
-  () => props.code,
+  () => code.value,
   async (newCode) => {
     await startTyping({
       text: newCode,
