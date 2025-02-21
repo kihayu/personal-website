@@ -13,7 +13,12 @@
       >
         ←
       </span>
-      <h4 class="font-title flex justify-center text-2xl font-bold md:text-3xl xl:text-4xl">
+      <h4
+        class="font-title flex cursor-pointer justify-center text-2xl font-bold select-none md:text-3xl xl:text-4xl"
+        @click="emit('clear-section')"
+        @keydown.enter="emit('clear-section')"
+        @keydown.space.prevent="emit('clear-section')"
+      >
         {{ sectionToSectionName }}
       </h4>
     </div>
@@ -78,14 +83,25 @@ onMounted(() => {
 })
 
 onMounted(() => {
+  window.history.pushState({ mainContentInfo: true }, '')
+  window.addEventListener('popstate', handlePopState)
+
   if (isMobile.value) {
     lockScroll()
   }
 })
 
 onUnmounted(() => {
+  window.removeEventListener('popstate', handlePopState)
+
   if (isMobile.value) {
     unlockScroll()
   }
 })
+
+const handlePopState = (event: PopStateEvent) => {
+  if (event.state === null || !event.state.mainContentInfo) {
+    emit('clear-section')
+  }
+}
 </script>
