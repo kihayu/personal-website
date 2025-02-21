@@ -74,7 +74,7 @@ const steps = [
 
 const animate = async () => {
   if (currentStep.value >= steps.length - 1) {
-    currentStep.value = -1
+    currentStep.value = 0
     await new Promise((resolve) => setTimeout(resolve, 1000))
   }
 
@@ -90,7 +90,7 @@ const animate = async () => {
 const startAnimation = () => {
   if (props.autoFill) {
     // Show final state immediately
-    currentStep.value = 3
+    currentStep.value = 4
     return
   }
 
