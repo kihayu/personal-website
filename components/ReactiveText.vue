@@ -1,16 +1,21 @@
 <template>
   <div class="flex w-full justify-center border-b border-neutral-400 py-4 last:border-none lg:border-none">
-    <h3
-      class="font-title reactive-text relative inline-block w-fit text-2xl font-bold transition duration-300 select-none before:absolute before:-left-12 before:opacity-0 before:transition-all before:duration-300 before:content-['→'] hover:translate-x-3 hover:cursor-pointer hover:before:opacity-100 md:text-3xl xl:text-4xl"
-      @mouseover="onMouseEnter"
-      @mouseleave="onMouseLeave"
-      @keydown.enter="onMouseEnter"
-      @keydown.space.prevent="onMouseEnter"
-      role="button"
-      tabindex="0"
-    >
-      <slot />
-    </h3>
+    <div class="group relative flex w-fit items-center gap-3 hover:cursor-pointer">
+      <span class="text-3xl opacity-0 transition-all duration-300 group-hover:translate-x-3 group-hover:opacity-100">
+        →
+      </span>
+      <h3
+        class="font-title reactive-text text-2xl font-bold transition-transform duration-300 group-hover:translate-x-3 md:text-3xl xl:text-4xl"
+        @mouseover="onMouseEnter"
+        @mouseleave="onMouseLeave"
+        @keydown.enter="onMouseEnter"
+        @keydown.space.prevent="onMouseEnter"
+        role="button"
+        tabindex="0"
+      >
+        <slot />
+      </h3>
+    </div>
   </div>
 </template>
 
