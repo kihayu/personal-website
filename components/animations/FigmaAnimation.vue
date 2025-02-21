@@ -60,6 +60,14 @@
         Button
       </span>
     </div>
+    <div
+      v-if="showPauseButton"
+      class="absolute right-4 bottom-4 h-12 w-12 cursor-pointer rounded-3xl bg-[rgba(255,255,255,0.2)]"
+      @click="togglePause"
+    >
+      <PlayIcon v-if="isPaused" class="mx-auto my-auto h-12 w-6" />
+      <PauseIcon v-else class="mx-auto my-auto h-12 w-6" />
+    </div>
   </div>
 </template>
 
@@ -69,13 +77,19 @@ import FrameToolIcon from '~/assets/icons/figma/frame-tool.svg'
 import MoveToolIcon from '~/assets/icons/figma/move-tool.svg'
 import RectangleToolIcon from '~/assets/icons/figma/rectangle-tool.svg'
 import TextToolIcon from '~/assets/icons/figma/text-tool.svg'
+import PauseIcon from '~/assets/icons/heroicons/pause.svg'
+import PlayIcon from '~/assets/icons/heroicons/play.svg'
 
 export interface FigmaAnimationProps {
   autoFill?: boolean
+  loop?: boolean
+  showPauseButton?: boolean
 }
 
 const props = withDefaults(defineProps<FigmaAnimationProps>(), {
   autoFill: false,
+  loop: false,
+  showPauseButton: false,
 })
 
 // Canvas specific properties
@@ -90,8 +104,9 @@ const showRadiusControl = ref(false)
 const currentTool = ref('move')
 
 // Animation manager properties
-let currentStep = 0
+let currentStep = ref(0)
 let animationFrame: number | null = null
+let isPaused = ref(false)
 
 const steps = [
   // Set cursor to start position and select rectangle tool
@@ -157,28 +172,39 @@ const steps = [
 ]
 
 const animate = () => {
-  if (currentStep >= steps.length) {
+  if (isPaused.value && animationFrame) {
+    cancelAnimationFrame(animationFrame)
+    return
+  }
+
+  if (currentStep.value >= steps.length) {
     if (animationFrame) {
       cancelAnimationFrame(animationFrame)
+    }
+    if (props.loop) {
+      startAnimation()
     }
     return
   }
 
-  steps[currentStep]()
-  currentStep++
+  steps[currentStep.value]()
+  currentStep.value++
 
   animationFrame = setTimeout(
     () => {
       requestAnimationFrame(animate)
     },
-    currentStep <= 2 ? 350 : 1000,
+    currentStep.value <= 2 ? 350 : 1000,
   ) as unknown as number
 }
 
 const startAnimation = () => {
-  currentStep = 0
+  currentStep.value = 0
+  cursorPos.x = 50
+  cursorPos.y = 50
   rectSize.width = 0
   rectSize.height = 0
+  borderWidth.value = 0
   borderRadius.value = 0
   rectOpacity.value = 0
   textOpacity.value = 0
@@ -198,6 +224,13 @@ const startAnimation = () => {
   }
 
   requestAnimationFrame(animate)
+}
+
+const togglePause = () => {
+  isPaused.value = !isPaused.value
+  if (!isPaused.value) {
+    animate()
+  }
 }
 
 onMounted(() => {

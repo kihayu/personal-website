@@ -21,16 +21,21 @@
     </div>
     <div
       v-if="showPauseButton"
-      class="absolute right-0 bottom-0 h-12 w-12 rounded-3xl bg-[rgba(255,255,255,0.2)]"
-      @click="isTyping ? stopTyping(true) : pickNewRandomCode()"
-    ></div>
+      class="absolute right-0 bottom-0 h-12 w-12 cursor-pointer rounded-3xl bg-[rgba(255,255,255,0.2)]"
+      @click="isPaused ? pickNewRandomCode() : stopTyping(true, true)"
+    >
+      <PlayIcon v-if="isPaused" class="mx-auto my-auto h-12 w-6" />
+      <PauseIcon v-else class="mx-auto my-auto h-12 w-6" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { codeExamples } from '~/constants/codeExamples'
 import { type BundledLanguage } from 'shiki'
 import { type CSSProperties } from 'vue'
-import { codeExamples } from '~/constants/codeExamples'
+import PauseIcon from '~/assets/icons/heroicons/pause.svg'
+import PlayIcon from '~/assets/icons/heroicons/play.svg'
 
 interface TypeWriterProps {
   lang?: BundledLanguage | undefined
@@ -103,7 +108,7 @@ const updateCursorPosition = () => {
   }
 }
 
-const { typedText, showCursor, startTyping, isTyping, stopTyping } = useTypewriter()
+const { typedText, showCursor, startTyping, isTyping, isPaused, stopTyping } = useTypewriter()
 
 watch(typedText, () => {
   nextTick(updateCursorPosition)

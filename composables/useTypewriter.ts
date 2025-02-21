@@ -8,6 +8,7 @@ interface TypewriterOptions {
 
 export const useTypewriter = () => {
   const typedText = ref('')
+  const isPaused = ref(false)
   const isTyping = ref(false)
   const showCursor = ref(true)
   let cursorInterval: NodeJS.Timer | number | null = null
@@ -20,6 +21,7 @@ export const useTypewriter = () => {
     autoFill = false,
     onComplete,
   }: TypewriterOptions) => {
+    isPaused.value = false
     if (autoFill) {
       typedText.value = text
       showCursor.value = false
@@ -43,7 +45,7 @@ export const useTypewriter = () => {
 
     return new Promise<void>((resolve) => {
       typeInterval = setInterval(() => {
-        if (currentIndex < text.length) {
+        if (currentIndex < text.length && !isPaused.value) {
           typedText.value += text[currentIndex]
           currentIndex++
         } else {
@@ -58,8 +60,11 @@ export const useTypewriter = () => {
     })
   }
 
-  const stopTyping = (stopCursor = false) => {
+  const stopTyping = (stopCursor = false, pauseButton = false) => {
     isTyping.value = false
+    if (pauseButton) {
+      isPaused.value = true
+    }
     if (stopCursor && cursorInterval) {
       clearInterval(cursorInterval as number)
       showCursor.value = false
@@ -77,6 +82,7 @@ export const useTypewriter = () => {
   return {
     typedText,
     isTyping,
+    isPaused,
     showCursor,
     startTyping,
     stopTyping,
