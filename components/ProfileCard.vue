@@ -58,6 +58,17 @@
           aria-hidden="true"
         />
       </a>
+      <a
+        href="mailto:hie.keanu@gmail.com"
+        aria-label="Send an Email to Keanu Hie"
+        class="group rounded-full p-1 transition-transform duration-150 ease-out outline-none focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-white active:scale-95"
+      >
+        <MailIcon
+          class="w-8 fill-white transition-transform duration-150 ease-out group-hover:scale-110"
+          role="img"
+          aria-hidden="true"
+        />
+      </a>
     </div>
   </div>
 </template>
@@ -65,4 +76,5 @@
 <script setup lang="ts">
 import GitHubIcon from '~/assets/icons/brands/github.svg'
 import LinkedInIcon from '~/assets/icons/brands/linkedin.svg'
+import MailIcon from '~/assets/icons/heroicons/mail.svg'
 </script>
