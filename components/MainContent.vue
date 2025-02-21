@@ -81,7 +81,7 @@ const watchedAnimations = ref({
 const setHoveredSection = async (name: string) => {
   hoveredOverSection.value = true
   hoveredSection.value = name
-  await new Promise((resolve) => setTimeout(resolve, 500))
+  await new Promise((resolve) => setTimeout(resolve, 1000))
   if (!hoveredOverSection.value) {
     return
   }
