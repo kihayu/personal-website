@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex w-full flex-col items-center justify-between lg:flex-row lg:px-[12.5%]"
+    class="flex w-full flex-col items-center justify-between gap-4 lg:flex-row lg:gap-0 lg:px-[12.5%]"
     @mouseleave="resetHoveredSection(false)"
   >
     <ReactiveText

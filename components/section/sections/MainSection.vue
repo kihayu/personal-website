@@ -8,7 +8,7 @@
     </div>
     <div
       ref="mainContent"
-      class="flex h-fit min-h-fit w-full flex-col items-center justify-center gap-x-16 gap-y-4 rounded-md bg-stone-800 px-6 pt-4 pb-8"
+      class="flex h-fit min-h-fit w-full flex-col items-center justify-center gap-x-16 gap-y-6 rounded-md bg-stone-800 px-6 pt-6 pb-8"
     >
       <MainContent v-if="selectedSection.trim() === ''" @click:reactive-text="setSelectedSection" />
       <MainContentInfo

@@ -1,6 +1,6 @@
 <template>
   <dialog
-    class="backdrop flex h-full flex-col gap-y-4 overflow-y-auto bg-stone-800 px-6 pt-4 pb-8 text-white lg:relative lg:m-4 lg:h-full lg:w-auto lg:rounded-lg lg:p-0"
+    class="flex h-full flex-col gap-y-4 overflow-y-auto bg-stone-800 px-6 pt-4 pb-8 text-white lg:relative lg:h-full lg:w-auto lg:rounded-lg lg:p-0"
     :class="isMobile ? 'fixed inset-0 z-50' : ''"
   >
     <div class="grid w-full grid-cols-[40px_1fr_40px] grid-rows-1 justify-center border-b border-neutral-600 pb-4">
