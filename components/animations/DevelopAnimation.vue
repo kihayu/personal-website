@@ -1,5 +1,5 @@
 <template>
-  <div class="relative h-full w-full" role="region" aria-label="Code Animation Display">
+  <div class="relative h-full w-full" role="region" aria-label="Development Animation Display">
     <div class="relative w-fit font-mono">
       <div ref="codeContainer" class="relative">
         <Shiki

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative h-full rounded-md">
+  <div class="relative h-full rounded-md" role="region" aria-label="Design Animation Display">
     <div class="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-800 p-1.5">
       <div class="flex gap-1">
         <ToolbarIcon :active="currentTool === 'move'">
@@ -76,21 +76,21 @@
 </template>
 
 <script setup lang="ts">
-import ToolbarIcon from '~/components/animations/figma-animation/ToolbarIcon.vue'
-import FrameToolIcon from '~/assets/icons/figma/frame-tool.svg'
-import MoveToolIcon from '~/assets/icons/figma/move-tool.svg'
-import RectangleToolIcon from '~/assets/icons/figma/rectangle-tool.svg'
-import TextToolIcon from '~/assets/icons/figma/text-tool.svg'
+import ToolbarIcon from '~/components/animations/design/ToolbarIcon.vue'
+import FrameToolIcon from '~/assets/icons/design/frame-tool.svg'
+import MoveToolIcon from '~/assets/icons/design/move-tool.svg'
+import RectangleToolIcon from '~/assets/icons/design/rectangle-tool.svg'
+import TextToolIcon from '~/assets/icons/design/text-tool.svg'
 import PauseIcon from '~/assets/icons/heroicons/pause.svg'
 import PlayIcon from '~/assets/icons/heroicons/play.svg'
 
-export interface FigmaAnimationProps {
+export interface DesignAnimationProps {
   autoFill?: boolean
   loop?: boolean
   showPauseButton?: boolean
 }
 
-const props = withDefaults(defineProps<FigmaAnimationProps>(), {
+const props = withDefaults(defineProps<DesignAnimationProps>(), {
   autoFill: false,
   loop: false,
   showPauseButton: false,

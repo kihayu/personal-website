@@ -35,13 +35,13 @@
     </ReactiveText>
   </div>
   <MainContentWindow class="mx-auto hidden lg:flex" :class="mainContentBoxClasses" :title="sectionToSectionName">
-    <FigmaAnimation
+    <DesignAnimation
       v-if="hoveredSection === 'design'"
       class="animate-fadein opacity-0 duration-100 ease-in-out"
       :class="{ 'opacity-100': hoveredSection === 'design' }"
       :auto-fill="watchedAnimations.design"
     />
-    <CodeAnimation
+    <DevelopAnimation
       v-if="hoveredSection === 'develop'"
       class="code-box animate-fadein opacity-0 duration-100 ease-in-out"
       :class="{ 'opacity-100': hoveredSection === 'develop' }"
@@ -60,8 +60,8 @@
 </template>
 <script setup lang="ts">
 import ReactiveText from '~/components/ReactiveText.vue'
-import FigmaAnimation from '~/components/animations/FigmaAnimation.vue'
-import CodeAnimation from '~/components/animations/CodeAnimation.vue'
+import DesignAnimation from '~/components/animations/DesignAnimation.vue'
+import DevelopAnimation from '~/components/animations/DevelopAnimation.vue'
 import DeployAnimation from '~/components/animations/DeployAnimation.vue'
 import MainContentWindow from '~/components/MainContentWindow.vue'
 

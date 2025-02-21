@@ -20,11 +20,11 @@
       </p>
     </div>
     <div class="min-h-72 rounded-xl bg-stone-900 lg:block lg:h-full lg:min-w-1/2 xl:min-w-[45%]">
-      <FigmaAnimation font-size="text-base" loop show-pause-button />
+      <DesignAnimation font-size="text-base" loop show-pause-button />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import FigmaAnimation from '~/components/animations/FigmaAnimation.vue'
+import DesignAnimation from '~/components/animations/DesignAnimation.vue'
 </script>
