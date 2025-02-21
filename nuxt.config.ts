@@ -32,22 +32,34 @@ export default defineNuxtConfig({
       bodyAttrs: {
         class: 'font-primary box-border bg-stone-900 text-white lg:px-16 xl:px-32',
       },
-      title: 'Keanu Hie - Frontend & Backend Developer',
+      title: 'Keanu Hie - Fullstack Developer',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'format-detection', content: 'telephone=no' },
-        { name: 'description', content: 'Portfolio of Keanu Hie - Frontend & Backend Developer' },
+        {
+          name: 'description',
+          content:
+            'Fullstack developer crafting modern web experiences with Vue.js, TypeScript, and Python. Focused on accessible design, good looking user interface, and scalable solutions.',
+        },
         {
           name: 'keywords',
-          content: 'Frontend Developer, Backend Developer, Web Development, Vue.js, Nuxt, UI/UX, Vienna',
+          content:
+            'Fullstack Developer, Frontend Development, Backend Development, Vue.js, TypeScript, Node.js, Python, UI/UX Design, Figma, Web Accessibility, DevOps, Git, Linux, Vercel, Netlify, Bun, Game Development, LLM, AI, Vienna',
         },
-        { property: 'og:title', content: 'Keanu Hie - Frontend & Backend Developer' },
-        { property: 'og:description', content: 'Portfolio of Keanu Hie - Frontend & Backend Developer' },
+        { property: 'og:title', content: 'Keanu Hie - Fullstack Developer' },
+        {
+          property: 'og:description',
+          content:
+            'Fullstack developer crafting modern web experiences with Vue.js, TypeScript, and Python. Focused on accessible design, good looking user interface, and scalable solutions.',
+        },
         { property: 'og:type', content: 'website' },
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Keanu Hie - Frontend & Backend Developer' },
-        { name: 'twitter:description', content: 'Portfolio of Keanu Hie - Frontend & Backend Developer' },
+        { name: 'twitter:title', content: 'Keanu Hie - Fullstack Developer' },
+        {
+          name: 'twitter:description',
+          content:
+            'Fullstack developer crafting modern web experiences with Vue.js, TypeScript, and Python. Focused on accessible design, good looking user interface, and scalable solutions.',
+        },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
