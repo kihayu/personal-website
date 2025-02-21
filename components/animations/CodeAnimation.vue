@@ -1,27 +1,36 @@
 <template>
-  <div class="relative w-fit font-mono">
-    <div ref="codeContainer" class="relative">
-      <Shiki
-        ref="shiki"
-        :lang="lang"
-        :code="typedText"
-        class="w-fit text-lg [&_code]:!bg-transparent [&_pre]:!bg-transparent"
-        v-bind="$attrs"
-      />
-      <span
-        v-show="showCursor"
-        ref="cursor"
-        class="absolute inline-block w-0.5 bg-white transition-opacity duration-100"
-        :class="{ 'opacity-0': !showCursor }"
-        :style="cursorStyle"
-      />
+  <div class="relative h-full w-full">
+    <div class="relative w-fit font-mono">
+      <div ref="codeContainer" class="relative">
+        <Shiki
+          ref="shiki"
+          :lang="lang"
+          :code="typedText"
+          class="w-fit [&_code]:!bg-transparent [&_pre]:!bg-transparent"
+          :class="fontSize"
+          v-bind="$attrs"
+        />
+        <span
+          v-show="showCursor"
+          ref="cursor"
+          class="absolute inline-block w-0.5 bg-white transition-opacity duration-100"
+          :class="{ 'opacity-0': !showCursor }"
+          :style="cursorStyle"
+        />
+      </div>
     </div>
+    <div
+      v-if="showPauseButton"
+      class="absolute right-0 bottom-0 h-12 w-12 rounded-3xl bg-[rgba(255,255,255,0.2)]"
+      @click="isTyping ? stopTyping(true) : pickNewRandomCode()"
+    ></div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { type BundledLanguage } from 'shiki'
 import { type CSSProperties } from 'vue'
+import { codeExamples } from '~/constants/codeExamples'
 
 interface TypeWriterProps {
   lang?: BundledLanguage | undefined
@@ -29,6 +38,10 @@ interface TypeWriterProps {
   delay?: number
   cursorBlinkSpeed?: number
   autoFill?: boolean
+  fontSize?: 'text-xs' | 'text-sm' | 'text-base' | 'text-lg'
+  greetingCode?: boolean
+  loop?: boolean
+  showPauseButton?: boolean
 }
 
 const props = withDefaults(defineProps<TypeWriterProps>(), {
@@ -37,20 +50,11 @@ const props = withDefaults(defineProps<TypeWriterProps>(), {
   delay: 50,
   cursorBlinkSpeed: 530,
   autoFill: false,
+  fontSize: 'text-lg',
+  greetingCode: true,
+  loop: false,
+  showPauseButton: false,
 })
-
-const code = ref(`class Greeter {
-  private greeting: string
-
-  constructor(message: string) {
-    this.greeting = message
-  }
-
-  public greet(): string {
-    return this.greeting
-  }
-}
-`)
 
 const codeContainer: Ref<ComponentPublicInstance<HTMLDivElement> | null> = ref(null)
 const shiki: Ref<ComponentPublicInstance<HTMLDivElement> | null> = ref(null)
@@ -99,11 +103,37 @@ const updateCursorPosition = () => {
   }
 }
 
-const { typedText, showCursor, startTyping } = useTypewriter()
+const { typedText, showCursor, startTyping, isTyping, stopTyping } = useTypewriter()
 
 watch(typedText, () => {
   nextTick(updateCursorPosition)
 })
+
+const codeSamples: Ref<Array<string>> = ref(codeExamples)
+const randomIndex = (): number => Math.floor(Math.random() * codeSamples.value.length)
+
+const code: Ref<string> = ref(props.greetingCode ? codeSamples.value[0] : codeSamples.value[randomIndex()])
+
+const pickNewRandomCode = async () => {
+  if (props.greetingCode) {
+    return
+  }
+
+  const newIndex = randomIndex()
+  code.value = codeSamples.value[newIndex]
+  await startTyping({
+    text: code.value,
+    delay: props.delay,
+    cursorBlinkSpeed: props.cursorBlinkSpeed,
+    onComplete: () => {
+      if (props.loop) {
+        setTimeout(async () => {
+          await pickNewRandomCode()
+        }, 2000)
+      }
+    },
+  })
+}
 
 onMounted(async () => {
   if (props.autoFill) {
@@ -119,6 +149,13 @@ onMounted(async () => {
     text: code.value,
     delay: props.delay,
     cursorBlinkSpeed: props.cursorBlinkSpeed,
+    onComplete: () => {
+      if (props.loop) {
+        setTimeout(async () => {
+          await pickNewRandomCode()
+        }, 2000)
+      }
+    },
   })
 })
 

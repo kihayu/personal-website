@@ -3,6 +3,7 @@ interface TypewriterOptions {
   delay?: number
   cursorBlinkSpeed?: number
   autoFill?: boolean
+  onComplete?: () => void
 }
 
 export const useTypewriter = () => {
@@ -12,7 +13,13 @@ export const useTypewriter = () => {
   let cursorInterval: NodeJS.Timer | number | null = null
   let typeInterval: NodeJS.Timer | number | null = null
 
-  const startTyping = async ({ text, delay = 50, cursorBlinkSpeed = 530, autoFill = false }: TypewriterOptions) => {
+  const startTyping = async ({
+    text,
+    delay = 50,
+    cursorBlinkSpeed = 530,
+    autoFill = false,
+    onComplete,
+  }: TypewriterOptions) => {
     if (autoFill) {
       typedText.value = text
       showCursor.value = false
@@ -28,9 +35,11 @@ export const useTypewriter = () => {
     showCursor.value = true
     let currentIndex = 0
 
-    cursorInterval = setInterval(() => {
-      showCursor.value = !showCursor.value
-    }, cursorBlinkSpeed)
+    if (!cursorInterval) {
+      cursorInterval = setInterval(() => {
+        showCursor.value = !showCursor.value
+      }, cursorBlinkSpeed)
+    }
 
     return new Promise<void>((resolve) => {
       typeInterval = setInterval(() => {
@@ -42,16 +51,19 @@ export const useTypewriter = () => {
             clearInterval(typeInterval as number)
           }
           resolve()
+          onComplete?.()
+          stopTyping()
         }
       }, delay)
     })
   }
 
-  const stopTyping = () => {
+  const stopTyping = (stopCursor = false) => {
     isTyping.value = false
-    // if (cursorInterval) {
-    //   clearInterval(cursorInterval as number)
-    // }
+    if (stopCursor && cursorInterval) {
+      clearInterval(cursorInterval as number)
+      showCursor.value = false
+    }
 
     if (typeInterval) {
       clearInterval(typeInterval as number)
@@ -59,7 +71,7 @@ export const useTypewriter = () => {
   }
 
   onUnmounted(() => {
-    stopTyping()
+    stopTyping(true)
   })
 
   return {
