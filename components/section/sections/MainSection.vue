@@ -9,11 +9,10 @@
       </div>
       <div
         ref="mainContent"
-        class="flex h-fit w-full flex-col items-center justify-center gap-x-16 gap-y-10 rounded-md bg-stone-800 px-6 pt-4 pb-8"
-        :style="selectedSection === '' ? '' : 'height: ' + mainContentHeight + 'px'"
+        class="flex h-fit min-h-fit w-full flex-col items-center justify-center gap-x-16 gap-y-4 rounded-md bg-stone-800 px-6 pt-4 pb-8"
       >
-        <MainContent v-if="selectedSection.trim() === ''" @click:reactive-text="setSection($event)" />
-        <MainContentInfo v-else :selected-section="selectedSection" @clear-section="setSection('')" />
+        <MainContent v-if="selectedSection.trim() === ''" @click:reactive-text="selectedSection = $event" />
+        <MainContentInfo v-else :selected-section="selectedSection" @clear-section="selectedSection = ''" />
       </div>
     </SectionComponent>
   </div>
@@ -27,11 +26,5 @@ import MainContent from '~/components/MainContent.vue'
 import MainContentInfo from '~/components/content-info/MainContentInfo.vue'
 
 const mainContent = ref<ComponentPublicInstance<HTMLDivElement> | null>(null)
-const mainContentHeight = ref<number>(0)
 const selectedSection = ref('')
-
-const setSection = (name: string) => {
-  mainContentHeight.value = mainContent.value?.offsetHeight || 0
-  selectedSection.value = name
-}
 </script>
