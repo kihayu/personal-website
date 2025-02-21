@@ -12,16 +12,7 @@
     </div>
   </div>
 </template>
+
 <script setup lang="ts">
 import CodeAnimation from '~/components/animations/CodeAnimation.vue'
 </script>
-
-<style scoped>
-.drop-cap::first-letter {
-  float: left;
-  font-size: 3em;
-  line-height: 0.8;
-  padding-right: 0.1em;
-  margin-top: 0.1em;
-}
-</style>
