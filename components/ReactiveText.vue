@@ -11,7 +11,6 @@
       @mouseleave="onMouseLeave"
       @focusin="onMouseEnter"
       @focusout="onMouseLeave"
-      role="button"
       tabindex="0"
     >
       <slot />
