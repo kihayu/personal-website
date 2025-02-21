@@ -5,7 +5,7 @@
   >
     <div class="grid w-full grid-cols-[40px_1fr_40px] grid-rows-1 justify-center border-b border-neutral-600 pb-4">
       <span
-        class="flex h-full w-full cursor-pointer items-center justify-center text-2xl text-neutral-400"
+        class="flex h-full w-full cursor-pointer items-center justify-center text-2xl text-neutral-400 transition-all duration-300 lg:hover:scale-125 lg:active:scale-90 lg:active:text-neutral-200"
         tabindex="0"
         @click="emit('clear-section')"
         @keydown.enter="emit('clear-section')"
