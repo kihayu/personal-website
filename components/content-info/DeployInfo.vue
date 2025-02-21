@@ -1,6 +1,6 @@
 <template>
-  <div class="grid h-full w-full grid-cols-1 grid-rows-1 gap-x-6 lg:grid-cols-2">
-    <div class="flex h-full flex-col gap-y-2">
+  <div class="grid h-full w-full grid-cols-1 grid-rows-[1fr_auto] gap-6 lg:grid-cols-2">
+    <div class="flex h-fit flex-col gap-y-2 lg:h-full">
       <p
         class="font-paragraph h-full w-full text-xl first-letter:float-left first-letter:mt-2 first-letter:pr-1 first-letter:text-6xl first-letter:leading-10"
       >
@@ -17,7 +17,7 @@
         projects on a smaller scale very easy and more manageable for a single person.
       </p>
     </div>
-    <div ref="deployAnimation" class="hidden h-full rounded-xl lg:block lg:w-full">
+    <div ref="deployAnimation" class="min-h-64 rounded-xl lg:block lg:h-full lg:w-full">
       <DeployAnimation font-size="text-base" loop show-pause-button />
     </div>
   </div>

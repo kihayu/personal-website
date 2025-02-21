@@ -1,5 +1,5 @@
 <template>
-  <div class="grid h-full w-full grid-cols-1 grid-rows-1 gap-x-6 lg:grid-cols-2">
+  <div class="grid h-full w-full grid-cols-1 grid-rows-[1fr_auto] gap-6 lg:grid-cols-2">
     <div class="flex h-full flex-col gap-y-2">
       <p
         class="font-paragraph w-full text-xl first-letter:float-left first-letter:mt-2 first-letter:pr-1 first-letter:text-6xl first-letter:leading-10"
@@ -19,12 +19,13 @@
         Godot for game development and Large Language Model APIs from providers like OpenAI, Anthropic or Google.
       </p>
     </div>
-    <div class="hidden h-full min-h-full rounded-xl bg-stone-900 p-4 lg:block lg:min-w-1/2 xl:min-w-[45%]">
-      <CodeAnimation font-size="text-sm" :greeting-code="false" loop show-pause-button />
+    <div class="min-h-64 rounded-xl bg-stone-900 p-4 lg:block lg:h-full lg:min-w-1/2 xl:min-w-[45%]">
+      <CodeAnimation :font-size="isMobile ? 'text-xs' : 'text-sm'" :greeting-code="false" loop show-pause-button />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import CodeAnimation from '~/components/animations/CodeAnimation.vue'
+import { isMobile } from '~/utils/isMobile'
 </script>
