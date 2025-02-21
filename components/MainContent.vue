@@ -75,7 +75,10 @@ const watchedAnimations = ref({
 const setHoveredSection = async (name: string) => {
   hoveredOverSection.value = true
   hoveredSection.value = name
-  await new Promise((resolve) => setTimeout(resolve, 350))
+  await new Promise((resolve) => setTimeout(resolve, 500))
+  if (!hoveredOverSection.value) {
+    return
+  }
   watchedAnimations.value[name as keyof typeof watchedAnimations.value] = true
 }
 
