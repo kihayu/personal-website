@@ -1,12 +1,9 @@
 <template>
-  <div 
-    class="relative flex flex-col items-center gap-y-2" 
-    role="listitem"
-  >
+  <div class="relative flex flex-col items-center gap-y-2" role="listitem">
     <div
       class="relative z-10 flex h-12 w-12 items-center justify-center rounded-lg transition-all duration-300"
       :class="{
-        [activeColorClassNames[color]]: currentStep >= activateStep,
+        [activeColorClassNames[color]]: currentStep == activateStep,
         [colorClassNames[color]]: true,
       }"
       :aria-current="currentStep >= activateStep ? 'step' : undefined"
@@ -14,10 +11,7 @@
     >
       <slot />
     </div>
-    <div 
-      class="absolute translate-y-14" 
-      aria-hidden="false"
-    >
+    <div class="absolute translate-y-14" aria-hidden="false">
       <slot name="label" />
     </div>
   </div>
