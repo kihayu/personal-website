@@ -19,7 +19,7 @@
         projects are first, at least conceptually, done in Figma.
       </p>
     </div>
-    <div class="min-h-72 rounded-xl lg:block lg:h-full lg:min-w-1/2 xl:min-w-[45%]">
+    <div class="min-h-72 rounded-xl bg-stone-900 lg:block lg:h-full lg:min-w-1/2 xl:min-w-[45%]">
       <FigmaAnimation font-size="text-base" loop show-pause-button />
     </div>
   </div>

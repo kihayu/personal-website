@@ -17,7 +17,7 @@
         projects on a smaller scale very easy and more manageable for a single person.
       </p>
     </div>
-    <div ref="deployAnimation" class="min-h-64 rounded-xl lg:block lg:h-full lg:w-full">
+    <div class="min-h-64 rounded-xl bg-stone-900 lg:block lg:h-full lg:w-full">
       <DeployAnimation font-size="text-base" loop show-pause-button />
     </div>
   </div>

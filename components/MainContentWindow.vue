@@ -13,7 +13,7 @@
         {{ title || 'Hover over the Titles' }}
       </span>
     </div>
-    <div class="relative h-full rounded-md bg-neutral-800 p-4">
+    <div class="relative h-full rounded-md bg-neutral-900 p-4">
       <slot />
     </div>
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative h-full rounded-md bg-neutral-900">
+  <div class="relative h-full rounded-md">
     <div class="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-md bg-neutral-800 p-1.5">
       <div class="flex gap-1">
         <ToolbarIcon :active="currentTool === 'move'">

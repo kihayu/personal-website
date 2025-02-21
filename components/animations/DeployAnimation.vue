@@ -1,18 +1,18 @@
 <template>
-  <div 
-    class="deploy-animation h-full rounded-lg bg-neutral-800 p-6 shadow-[0px_0px_0px_1px_rgba(255_255_255_0.1)]" 
-    role="region" 
+  <div
+    class="deploy-animation h-full rounded-lg p-6 shadow-[0px_0px_0px_1px_rgba(255_255_255_0.1)]"
+    role="region"
     aria-label="Deployment Process Animation"
   >
-    <div 
-      class="relative flex h-full items-center justify-between lg:px-2 xl:px-14" 
-      role="list" 
+    <div
+      class="relative flex h-full items-center justify-between lg:px-2 xl:px-14"
+      role="list"
       aria-label="Deployment Steps"
     >
       <DeployIcon :current-step="currentStep" :activate-step="0" color="blue">
         <CodeIcon />
         <template #label>
-          <span class="flex items-center text-center text-neutral-400">Code</span>
+          <span class="flex items-center text-center text-neutral-300">Code</span>
         </template>
       </DeployIcon>
 
@@ -21,7 +21,7 @@
       <DeployIcon :current-step="currentStep" :activate-step="1" color="orange">
         <VersionControlIcon />
         <template #label>
-          <span class="flex items-center text-center text-neutral-400">Version Control</span>
+          <span class="flex items-center text-center text-neutral-300">Version Control</span>
         </template>
       </DeployIcon>
 
@@ -30,7 +30,7 @@
       <DeployIcon :current-step="currentStep" :activate-step="2" color="red">
         <VercelIcon />
         <template #label>
-          <span class="flex items-center text-center text-neutral-400">Distribution Server</span>
+          <span class="flex items-center text-center text-neutral-300">Distribution Server</span>
         </template>
       </DeployIcon>
 
@@ -39,7 +39,7 @@
       <DeployIcon :current-step="currentStep" :activate-step="3" color="green">
         <ServerIcon />
         <template #label>
-          <span class="flex items-center text-center text-neutral-400">Server</span>
+          <span class="flex items-center text-center text-neutral-300">Server</span>
         </template>
       </DeployIcon>
     </div>
