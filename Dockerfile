@@ -1,10 +1,11 @@
 # Build stage
-FROM oven/bun:1 as builder
+FROM oven/bun:1 AS builder
 
 WORKDIR /app
 
 # Copy package files
-COPY package.json bun.lockb ./
+COPY package.json .
+COPY bun.lockb .
 
 # Install dependencies
 RUN bun install --frozen-lockfile
@@ -21,8 +22,8 @@ FROM oven/bun:1-slim
 WORKDIR /app
 
 # Copy only necessary files from builder
-COPY --from=builder /app/.output ./.output
-COPY --from=builder /app/package.json ./
+COPY --from=builder /app/.output .output
+COPY --from=builder /app/package.json .
 
 # Set environment variables
 ENV NODE_ENV=production
