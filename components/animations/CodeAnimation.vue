@@ -1,12 +1,13 @@
 <template>
-  <div class="relative h-full w-full">
+  <div class="relative h-full w-full" role="region" aria-label="Code Animation Display">
     <div class="relative w-fit font-mono">
       <div ref="codeContainer" class="relative">
         <Shiki
+          tabindex="-1"
           ref="shiki"
           :lang="lang"
           :code="typedText"
-          class="w-fit [&_code]:!bg-transparent [&_pre]:!bg-transparent"
+          class="w-fit [&_code]:!bg-transparent [&_code]:!select-none [&_pre]:!bg-transparent"
           :class="fontSize"
           v-bind="$attrs"
         />
@@ -19,14 +20,18 @@
         />
       </div>
     </div>
-    <div
+    <button
       v-if="showPauseButton"
       class="absolute right-0 bottom-0 h-12 w-12 cursor-pointer rounded-3xl bg-[rgba(255,255,255,0.2)]"
+      :aria-label="isPaused ? 'Play animation' : 'Pause animation'"
+      tabindex="0"
+      @keydown.enter="isPaused ? pickNewRandomCode() : stopTyping(true, true)"
+      @keydown.space.prevent="isPaused ? pickNewRandomCode() : stopTyping(true, true)"
       @click="isPaused ? pickNewRandomCode() : stopTyping(true, true)"
     >
       <PlayIcon v-if="isPaused" class="mx-auto my-auto h-12 w-6" />
       <PauseIcon v-else class="mx-auto my-auto h-12 w-6" />
-    </div>
+    </button>
   </div>
 </template>
 
@@ -82,6 +87,11 @@ const updateCursorPosition = () => {
   }
   if (!shiki.value.$el) {
     return
+  }
+
+  const codeElement = shiki.value.$el.getElementsByTagName('code')[0]
+  if (codeElement) {
+    codeElement.tabIndex = -1
   }
 
   const lines: NodeListOf<HTMLSpanElement> = shiki.value.$el.querySelectorAll('.line')

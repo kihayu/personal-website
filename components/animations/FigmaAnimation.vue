@@ -60,14 +60,18 @@
         Button
       </span>
     </div>
-    <div
+    <button
       v-if="showPauseButton"
       class="absolute right-4 bottom-4 h-12 w-12 cursor-pointer rounded-3xl bg-[rgba(255,255,255,0.2)]"
+      role="button"
+      :aria-label="isPaused ? 'Play animation' : 'Pause animation'"
+      tabindex="0"
+      @keydown.space.prevent="togglePause"
       @click="togglePause"
     >
       <PlayIcon v-if="isPaused" class="mx-auto my-auto h-12 w-6" />
       <PauseIcon v-else class="mx-auto my-auto h-12 w-6" />
-    </div>
+    </button>
   </div>
 </template>
 

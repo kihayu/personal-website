@@ -8,6 +8,8 @@
       @mouseover="setHoveredSection"
       @mouseleave="resetHoveredSection"
       @click="emit('click:reactive-text', 'design')"
+      @keydown.enter="emit('click:reactive-text', 'design')"
+      @keydown.space.prevent="emit('click:reactive-text', 'design')"
     >
       Design
     </ReactiveText>
@@ -16,14 +18,18 @@
       @mouseover="setHoveredSection"
       @mouseleave="resetHoveredSection"
       @click="emit('click:reactive-text', 'develop')"
+      @keydown.enter="emit('click:reactive-text', 'develop')"
+      @keydown.space.prevent="emit('click:reactive-text', 'develop')"
     >
       Develop
     </ReactiveText>
     <ReactiveText
       name="deploy"
       @mouseover="setHoveredSection"
-      @mouseleave="resetHoveredSection"
       @click="emit('click:reactive-text', 'deploy')"
+      @keydown.enter="emit('click:reactive-text', 'deploy')"
+      @keydown.space.prevent="emit('click:reactive-text', 'deploy')"
+      @mouseleave="resetHoveredSection"
     >
       Deploy
     </ReactiveText>

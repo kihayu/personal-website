@@ -1,6 +1,14 @@
 <template>
-  <div class="deploy-animation h-full rounded-lg bg-neutral-800 p-6 shadow-[0px_0px_0px_1px_rgba(255_255_255_0.1)]">
-    <div class="relative flex h-full items-center justify-between lg:px-2 xl:px-14">
+  <div 
+    class="deploy-animation h-full rounded-lg bg-neutral-800 p-6 shadow-[0px_0px_0px_1px_rgba(255_255_255_0.1)]" 
+    role="region" 
+    aria-label="Deployment Process Animation"
+  >
+    <div 
+      class="relative flex h-full items-center justify-between lg:px-2 xl:px-14" 
+      role="list" 
+      aria-label="Deployment Steps"
+    >
       <DeployIcon :current-step="currentStep" :activate-step="0" color="blue">
         <CodeIcon />
         <template #label>
