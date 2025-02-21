@@ -1,5 +1,17 @@
 {
-  "name": "nuxt-app",
+  "name": "personal-website",
+  "version": "1.0.0-beta.1",
+  "description": "Personal portfolio website from Keanu Hie",
+  "author": "Keanu Hie <hie.keanu@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kihayu/personal-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kihayu/personal-website/issues"
+  },
+  "homepage": "https://test.keanuhie.com",
   "private": true,
   "type": "module",
   "scripts": {
