@@ -1,6 +1,6 @@
 <template>
   <div class="deploy-animation h-full rounded-lg bg-neutral-800 p-6 shadow-[0px_0px_0px_1px_rgba(255_255_255_0.1)]">
-    <div class="relative flex h-full items-center justify-between px-12">
+    <div class="relative flex h-full items-center justify-between lg:px-2 xl:px-14">
       <DeployIcon :current-step="currentStep" :activate-step="0" color="blue">
         <CodeIcon />
         <template #label>
@@ -46,9 +46,13 @@ import ServerIcon from '~/assets/icons/deploy/server.svg'
 import VercelIcon from '~/assets/icons/deploy/vercel.svg'
 import VersionControlIcon from '~/assets/icons/deploy/version-control.svg'
 
-const props = defineProps<{
+export interface DeployAnimationProps {
   autoFill?: boolean
-}>()
+}
+
+const props = withDefaults(defineProps<DeployAnimationProps>(), {
+  autoFill: false,
+})
 
 const currentStep = ref(-1)
 let animationFrame: number | null = null
