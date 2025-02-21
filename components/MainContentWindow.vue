@@ -10,7 +10,7 @@
         <div class="h-3 w-3 rounded-full bg-green-500" />
       </div>
       <span class="flex justify-center text-xs text-neutral-200 select-none" :class="{ italic: !title }" role="status">
-        {{ title || 'Hover over the Titles' }}
+        {{ title || 'Hover over the Titles (and click)' }}
       </span>
     </div>
     <div class="relative h-full rounded-md bg-neutral-900 p-4">
