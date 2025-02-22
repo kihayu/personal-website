@@ -34,6 +34,7 @@ import { useWindowSize } from '@vueuse/core'
 
 export interface MainContentInfoProps {
   selectedSection: string
+  scrollPosition: number
 }
 
 const props = defineProps<MainContentInfoProps>()
@@ -43,15 +44,13 @@ const sectionToSectionName = computed(
 )
 
 const emit = defineEmits(['clear-section'])
-
-let scrollPosition = 0
+const originalScrollPosition = ref(props.scrollPosition)
 
 const lockScroll = () => {
-  scrollPosition = window.scrollY
   document.body.style.overflow = 'hidden'
   document.body.style.position = 'fixed'
   document.body.style.width = '100%'
-  document.body.style.top = `-${scrollPosition}px`
+  document.body.style.top = `-${props.scrollPosition}px`
 }
 
 const unlockScroll = () => {
@@ -59,7 +58,7 @@ const unlockScroll = () => {
   document.body.style.position = ''
   document.body.style.width = ''
   document.body.style.top = ''
-  window.scrollTo(0, document.documentElement.scrollHeight)
+  window.scrollTo(0, originalScrollPosition.value)
 }
 
 const windowSize = useWindowSize()

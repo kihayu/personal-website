@@ -15,6 +15,7 @@
         v-else
         ref="mainContentInfo"
         :selected-section="selectedSection"
+        :scroll-position="scrollY"
         @clear-section="selectedSection = ''"
       />
     </div>
@@ -27,6 +28,7 @@ import ProfileCard from '~/components/ProfileCard.vue'
 import AboutMeCard from '~/components/AboutMeCard.vue'
 import MainContent from '~/components/MainContent.vue'
 import MainContentInfo from '~/components/content-info/MainContentInfo.vue'
+import { useWindowScroll } from '@vueuse/core'
 
 const mainContent = ref<ComponentPublicInstance<HTMLDivElement> | null>(null)
 const selectedSection = ref('')
@@ -36,4 +38,6 @@ const setSelectedSection = (section: string) => {
   selectedSection.value = section
   mainContentInfo.value?.showModal()
 }
+
+const { y: scrollY } = useWindowScroll()
 </script>
