@@ -36,7 +36,7 @@ Start the development server:
 bun run dev
 ```
 
-The application will be available at `http://localhost:3000`
+The application will be available at `http://localhost:3000/`
 
 ### Production
 
@@ -46,15 +46,31 @@ Build for production:
 bun run build
 ```
 
-## 📁 Project Structure (WIP)
+Build Docker image:
+
+```bash
+docker build -t personal-website .
+```
+
+## 📁 Project Structure
 
 ```
-├── assets/            # Static assets (icons, css)
+├── assets/            # Static assets
+│   ├── css/           # Global styles and utilities
+│   ├── fonts/         # Custom fonts
+│   ├── icons/         # SVG icons
+│   └── images/        # Image assets
 ├── components/        # Vue components
-│   ├── main-section/  # Main section components
-│   └── section/       # General section components
-├── pages/             # Application pages
-└── public/            # Public static files
+│   ├── animations/    # Animation components
+│   ├── content-info/  # Content information components
+│   └── section/       # Section layout components
+├── composables/       # Vue composables and hooks
+├── constants/         # Application constants
+├── pages/             # Application pages and routing
+├── public/            # Public static files
+├── server/            # Server-side code
+│   └── plugins/       # Server plugins
+└── utils/             # Utility functions
 ```
 
 ## 📝 License
