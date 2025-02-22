@@ -59,7 +59,7 @@ const unlockScroll = () => {
   document.body.style.position = ''
   document.body.style.width = ''
   document.body.style.top = ''
-  window.scrollTo(0, scrollPosition)
+  window.scrollTo(0, document.documentElement.scrollHeight)
 }
 
 const windowSize = useWindowSize()
@@ -73,7 +73,7 @@ watch(windowSize.width, () => {
   unlockScroll()
 })
 
-onMounted(() => {
+onBeforeMount(() => {
   if (isMobile.value) {
     lockScroll()
   }
@@ -82,10 +82,6 @@ onMounted(() => {
 onMounted(() => {
   window.history.pushState({ mainContentInfo: true }, '')
   window.addEventListener('popstate', handlePopState)
-
-  if (isMobile.value) {
-    lockScroll()
-  }
 })
 
 onUnmounted(() => {
