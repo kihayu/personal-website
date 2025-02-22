@@ -60,16 +60,6 @@ const { y: scrollY } = useWindowScroll()
       transform: translateX(0%);
     }
   }
-
-  &-leave {
-    &-to {
-      transform: translateX(100%);
-    }
-
-    &-from {
-      transform: translateX(0%);
-    }
-  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -79,8 +69,7 @@ const { y: scrollY } = useWindowScroll()
       transition: none;
     }
 
-    &-enter,
-    &-leave {
+    &-enter {
       &-from,
       &-to {
         transform: translateX(0%);
