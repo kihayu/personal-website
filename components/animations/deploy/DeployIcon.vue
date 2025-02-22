@@ -1,7 +1,7 @@
 <template>
   <div class="relative flex flex-col items-center gap-y-2" role="listitem">
     <div
-      class="relative z-10 flex h-12 w-12 items-center justify-center rounded-lg transition-all duration-300"
+      class="relative z-10 flex h-10 w-10 items-center justify-center rounded-lg transition-all duration-300 md:h-12 md:w-12"
       :class="{
         [activeColorClassNames[color]]: currentStep == activateStep,
         [colorClassNames[color]]: true,

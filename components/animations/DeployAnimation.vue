@@ -12,7 +12,7 @@
       <DeployIcon :current-step="currentStep" :activate-step="0" color="blue">
         <CodeIcon />
         <template #label>
-          <span class="flex items-center text-center text-neutral-300">Code</span>
+          <span class="flex items-center text-center text-sm text-neutral-300 md:text-base">Code</span>
         </template>
       </DeployIcon>
 
@@ -21,7 +21,7 @@
       <DeployIcon :current-step="currentStep" :activate-step="1" color="orange">
         <VersionControlIcon />
         <template #label>
-          <span class="flex items-center text-center text-neutral-300">Version Control</span>
+          <span class="flex items-center text-center text-sm text-neutral-300 md:text-base">Version Control</span>
         </template>
       </DeployIcon>
 
@@ -30,7 +30,7 @@
       <DeployIcon :current-step="currentStep" :activate-step="2" color="red">
         <VercelIcon />
         <template #label>
-          <span class="flex items-center text-center text-neutral-300">Distribution Server</span>
+          <span class="flex items-center text-center text-sm text-neutral-300 md:text-base">Distribution Server</span>
         </template>
       </DeployIcon>
 
@@ -39,7 +39,7 @@
       <DeployIcon :current-step="currentStep" :activate-step="3" color="green">
         <ServerIcon />
         <template #label>
-          <span class="flex items-center text-center text-neutral-300">Server</span>
+          <span class="flex items-center text-center text-sm text-neutral-300 md:text-base">Server</span>
         </template>
       </DeployIcon>
     </div>
