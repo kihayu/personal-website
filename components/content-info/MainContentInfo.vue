@@ -1,24 +1,21 @@
 <template>
   <dialog
-    class="flex h-full flex-col gap-y-4 overflow-y-auto bg-stone-800 px-6 pt-4 pb-8 text-white lg:relative lg:h-full lg:w-auto lg:rounded-lg lg:p-0"
+    class="flex h-full flex-col gap-y-4 overflow-y-auto bg-stone-800 px-6 pb-8 text-white lg:relative lg:h-full lg:w-auto lg:rounded-lg lg:p-0"
     :class="isMobile ? 'fixed inset-0 z-50' : ''"
   >
-    <div class="grid w-full grid-cols-[40px_1fr_40px] grid-rows-1 justify-center border-b border-neutral-600 pb-4">
+    <div
+      class="sticky top-0 grid w-full cursor-pointer grid-cols-[40px_1fr_40px] grid-rows-1 justify-center border-b border-neutral-600 bg-stone-800 py-4 lg:pt-0"
+      @click="emit('clear-section')"
+      @keydown.enter="emit('clear-section')"
+      @keydown.space.prevent="emit('clear-section')"
+    >
       <span
-        class="flex h-full w-full cursor-pointer items-center justify-center text-2xl text-neutral-400 transition-all duration-300 lg:hover:scale-125 lg:active:scale-90 lg:active:text-neutral-200"
+        class="font-title flex h-full w-full items-center justify-center text-2xl text-neutral-400 transition-all duration-300 lg:hover:scale-125 lg:active:scale-90 lg:active:text-neutral-200"
         tabindex="0"
-        @click="emit('clear-section')"
-        @keydown.enter="emit('clear-section')"
-        @keydown.space.prevent="emit('clear-section')"
       >
         ←
       </span>
-      <h4
-        class="font-title flex cursor-pointer justify-center text-2xl font-bold select-none md:text-3xl xl:text-4xl"
-        @click="emit('clear-section')"
-        @keydown.enter="emit('clear-section')"
-        @keydown.space.prevent="emit('clear-section')"
-      >
+      <h4 class="font-title flex justify-center text-2xl !leading-8 font-bold select-none md:text-3xl xl:text-4xl">
         {{ sectionToSectionName }}
       </h4>
     </div>
