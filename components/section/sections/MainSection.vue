@@ -6,17 +6,19 @@
       <ProfileCard />
       <AboutMeCard />
     </div>
-    <div
-      ref="mainContent"
-      class="flex h-fit min-h-fit w-full flex-col items-center justify-center gap-x-16 gap-y-12 rounded-md bg-stone-800 p-6 py-8"
-    >
-      <MainContent v-if="selectedSection.trim() === ''" @click:reactive-text="setSelectedSection" />
-      <MainContentInfo
-        v-else
-        ref="mainContentInfo"
-        :selected-section="selectedSection"
-        :scroll-position="scrollY"
-        @clear-section="selectedSection = ''"
+    <div class="min-h-fit w-full rounded-md bg-stone-800 p-6 py-8 shadow-md">
+      <Transition name="main-content-info--slide">
+        <MainContentInfo
+          v-if="selectedSection.trim() !== ''"
+          ref="mainContentInfo"
+          :selected-section="selectedSection"
+          :scroll-position="scrollY"
+          @clear-section="selectedSection = ''"
+        />
+      </Transition>
+      <MainContent
+        :class="{ hidden: !isMobile && selectedSection.trim() !== '' }"
+        @click:reactive-text="setSelectedSection"
       />
     </div>
   </SectionComponent>
@@ -29,8 +31,8 @@ import AboutMeCard from '~/components/AboutMeCard.vue'
 import MainContent from '~/components/MainContent.vue'
 import MainContentInfo from '~/components/content-info/MainContentInfo.vue'
 import { useWindowScroll } from '@vueuse/core'
+import { isMobile } from '~/utils/isMobile'
 
-const mainContent = ref<ComponentPublicInstance<HTMLDivElement> | null>(null)
 const selectedSection = ref('')
 
 const mainContentInfo = ref<ComponentPublicInstance<HTMLDialogElement> | null>(null)
@@ -41,3 +43,49 @@ const setSelectedSection = (section: string) => {
 
 const { y: scrollY } = useWindowScroll()
 </script>
+
+<style lang="scss">
+.main-content-info--slide {
+  &-enter-active,
+  &-leave-active {
+    transition: all 250ms ease-in-out;
+  }
+
+  &-enter {
+    &-from {
+      transform: translateX(100%);
+    }
+
+    &-to {
+      transform: translateX(0%);
+    }
+  }
+
+  &-leave {
+    &-to {
+      transform: translateX(100%);
+    }
+
+    &-from {
+      transform: translateX(0%);
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .main-content-info--slide {
+    &-enter-active,
+    &-leave-active {
+      transition: none;
+    }
+
+    &-enter,
+    &-leave {
+      &-from,
+      &-to {
+        transform: translateX(0%);
+      }
+    }
+  }
+}
+</style>

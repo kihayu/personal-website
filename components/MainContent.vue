@@ -1,62 +1,64 @@
 <template>
-  <div
-    class="flex w-full flex-col items-center justify-between gap-4 lg:flex-row lg:gap-0 lg:px-[12.5%]"
-    @mouseleave="resetHoveredSection(false)"
-  >
-    <ReactiveText
-      name="design"
-      @mouseover="setHoveredSection"
-      @mouseleave="resetHoveredSection"
-      @click="emit('click:reactive-text', 'design')"
-      @keydown.enter="emit('click:reactive-text', 'design')"
-      @keydown.space.prevent="emit('click:reactive-text', 'design')"
+  <div class="flex w-full flex-col gap-x-16 gap-y-12">
+    <div
+      class="flex w-full flex-col items-center justify-between gap-4 lg:flex-row lg:gap-0 lg:px-[12.5%]"
+      @mouseleave="resetHoveredSection(false)"
     >
-      Design
-    </ReactiveText>
-    <ReactiveText
-      name="develop"
-      @mouseover="setHoveredSection"
-      @mouseleave="resetHoveredSection"
-      @click="emit('click:reactive-text', 'develop')"
-      @keydown.enter="emit('click:reactive-text', 'develop')"
-      @keydown.space.prevent="emit('click:reactive-text', 'develop')"
-    >
-      Develop
-    </ReactiveText>
-    <ReactiveText
-      name="deploy"
-      @mouseover="setHoveredSection"
-      @click="emit('click:reactive-text', 'deploy')"
-      @keydown.enter="emit('click:reactive-text', 'deploy')"
-      @keydown.space.prevent="emit('click:reactive-text', 'deploy')"
-      @mouseleave="resetHoveredSection"
-    >
-      Deploy
-    </ReactiveText>
+      <ReactiveText
+        name="design"
+        @mouseover="setHoveredSection"
+        @mouseleave="resetHoveredSection"
+        @click="emit('click:reactive-text', 'design')"
+        @keydown.enter="emit('click:reactive-text', 'design')"
+        @keydown.space.prevent="emit('click:reactive-text', 'design')"
+      >
+        Design
+      </ReactiveText>
+      <ReactiveText
+        name="develop"
+        @mouseover="setHoveredSection"
+        @mouseleave="resetHoveredSection"
+        @click="emit('click:reactive-text', 'develop')"
+        @keydown.enter="emit('click:reactive-text', 'develop')"
+        @keydown.space.prevent="emit('click:reactive-text', 'develop')"
+      >
+        Develop
+      </ReactiveText>
+      <ReactiveText
+        name="deploy"
+        @mouseover="setHoveredSection"
+        @click="emit('click:reactive-text', 'deploy')"
+        @keydown.enter="emit('click:reactive-text', 'deploy')"
+        @keydown.space.prevent="emit('click:reactive-text', 'deploy')"
+        @mouseleave="resetHoveredSection"
+      >
+        Deploy
+      </ReactiveText>
+    </div>
+    <MainContentWindow class="mx-auto hidden lg:flex" :class="mainContentBoxClasses" :title="sectionToSectionName">
+      <DesignAnimation
+        v-if="hoveredSection === 'design'"
+        class="animate-fadein opacity-0 duration-100 ease-in-out"
+        :class="{ 'opacity-100': hoveredSection === 'design' }"
+        :auto-fill="watchedAnimations.design"
+      />
+      <DevelopAnimation
+        v-if="hoveredSection === 'develop'"
+        class="code-box animate-fadein opacity-0 duration-100 ease-in-out"
+        :class="{ 'opacity-100': hoveredSection === 'develop' }"
+        :auto-start="hoveredSection === 'develop'"
+        :delay="45"
+        :auto-fill="watchedAnimations.develop"
+      />
+      <DeployAnimation
+        v-if="hoveredSection === 'deploy'"
+        class="animate-fadein opacity-0 duration-100 ease-in-out"
+        :class="{ 'opacity-100': hoveredSection === 'deploy' }"
+        :auto-start="hoveredSection === 'deploy'"
+        :auto-fill="watchedAnimations.deploy"
+      />
+    </MainContentWindow>
   </div>
-  <MainContentWindow class="mx-auto hidden lg:flex" :class="mainContentBoxClasses" :title="sectionToSectionName">
-    <DesignAnimation
-      v-if="hoveredSection === 'design'"
-      class="animate-fadein opacity-0 duration-100 ease-in-out"
-      :class="{ 'opacity-100': hoveredSection === 'design' }"
-      :auto-fill="watchedAnimations.design"
-    />
-    <DevelopAnimation
-      v-if="hoveredSection === 'develop'"
-      class="code-box animate-fadein opacity-0 duration-100 ease-in-out"
-      :class="{ 'opacity-100': hoveredSection === 'develop' }"
-      :auto-start="hoveredSection === 'develop'"
-      :delay="45"
-      :auto-fill="watchedAnimations.develop"
-    />
-    <DeployAnimation
-      v-if="hoveredSection === 'deploy'"
-      class="animate-fadein opacity-0 duration-100 ease-in-out"
-      :class="{ 'opacity-100': hoveredSection === 'deploy' }"
-      :auto-start="hoveredSection === 'deploy'"
-      :auto-fill="watchedAnimations.deploy"
-    />
-  </MainContentWindow>
 </template>
 <script setup lang="ts">
 import ReactiveText from '~/components/ReactiveText.vue'
