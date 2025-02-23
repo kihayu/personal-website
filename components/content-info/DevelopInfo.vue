@@ -9,9 +9,9 @@
         little JavaScript.
       </p>
       <p class="font-paragraph w-full text-xl">
-        Shortly after I got my first job as a Frontend and Backend Developer, where I woked with PHP and found myself
+        Shortly after I got my first job as a Frontend and Backend Developer, where I worked with PHP and found myself
         interested in Frontend Development with Vue.js. Since 2018 I have been working and improving my skills in
-        JavaScript/TypeScript, together with Vue.js and Node.js (inkl. Bun) as my Frontend arm, with mainly Node.js and
+        JavaScript/TypeScript, together with Vue.js and Node.js (incl. Bun) as my Frontend arm, with mainly Node.js and
         Python as my backend arm.
       </p>
       <p class="font-paragraph w-full text-xl">

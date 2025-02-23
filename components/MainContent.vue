@@ -15,24 +15,24 @@
         Design
       </ReactiveText>
       <ReactiveText
-        name="develop"
+        name="development"
         @mouseover="setHoveredSection"
         @mouseleave="resetHoveredSection"
-        @click="emit('click:reactive-text', 'develop')"
-        @keydown.enter="emit('click:reactive-text', 'develop')"
-        @keydown.space.prevent="emit('click:reactive-text', 'develop')"
+        @click="emit('click:reactive-text', 'development')"
+        @keydown.enter="emit('click:reactive-text', 'development')"
+        @keydown.space.prevent="emit('click:reactive-text', 'development')"
       >
-        Develop
+        Development
       </ReactiveText>
       <ReactiveText
-        name="deploy"
+        name="deployment"
         @mouseover="setHoveredSection"
-        @click="emit('click:reactive-text', 'deploy')"
-        @keydown.enter="emit('click:reactive-text', 'deploy')"
-        @keydown.space.prevent="emit('click:reactive-text', 'deploy')"
+        @click="emit('click:reactive-text', 'deployment')"
+        @keydown.enter="emit('click:reactive-text', 'deployment')"
+        @keydown.space.prevent="emit('click:reactive-text', 'deployment')"
         @mouseleave="resetHoveredSection"
       >
-        Deploy
+        Deployment
       </ReactiveText>
     </div>
     <MainContentWindow class="mx-auto hidden lg:flex" :class="mainContentBoxClasses" :title="sectionToSectionName">
@@ -43,19 +43,19 @@
         :auto-fill="watchedAnimations.design"
       />
       <DevelopAnimation
-        v-if="hoveredSection === 'develop'"
+        v-else-if="hoveredSection === 'development'"
         class="code-box animate-fadein opacity-0 duration-100 ease-in-out"
-        :class="{ 'opacity-100': hoveredSection === 'develop' }"
-        :auto-start="hoveredSection === 'develop'"
+        :class="{ 'opacity-100': hoveredSection === 'development' }"
+        :auto-start="hoveredSection === 'development'"
         :delay="45"
-        :auto-fill="watchedAnimations.develop"
+        :auto-fill="watchedAnimations.development"
       />
       <DeployAnimation
-        v-if="hoveredSection === 'deploy'"
+        v-else-if="hoveredSection === 'deployment'"
         class="animate-fadein opacity-0 duration-100 ease-in-out"
-        :class="{ 'opacity-100': hoveredSection === 'deploy' }"
-        :auto-start="hoveredSection === 'deploy'"
-        :auto-fill="watchedAnimations.deploy"
+        :class="{ 'opacity-100': hoveredSection === 'deployment' }"
+        :auto-start="hoveredSection === 'deployment'"
+        :auto-fill="watchedAnimations.deployment"
       />
     </MainContentWindow>
   </div>
@@ -75,9 +75,9 @@ const hoveredOverSection = ref(false)
 const hoveredSection: Ref<string> = ref('')
 
 const watchedAnimations = ref({
-  develop: false,
+  development: false,
   design: false,
-  deploy: false,
+  deployment: false,
 })
 
 const setHoveredSection = async (name: string) => {

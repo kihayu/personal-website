@@ -20,8 +20,8 @@
       </h4>
     </div>
     <DesignInfo v-if="selectedSection === 'design'" />
-    <DevelopInfo v-else-if="selectedSection === 'develop'" />
-    <DeployInfo v-else-if="selectedSection === 'deploy'" />
+    <DevelopInfo v-else-if="selectedSection === 'development'" />
+    <DeployInfo v-else-if="selectedSection === 'deployment'" />
   </dialog>
 </template>
 
