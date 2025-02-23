@@ -46,7 +46,7 @@
         />
       </a>
       <a
-        href="https://linkedin.com/in/keanu-hie-0750a2184/"
+        href="https://linkedin.com/in/keanu-hie/"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Visit Keanu's LinkedIn Profile"
