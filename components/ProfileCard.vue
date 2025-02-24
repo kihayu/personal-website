@@ -29,7 +29,7 @@
     </picture>
     <h1 class="font-title mt-2 text-3xl font-semibold">Keanu Hie</h1>
     <p class="font-subtitle mt-2 text-center text-base text-neutral-300">
-      Frontend & Backend Developer<br />Located in Vienna, Austria
+      Fullstack Developer<br />Located in Vienna, Austria
     </p>
     <div class="mt-12 flex items-center justify-center gap-6" role="navigation" aria-label="Social Links">
       <a

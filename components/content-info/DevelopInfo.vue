@@ -9,10 +9,10 @@
         little JavaScript.
       </p>
       <p class="font-paragraph w-full text-xl">
-        Shortly after I got my first job as a Frontend and Backend Developer, where I worked with PHP and found myself
-        interested in Frontend Development with Vue.js. Since 2018 I have been working and improving my skills in
-        JavaScript/TypeScript, together with Vue.js and Node.js (incl. Bun) as my Frontend arm, with mainly Node.js and
-        Python as my backend arm.
+        Shortly after I got my first job as a Backend Developer, where I worked with PHP. After a short period I found
+        myself interested in Frontend Development with Vue.js and started building my way to become a Fullstack
+        Developer. Since 2018 I have been working and improving my skills in JavaScript/TypeScript, together with Vue.js
+        and Node.js (incl. Bun) as my Frontend arm, with mainly Node.js and Python as my backend arm.
       </p>
       <p class="font-paragraph w-full text-xl">
         Today I enjoy working on different projects and trying new technologies like Flutter for mobile development,
