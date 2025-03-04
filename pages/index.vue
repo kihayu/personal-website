@@ -1,7 +1,11 @@
 <template>
-  <MainSection class="mx-4 max-w-[1280px] py-4 lg:mx-auto lg:pt-12 2xl:pt-16" />
+  <div class="flex w-full flex-col items-center justify-center gap-y-4">
+    <MainSection class="mx-4 max-w-[1280px] pt-4 lg:min-h-screen lg:pt-12 2xl:pt-16" />
+    <ProjectSection class="min-h-screen w-full px-4" />
+  </div>
 </template>
 
 <script setup lang="ts">
 import MainSection from '~/components/section/sections/MainSection.vue'
+import ProjectSection from '~/components/section/sections/ProjectSection.vue'
 </script>
