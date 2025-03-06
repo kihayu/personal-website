@@ -35,7 +35,13 @@
       <div
         v-for="(item, index) in filteredItems"
         :key="item"
-        :ref="(el) => (itemRefs[index] = el)"
+        :ref="
+          (el) => {
+            if (el) {
+              itemRefs[index] = el as HTMLElement
+            }
+          }
+        "
         class="item-wrapper"
       >
         <ProjectDropdownElement :label="item" :is-selected="selectedItems.includes(item)" @select="toggleItem" />
@@ -66,11 +72,11 @@ const emit = defineEmits<ProjectDropdownEmits>()
 const isOpen = ref(false)
 const searchTerm = ref('')
 const searchInput = ref<HTMLInputElement | null>(null)
-const selectedItems = ref<string[]>([...props.modelValue])
+const selectedItems = ref<Array<string>>([...props.modelValue])
 const activeIndex = ref(-1)
 const dropdownRef = ref<HTMLElement | null>(null)
 const dropdownListRef = ref<HTMLElement | null>(null)
-const itemRefs = ref<HTMLElement[]>([])
+const itemRefs = ref<Array<HTMLElement>>([])
 
 const filteredItems = computed((): string[] => {
   if (!searchTerm.value) return props.items as string[]
@@ -101,10 +107,6 @@ const toggleItem = (item: string): void => {
     selectedItems.value.splice(index, 1)
   }
   emit('update:modelValue', selectedItems.value)
-}
-
-const handleElementKeyNav = (event: KeyboardEvent): void => {
-  handleKeyDown(event)
 }
 
 const updateActiveIndex = (direction: 'next' | 'prev'): void => {
