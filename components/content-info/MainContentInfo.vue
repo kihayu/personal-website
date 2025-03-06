@@ -43,7 +43,11 @@ const sectionToSectionName = computed(
   () => props.selectedSection.charAt(0).toUpperCase() + props.selectedSection.slice(1),
 )
 
-const emit = defineEmits(['clear-section'])
+export interface MainContentInfoEmits {
+  'clear-section': []
+}
+
+const emit = defineEmits<MainContentInfoEmits>()
 const originalScrollPosition = ref(props.scrollPosition)
 
 const lockScroll = () => {

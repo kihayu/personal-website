@@ -67,9 +67,11 @@ import DevelopAnimation from '~/components/animations/DevelopAnimation.vue'
 import DeployAnimation from '~/components/animations/DeployAnimation.vue'
 import MainContentWindow from '~/components/MainContentWindow.vue'
 
-const emit = defineEmits<{
+export interface MainContentEmits {
   'click:reactive-text': [name: string]
-}>()
+}
+
+const emit = defineEmits<MainContentEmits>()
 
 const hoveredOverSection = ref(false)
 const hoveredSection: Ref<string> = ref('')
