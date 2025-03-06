@@ -4,4 +4,5 @@ export interface Project {
   leadText: string
   description: string
   technologies: string[]
+  capacity: 'Collaborator' | 'Solo'
 }

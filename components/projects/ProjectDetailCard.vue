@@ -5,7 +5,7 @@
     <div class="flex justify-between">
       <div class="flex flex-col">
         <h2 class="font-title text-3xl font-bold">{{ project.title }}</h2>
-        <span class="font-title text-xl text-neutral-400">{{ project.position }}</span>
+        <span class="font-title text-xl text-neutral-400">{{ project.capacity }}</span>
       </div>
       <button
         @click="closeDetails"
