@@ -1,7 +1,7 @@
 <template>
   <div class="font-title relative w-full" @keydown="handleKeyDown" ref="dropdownRef">
     <div
-      class="flex h-12 w-full cursor-pointer items-center justify-between rounded-t-lg border-neutral-400 p-3 text-white transition-all duration-200"
+      class="flex h-auto w-full cursor-pointer items-center justify-between rounded-t-lg border-neutral-400 p-3 text-white transition-all duration-200"
       :class="{ 'border-x border-t': isOpen, 'rounded-b-lg border': !isOpen }"
       @click="toggleDropdown"
     >
@@ -23,33 +23,32 @@
         </div>
       </div>
       <div class="ml-2">
-        <ChevronDownIcon
-          class="h-4 w-4 text-white transition-transform duration-200"
-          :class="{ 'rotate-180 transform': isOpen }"
-        />
+        <ChevronDownIcon class="transition-transform duration-200" :class="{ 'rotate-180 transform': isOpen }" />
       </div>
     </div>
 
     <div
-      class="absolute max-h-60 w-full overflow-y-auto rounded-b-lg border border-neutral-400 bg-stone-800 p-2 shadow-lg transition-opacity duration-300"
+      class="absolute max-h-60 w-full overflow-y-auto rounded-b-lg border border-neutral-400 bg-stone-800 p-2 shadow-2xl transition-opacity duration-300"
       :class="{ 'z-10 opacity-100': isOpen, 'opacity-0': !isOpen }"
       ref="dropdownListRef"
     >
-      <div
-        v-for="(item, index) in filteredItems"
-        :key="item"
-        :ref="
-          (el) => {
-            if (el) {
-              itemRefs[index] = el as HTMLElement
+      <template v-if="isOpen">
+        <div
+          v-for="(item, index) in filteredItems"
+          :key="item"
+          :ref="
+            (el) => {
+              if (el) {
+                itemRefs[index] = el as HTMLElement
+              }
             }
-          }
-        "
-        class="item-wrapper"
-      >
-        <ProjectDropdownElement :label="item" :is-selected="selectedItems.includes(item)" @select="toggleItem" />
-      </div>
-      <div v-if="filteredItems.length === 0" class="p-2 text-white">No matching technologies found</div>
+          "
+          class="item-wrapper"
+        >
+          <ProjectDropdownElement :label="item" :is-selected="selectedItems.includes(item)" @select="toggleItem" />
+        </div>
+        <div v-if="filteredItems.length === 0" class="p-2 text-white">No matching technologies found</div>
+      </template>
     </div>
   </div>
 </template>
@@ -58,7 +57,7 @@
 import { ref, computed, watch, nextTick } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import ProjectDropdownElement from '~/components/projects/ProjectDropdownElement.vue'
-import ChevronDownIcon from '~/assets/icons/heroicons/chevron-down.svg'
+import { ChevronDown as ChevronDownIcon } from 'lucide-vue-next'
 
 export interface ProjectDropdownProps {
   items: string[]

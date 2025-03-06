@@ -69,8 +69,8 @@
       @keydown.space.prevent="togglePause"
       @click="togglePause"
     >
-      <PlayIcon v-if="isPaused" class="mx-auto my-auto h-12 w-6" />
-      <PauseIcon v-else class="mx-auto my-auto h-12 w-6" />
+      <PlayIcon v-if="isPaused" color="white" class="mx-auto my-auto" />
+      <PauseIcon v-else color="white" class="mx-auto my-auto" />
     </button>
   </div>
 </template>
@@ -81,8 +81,8 @@ import FrameToolIcon from '~/assets/icons/design/frame-tool.svg'
 import MoveToolIcon from '~/assets/icons/design/move-tool.svg'
 import RectangleToolIcon from '~/assets/icons/design/rectangle-tool.svg'
 import TextToolIcon from '~/assets/icons/design/text-tool.svg'
-import PauseIcon from '~/assets/icons/heroicons/pause.svg'
-import PlayIcon from '~/assets/icons/heroicons/play.svg'
+import { Pause as PauseIcon } from 'lucide-vue-next'
+import { Play as PlayIcon } from 'lucide-vue-next'
 
 export interface DesignAnimationProps {
   autoFill?: boolean
