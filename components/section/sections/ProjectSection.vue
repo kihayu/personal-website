@@ -145,18 +145,6 @@ watch(selectedProjectIds.value, (newIds) => {
   unlockScroll()
 })
 
-watch(
-  selectedProjectIds,
-  (newId) => {
-    if (!newId) {
-      return
-    }
-
-    router.push({ path: '/', hash: `#${newId}` })
-  },
-  { immediate: false },
-)
-
 const addToSelectedProjects = (id: string): void => {
   selectedProjectIds.value.push(id)
 }
