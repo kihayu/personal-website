@@ -4,9 +4,9 @@ A modern, interactive personal website built with Nuxt 3, featuring animated sho
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Nuxt 3
-- **Styling**: Tailwind CSS
-- **Icons**: Lucide Icons
+- **Framework**: [Nuxt 3](https://nuxt.com/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Icons**: [Lucide Icons](https://lucide.dev/)
 
 ## 🚀 Getting Started
 
