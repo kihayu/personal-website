@@ -1,6 +1,6 @@
+<!-- Root container needed! -->
 <template>
-  <!-- Root container needed! -->
-  <div>
+  <div id="root">
     <MainSection class="mx-4 max-w-[1280px] lg:min-h-screen" />
     <ProjectSection class="mx-4 min-h-screen max-w-[1280px]" />
   </div>
