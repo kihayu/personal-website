@@ -1,5 +1,5 @@
 <template>
-  <SectionComponent class="max-w-[1280px]">
+  <SectionComponent>
     <div class="relative flex flex-col gap-y-4 rounded-md bg-stone-800 p-6 shadow-md">
       <h1 class="font-title mb-6 text-3xl font-semibold">Projects</h1>
       <div class="w-full bg-red-500 p-1">
@@ -10,52 +10,72 @@
 
       <ProjectDropdown :items="allTechnologies" v-model="selectedTechnologies" />
 
-      <div v-if="!isMobile" class="transition-container lg:block">
-        <Transition name="project-expand" mode="out-in">
-          <div v-if="selectedProjectId === ''" key="project-list" class="flex flex-col gap-y-4">
+      <ClientOnly>
+        <template #fallback>
+          <!-- Static fallback for SSR -->
+          <div class="flex flex-col gap-y-4">
             <div v-for="project in filteredProjects" :key="project.id" class="project-card-container">
               <ProjectCard
                 :title="project.title"
                 :lead-text="project.leadText"
                 :technologies="project.technologies"
                 :project-name="project.id"
-                @select="selectProject(project.id)"
-                @click="selectProject(project.id)"
+                @select="addToSelectedProjects(project.id)"
+                @click="addToSelectedProjects(project.id)"
               />
             </div>
           </div>
+          <!-- End of fallback -->
+        </template>
 
-          <div v-else-if="selectedProject" key="project-detail">
-            <ProjectDetailCard :project="selectedProject" @close="closeProjectDetails" />
-          </div>
-        </Transition>
-      </div>
-
-      <div v-if="isMobile" class="relative lg:hidden">
-        <div v-show="selectedProjectId === ''" class="flex flex-col gap-y-4">
-          <div v-for="project in filteredProjects" :key="project.id" class="project-card-container">
-            <ProjectCard
-              :title="project.title"
-              :lead-text="project.leadText"
-              :technologies="project.technologies"
-              :project-name="project.id"
-              @select="selectProject(project.id)"
-              @click="selectProject(project.id)"
-            />
+        <!-- Desktop view  -->
+        <div v-if="!isMobile" class="transition-container lg:block">
+          <div key="project-list" class="flex flex-col gap-y-4">
+            <div v-for="project in filteredProjects" :key="project.id" class="project-card-container">
+              <ProjectDetailCard
+                v-if="selectedProjects.includes(project)"
+                :project="project"
+                @close="closeProjectDetails(project.id)"
+              />
+              <ProjectCard
+                v-else
+                :title="project.title"
+                :lead-text="project.leadText"
+                :technologies="project.technologies"
+                :project-name="project.id"
+                @select="addToSelectedProjects(project.id)"
+                @click="addToSelectedProjects(project.id)"
+              />
+            </div>
           </div>
         </div>
+        <!-- End of Desktop view -->
 
-        <Transition name="slide-in">
+        <!-- Mobile view -->
+        <div v-else class="relative lg:hidden">
+          <div v-show="selectedProjectIds.length === 0" class="flex flex-col gap-y-4">
+            <div v-for="project in filteredProjects" :key="project.id" class="project-card-container">
+              <ProjectCard
+                :title="project.title"
+                :lead-text="project.leadText"
+                :technologies="project.technologies"
+                :project-name="project.id"
+                @select="addToSelectedProjects(project.id)"
+                @click="addToSelectedProjects(project.id)"
+              />
+            </div>
+          </div>
           <div
-            v-if="selectedProjectId !== '' && selectedProject"
+            v-if="selectedProjectIds.length !== 0 && isOneProjectSelected"
             class="fixed inset-0 z-50 overflow-y-auto bg-stone-800 lg:hidden"
           >
             <div class="p-6">
-              <ProjectDetailCard :project="selectedProject" @close="closeProjectDetails" />
+              <ProjectDetailCard :project="selectedProjects[0]" @close="closeProjectDetails(selectedProjects[0].id)" />
             </div>
           </div>
-        </Transition>
-      </div>
+        </div>
+        <!-- End of Mobile view -->
+      </ClientOnly>
     </div>
   </SectionComponent>
 </template>
@@ -73,10 +93,10 @@ const route = useRoute()
 const router = useRouter()
 const projectStore = useProjectStore()
 const projects = projectStore.projects
-const selectedProjectId = ref('')
+const selectedProjectIds = ref<Array<string>>([])
 
-const selectedProject = computed(() => {
-  return projects.find((p) => p.id === selectedProjectId.value)
+const selectedProjects = computed(() => {
+  return projects.filter((p) => selectedProjectIds.value.includes(p.id))
 })
 
 const originalScrollPosition = ref(0)
@@ -95,25 +115,27 @@ const unlockScroll = async () => {
   document.body.style.position = ''
   document.body.style.width = ''
   document.body.style.top = ''
-  await new Promise((resolve) => setTimeout(resolve, 50))
+  await new Promise((resolve) => setTimeout(resolve, 25))
   window.scrollTo(0, originalScrollPosition.value)
 }
 
+const isOneProjectSelected = computed(() => selectedProjects.value.length === 1)
+
 const windowSize = useWindowSize()
 watch(windowSize.width, () => {
-  if (isMobile.value && selectedProjectId.value) {
+  if (isMobile.value && isOneProjectSelected.value) {
     lockScroll()
   } else if (!isMobile.value) {
     unlockScroll()
   }
 })
 
-watch(selectedProjectId, (newId) => {
+watch(selectedProjectIds.value, (newIds) => {
   if (!isMobile.value) {
     return
   }
 
-  if (newId) {
+  if (newIds.length > 0) {
     nextTick(() => {
       lockScroll()
     })
@@ -124,7 +146,7 @@ watch(selectedProjectId, (newId) => {
 })
 
 watch(
-  selectedProjectId,
+  selectedProjectIds,
   (newId) => {
     if (!newId) {
       return
@@ -135,13 +157,13 @@ watch(
   { immediate: false },
 )
 
-const selectProject = (id: string): void => {
-  selectedProjectId.value = id
+const addToSelectedProjects = (id: string): void => {
+  selectedProjectIds.value.push(id)
 }
 
-const closeProjectDetails = (): void => {
+const closeProjectDetails = (id: string): void => {
   history.replaceState(null, document.title, window.location.pathname)
-  selectedProjectId.value = ''
+  selectedProjectIds.value.splice(selectedProjectIds.value.indexOf(id), 1)
 }
 
 const allTechnologies = computed(() => {
@@ -167,76 +189,13 @@ const filteredProjects = computed(() => {
 onMounted(() => {
   const projectId = route.hash.replace('#', '')
   if (projectId && projects.some((p) => p.id === projectId)) {
-    selectedProjectId.value = projectId
+    selectedProjectIds.value = [projectId]
   }
 })
 
 onUnmounted(() => {
-  if (isMobile.value && selectedProjectId.value) {
+  if (isMobile.value && selectedProjectIds.value.length > 0) {
     unlockScroll()
   }
 })
 </script>
-
-<style lang="scss">
-.transition-container {
-  min-height: 100px;
-  position: relative;
-}
-
-.project-expand {
-  &-enter-active,
-  &-leave-active {
-    transition: all 0.4s ease;
-    width: 100%;
-  }
-
-  &-enter-from {
-    opacity: 0;
-    transform: scale(0.95) translateY(10px);
-  }
-
-  &-leave-to {
-    opacity: 0;
-    transform: scale(0.95) translateY(-10px);
-  }
-
-  &-enter-to,
-  &-leave-from {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.project-card-container .project-card {
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow:
-      0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  }
-}
-
-.slide-in {
-  &-enter-active,
-  &-leave-active {
-    transition: all 300ms ease-out;
-  }
-
-  &-enter-from,
-  &-leave-to {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-
-  &-enter-to,
-  &-leave-from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-</style>

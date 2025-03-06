@@ -1,7 +1,12 @@
 <template>
-  <div class="flex flex-col gap-y-6">
+  <div
+    class="relative flex min-h-fit flex-col gap-y-6 rounded-lg border border-neutral-400 p-4 text-white no-underline"
+  >
     <div class="flex justify-between">
-      <h2 class="font-title text-4xl font-bold">{{ project.title }}</h2>
+      <div class="flex flex-col">
+        <h2 class="font-title text-3xl font-bold">{{ project.title }}</h2>
+        <span class="font-title text-xl text-neutral-400">{{ project.position }}</span>
+      </div>
       <button
         @click="closeDetails"
         class="flex translate-y-1.5 cursor-pointer justify-center text-neutral-400 transition-all duration-300 lg:hover:scale-125 lg:active:scale-90"
@@ -10,8 +15,7 @@
         <XIcon class="h-7 w-7 translate-y-0.25" :stroke-width="2.5" tabindex="0" />
       </button>
     </div>
-
-    <p class="font-paragraph h-full w-full border-b border-neutral-600 pb-4 text-xl">
+    <p class="font-paragraph h-full w-full border-b border-neutral-600 pb-4 text-lg">
       {{ project.description }}
     </p>
 
