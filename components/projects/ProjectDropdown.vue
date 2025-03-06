@@ -1,7 +1,7 @@
 <template>
-  <div class="font-title relative mb-4 w-full" @keydown="handleKeyDown" ref="dropdownRef">
+  <div class="font-title relative w-full" @keydown="handleKeyDown" ref="dropdownRef">
     <div
-      class="flex h-fit w-full cursor-pointer items-center justify-between rounded-t-lg border-neutral-400 p-3 text-white"
+      class="flex h-12 w-full cursor-pointer items-center justify-between rounded-t-lg border-neutral-400 p-3 text-white transition-all duration-200"
       :class="{ 'border-x border-t': isOpen, 'rounded-b-lg border': !isOpen }"
       @click="toggleDropdown"
     >
@@ -23,13 +23,16 @@
         </div>
       </div>
       <div class="ml-2">
-        <ChevronDownIcon class="h-4 w-4 text-white" :class="{ 'rotate-180 transform': isOpen }" />
+        <ChevronDownIcon
+          class="h-4 w-4 text-white transition-transform duration-200"
+          :class="{ 'rotate-180 transform': isOpen }"
+        />
       </div>
     </div>
 
     <div
-      v-if="isOpen"
-      class="absolute z-10 max-h-60 w-full overflow-y-auto rounded-b-lg border border-neutral-400 bg-stone-800 p-2 shadow-lg"
+      class="absolute max-h-60 w-full overflow-y-auto rounded-b-lg border border-neutral-400 bg-stone-800 p-2 shadow-lg transition-opacity duration-300"
+      :class="{ 'z-10 opacity-100': isOpen, 'opacity-0': !isOpen }"
       ref="dropdownListRef"
     >
       <div
@@ -175,6 +178,19 @@ watch(
   () => filteredItems.value,
   () => {
     itemRefs.value = []
+  },
+)
+
+watch(
+  () => isOpen.value,
+  async (newValue) => {
+    await new Promise((resolve) => setTimeout(resolve, 300))
+    if (!newValue) {
+      dropdownListRef.value?.classList.add('-z-10')
+      return
+    }
+
+    dropdownListRef.value?.classList.remove('-z-10')
   },
 )
 
