@@ -48,6 +48,7 @@ export default defineNuxtConfig({
             'Fullstack Developer, Frontend Development, Backend Development, Vue.js, TypeScript, Node.js, Python, UI/UX Design, Figma, Web Accessibility, DevOps, Git, Linux, Vercel, Netlify, Bun, Game Development, LLM, AI, Vienna',
         },
         { property: 'og:title', content: 'Keanu Hie · Developer Portfolio' },
+        { property: 'og:site_name', content: 'Keanu Hie · Developer Portfolio' },
         {
           property: 'og:description',
           content:
