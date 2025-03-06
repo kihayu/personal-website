@@ -7,15 +7,20 @@
     >
       <div class="flex w-full flex-wrap gap-2">
         <div v-for="selected in selectedItems" :key="selected" class="flex items-center rounded bg-neutral-600 text-sm">
-          <span class="font-title py-1 pl-2">{{ selected }}</span>
-          <button class="px-1.5 py-1 text-xs hover:bg-neutral-500" @click.stop="toggleItem(selected)">×</button>
+          <span class="font-title cursor-default py-1 pl-2">{{ selected }}</span>
+          <button
+            class="cursor-pointer rounded-full px-1.5 py-1 text-xs hover:bg-neutral-500"
+            @click.stop="toggleItem(selected)"
+          >
+            ×
+          </button>
         </div>
-        <div class="min-w-[100px] flex-1">
+        <div class="min-w-[80px]">
           <input
             ref="searchInput"
             v-model="searchTerm"
             type="text"
-            class="placeholder:font-title w-full border-none bg-transparent p-0 outline-none placeholder:select-none"
+            class="placeholder:font-title w-full cursor-pointer border-none bg-transparent p-0 outline-none placeholder:select-none"
             placeholder="Select technologies..."
             @focus="isOpen = true"
             @click.stop
