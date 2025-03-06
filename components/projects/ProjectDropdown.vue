@@ -58,8 +58,8 @@ import ProjectDropdownElement from '~/components/projects/ProjectDropdownElement
 import ChevronDownIcon from '~/assets/icons/heroicons/chevron-down.svg'
 
 export interface ProjectDropdownProps {
-  readonly items: readonly string[]
-  readonly modelValue: readonly string[]
+  items: string[]
+  modelValue: string[]
 }
 
 export interface ProjectDropdownEmits {
