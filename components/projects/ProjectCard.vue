@@ -18,7 +18,7 @@
         :to="`/projects/${projectName}`"
         class="link-arrows select-none after:absolute after:top-0 after:right-0 after:bottom-0 after:left-0 after:content-['\a']"
       >
-        >>>
+        >>
       </NuxtLink>
     </div>
   </div>
