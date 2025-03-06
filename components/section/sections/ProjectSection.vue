@@ -13,11 +13,11 @@
       <div class="flex flex-col gap-y-4">
         <ProjectCard
           v-for="project in filteredProjects"
-          :key="project.projectName"
+          :key="project.id"
           :title="project.title"
-          :description="project.description"
+          :lead-text="project.leadText"
           :technologies="project.technologies"
-          :project-name="project.projectName"
+          :project-name="project.id"
         />
       </div>
     </div>
@@ -29,28 +29,12 @@ import { ref, computed } from 'vue'
 import SectionComponent from '~/components/section/SectionComponent.vue'
 import ProjectCard from '~/components/projects/ProjectCard.vue'
 import ProjectDropdown from '~/components/projects/ProjectDropdown.vue'
+import { useProjectStore } from '~/store/project'
+
+const projectStore = useProjectStore()
 
 // TODO: Data will move to an application store at a later point
-const projects = [
-  {
-    title: 'Personal Website',
-    description: 'A responsive Vue.js website with Nuxt.js',
-    technologies: ['Vue', 'Nuxt', 'TailwindCSS'],
-    projectName: 1,
-  },
-  {
-    title: 'E-commerce Platform',
-    description: 'A full-featured online store with cart and checkout',
-    technologies: ['Vue', 'Node.js', 'MongoDB'],
-    projectName: 2,
-  },
-  {
-    title: 'Portfolio App',
-    description: 'Mobile-first design for showcasing creative work',
-    technologies: ['React Native', 'Firebase'],
-    projectName: 3,
-  },
-]
+const projects = projectStore.projects
 
 const allTechnologies = computed(() => {
   const techs = new Set<string>()

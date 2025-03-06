@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { isMobile } from '~/utils/isMobile'
+import { useProjectStore } from '~/store/project'
 
 definePageMeta({
   layout: 'detail',
@@ -22,29 +22,12 @@ definePageMeta({
 
 const route = useRoute()
 const router = useRouter()
-const projectModal = ref<HTMLDialogElement | null>(null)
 
-// TODO: Data will move to an application store at a later point
-const projects = {
-  '1': {
-    title: 'Personal Website',
-    description: 'A responsive Vue.js website with Nuxt.js',
-    technologies: ['Vue', 'Nuxt', 'TailwindCSS'],
-  },
-  '2': {
-    title: 'E-commerce Platform',
-    description: 'A full-featured online store with cart and checkout',
-    technologies: ['Vue', 'Node.js', 'MongoDB'],
-  },
-  '3': {
-    title: 'Portfolio App',
-    description: 'Mobile-first design for showcasing creative work',
-    technologies: ['React Native', 'Firebase'],
-  },
-}
+const projectStore = useProjectStore()
+const projects = projectStore.projects
 
 const projectId = computed(() => route.params.id as string)
-const projectData = computed(() => projects[projectId.value as keyof typeof projects])
+const projectData = computed(() => projects.find((project) => project.id === projectId.value))
 
 const navigateBack = () => {
   router.back()
