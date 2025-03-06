@@ -1,6 +1,9 @@
 <template>
-  <MainSection class="mx-4 max-w-[1280px] lg:min-h-screen" />
-  <ProjectSection class="mx-4 min-h-screen max-w-[1280px]" />
+  <!-- Root container needed! -->
+  <div>
+    <MainSection class="mx-4 max-w-[1280px] lg:min-h-screen" />
+    <ProjectSection class="mx-4 min-h-screen max-w-[1280px]" />
+  </div>
 </template>
 
 <script setup lang="ts">
