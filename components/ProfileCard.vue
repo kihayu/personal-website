@@ -3,22 +3,22 @@
     <picture>
       <source
         srcset="
-          ~/assets/images/profile-photo-96.webp  1x,
-          ~/assets/images/profile-photo-192.webp 2x,
-          ~/assets/images/profile-photo-288.webp 3x
+          ~/assets/images/profile-photo-431.webp  1x,
+          ~/assets/images/profile-photo-862.webp  2x,
+          ~/assets/images/profile-photo-1724.webp 3x
         "
         type="image/webp"
       />
       <source
         srcset="
-          ~/assets/images/profile-photo-96.jpg  1x,
-          ~/assets/images/profile-photo-192.jpg 2x,
-          ~/assets/images/profile-photo-288.jpg 3x
+          ~/assets/images/profile-photo-431.jpg  1x,
+          ~/assets/images/profile-photo-862.jpg  2x,
+          ~/assets/images/profile-photo-1724.jpg 3x
         "
         type="image/jpeg"
       />
       <img
-        src="~/assets/images/profile-photo-96.jpg"
+        src="~/assets/images/profile-photo-431.jpg"
         alt="Profile Picture of Keanu Hie"
         class="h-24 w-24 rounded-full object-cover"
         width="96"
