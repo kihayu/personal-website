@@ -19,6 +19,7 @@
             placeholder="Select technologies..."
             @focus="isOpen = true"
             @click.stop
+            @keydown="handleInputKeydown"
           />
         </div>
       </div>
@@ -108,6 +109,7 @@ const toggleItem = (item: string): void => {
   } else {
     selectedItems.value.splice(index, 1)
   }
+  searchTerm.value = ''
   emit('update:modelValue', selectedItems.value)
 }
 
@@ -129,6 +131,7 @@ const handleKeyDown = (event: KeyboardEvent): void => {
   if (!isOpen.value) {
     return
   }
+  // flutter
 
   switch (event.key) {
     case 'ArrowDown':
@@ -149,6 +152,27 @@ const handleKeyDown = (event: KeyboardEvent): void => {
       if (searchInput.value) {
         searchInput.value.blur()
       }
+      break
+  }
+}
+
+const handleInputKeydown = (event: KeyboardEvent): void => {
+  switch (event.key) {
+    case 'Enter':
+      event.preventDefault()
+      if (!searchTerm.value || filteredItems.value.length === 0) {
+        return
+      }
+
+      toggleItem(filteredItems.value[0])
+      break
+    case 'Backspace':
+      if (searchTerm.value || selectedItems.value.length === 0) {
+        return
+      }
+
+      event.preventDefault()
+      toggleItem(selectedItems.value[selectedItems.value.length - 1])
       break
   }
 }
