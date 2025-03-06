@@ -6,9 +6,9 @@
     @keydown.space.prevent="navigate"
   >
     <h3 class="font-title text-2xl font-bold">{{ title }}</h3>
-    <span class="font-paragraph flex-1 text-lg">{{ description }}</span>
+    <span class="font-paragraph flex-1 text-lg">{{ leadText }}</span>
     <div class="mt-6 flex justify-between">
-      <div class="flex flex-row gap-2">
+      <div class="flex flex-row flex-wrap gap-2">
         <span
           v-for="technology in technologies"
           :key="technology"
@@ -19,7 +19,7 @@
       </div>
       <NuxtLink
         :to="`/projects/${projectName}`"
-        class="link-arrows select-none after:absolute after:top-0 after:right-0 after:bottom-0 after:left-0 after:content-['\a']"
+        class="link-arrows self-end select-none after:absolute after:top-0 after:right-0 after:bottom-0 after:left-0 after:content-['\a']"
         tabindex="-1"
       >
         <ChevronsRightIcon class="link-arrows transition duration-150" />
@@ -33,9 +33,9 @@ import { ChevronsRight as ChevronsRightIcon } from 'lucide-vue-next'
 
 export interface ProjectCardProps {
   title: string
-  description: string
+  leadText: string
   technologies: string[]
-  projectName: number
+  projectName: string
 }
 
 const props = defineProps<ProjectCardProps>()
