@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint', 'nuxt-shiki', 'nuxt-svgo'],
+  modules: ['@nuxt/eslint', 'nuxt-shiki', 'nuxt-svgo', '@pinia/nuxt'],
   css: [
     '~/assets/css/reset.css',
     '~/assets/css/main.css',
