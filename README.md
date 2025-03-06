@@ -6,6 +6,7 @@ A modern, interactive personal website built with Nuxt 3, featuring animated sho
 
 - **Framework**: Nuxt 3
 - **Styling**: Tailwind CSS
+- **Icons**: Lucide Icons
 
 ## 🚀 Getting Started
 
