@@ -1,8 +1,11 @@
 <template>
-  <NuxtLink
-    :to="`/projects/${projectName}`"
-    class="relative flex min-h-fit flex-col rounded-lg border border-neutral-400 p-4 text-white no-underline hover:cursor-pointer hover:[&_.link-arrows]:scale-120"
+  <div
+    class="project-card relative flex min-h-fit flex-col rounded-lg border border-neutral-400 p-4 text-white no-underline transition-all duration-300 hover:cursor-pointer hover:[&_.link-arrows]:scale-120"
+    role="button"
     tabindex="0"
+    :aria-label="`View details for ${title} project`"
+    @keydown.enter="emit('select')"
+    @keydown.space.prevent="emit('select')"
   >
     <h3 class="font-title text-2xl font-bold">{{ title }}</h3>
     <span class="font-paragraph flex-1 text-lg">{{ leadText }}</span>
@@ -20,7 +23,7 @@
         <ChevronsRightIcon class="link-arrows transition duration-150" />
       </div>
     </div>
-  </NuxtLink>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -33,10 +36,10 @@ export interface ProjectCardProps {
   projectName: string
 }
 
-const props = defineProps<ProjectCardProps>()
-
-const router = useRouter()
-const navigate = () => {
-  router.push(`/projects/${props.projectName}`)
+export interface ProjectCardEmits {
+  select: []
 }
+
+defineProps<ProjectCardProps>()
+const emit = defineEmits<ProjectCardEmits>()
 </script>
