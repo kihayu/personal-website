@@ -9,7 +9,7 @@
       </div>
       <button
         @click="closeDetails"
-        class="flex translate-y-1.5 cursor-pointer justify-center text-neutral-400 transition-all duration-300 lg:hover:scale-125 lg:active:scale-90"
+        class="flex translate-y-1 cursor-pointer justify-center text-neutral-400 transition-all duration-300 lg:hover:scale-125 lg:active:scale-90"
         aria-label="Close project details"
       >
         <XIcon class="h-7 w-7 translate-y-0.25" :stroke-width="2.5" tabindex="0" />
