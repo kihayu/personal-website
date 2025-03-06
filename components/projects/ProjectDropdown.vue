@@ -1,7 +1,8 @@
 <template>
   <div class="font-title relative w-full" @keydown="handleKeyDown" ref="dropdownRef">
+    <label for="technology-input">Technologies</label>
     <div
-      class="flex h-auto w-full cursor-pointer items-center justify-between rounded-t-lg border-neutral-400 p-3 text-white transition-all duration-200"
+      class="mt-1 flex h-auto w-full cursor-pointer items-center justify-between rounded-t-lg border-neutral-400 p-3 text-white transition-all duration-200"
       :class="{ 'border-x border-t': isOpen, 'rounded-b-lg border': !isOpen }"
       @click="toggleDropdown"
     >
@@ -19,9 +20,10 @@
           <input
             ref="searchInput"
             v-model="searchTerm"
+            id="technology-input"
             type="text"
             class="placeholder:font-title w-full cursor-pointer border-none bg-transparent p-0 outline-none placeholder:select-none"
-            placeholder="Select technologies..."
+            placeholder="Select or search..."
             @focus="isOpen = true"
             @click.stop
             @keydown="handleInputKeydown"
