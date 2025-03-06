@@ -48,17 +48,19 @@ const { y: scrollY } = useWindowScroll()
 .main-content-info--slide {
   &-enter-active,
   &-leave-active {
-    transition: all 250ms ease-in-out;
+    transition: all 300ms ease-out;
   }
 
-  &-enter {
-    &-from {
-      transform: translateX(100%);
-    }
+  &-enter-from,
+  &-leave-to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
 
-    &-to {
-      transform: translateX(0%);
-    }
+  &-enter-to,
+  &-leave-from {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 

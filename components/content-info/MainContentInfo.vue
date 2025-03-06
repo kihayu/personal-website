@@ -9,15 +9,16 @@
       @keydown.enter="emit('clear-section')"
       @keydown.space.prevent="emit('clear-section')"
     >
-      <span
-        class="font-title flex h-full w-full items-center justify-center text-2xl text-neutral-400 transition-all duration-300 lg:hover:scale-125 lg:active:scale-90 lg:active:text-neutral-200"
-        tabindex="0"
-      >
-        ←
-      </span>
+      <div></div>
       <h4 class="font-title flex justify-center text-2xl !leading-8 font-bold select-none md:text-3xl xl:text-4xl">
         {{ sectionToSectionName }}
       </h4>
+      <div
+        class="flex items-center justify-center text-neutral-400 transition-all duration-300 lg:hover:scale-125 lg:active:scale-90"
+        aria-label="Close content info"
+      >
+        <XIcon class="h-7 w-7 translate-y-0.25" :stroke-width="2.5" tabindex="0" />
+      </div>
     </div>
     <DesignInfo v-if="selectedSection === 'design'" />
     <DevelopInfo v-else-if="selectedSection === 'development'" />
@@ -31,6 +32,7 @@ import DevelopInfo from '~/components/content-info/DevelopInfo.vue'
 import DeployInfo from '~/components/content-info/DeployInfo.vue'
 import { isMobile } from '~/utils/isMobile'
 import { useWindowSize } from '@vueuse/core'
+import { XIcon } from 'lucide-vue-next'
 
 export interface MainContentInfoProps {
   selectedSection: string
