@@ -7,24 +7,17 @@
           <i class="font-semibold">Not final projects! Only examples!</i>
         </div>
       </div>
+
+      <ProjectDropdown :items="allTechnologies" v-model="selectedTechnologies" />
+
       <div class="flex flex-col gap-y-4">
         <ProjectCard
-          title="Personal Website"
-          description="A responsive Vue.js website with Nuxt.js"
-          :technologies="['Vue', 'Nuxt', 'TailwindCSS']"
-          :project-name="1"
-        />
-        <ProjectCard
-          title="E-commerce Platform"
-          description="A full-featured online store with cart and checkout"
-          :technologies="['Vue', 'Node.js', 'MongoDB']"
-          :project-name="2"
-        />
-        <ProjectCard
-          title="Portfolio App"
-          description="Mobile-first design for showcasing creative work"
-          :technologies="['React Native', 'Firebase']"
-          :project-name="3"
+          v-for="project in filteredProjects"
+          :key="project.projectName"
+          :title="project.title"
+          :description="project.description"
+          :technologies="project.technologies"
+          :project-name="project.projectName"
         />
       </div>
     </div>
@@ -32,6 +25,50 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from 'vue'
 import SectionComponent from '~/components/section/SectionComponent.vue'
 import ProjectCard from '~/components/projects/ProjectCard.vue'
+import ProjectDropdown from '~/components/projects/ProjectDropdown.vue'
+
+// TODO: Data will move to an application store at a later point
+const projects = [
+  {
+    title: 'Personal Website',
+    description: 'A responsive Vue.js website with Nuxt.js',
+    technologies: ['Vue', 'Nuxt', 'TailwindCSS'],
+    projectName: 1,
+  },
+  {
+    title: 'E-commerce Platform',
+    description: 'A full-featured online store with cart and checkout',
+    technologies: ['Vue', 'Node.js', 'MongoDB'],
+    projectName: 2,
+  },
+  {
+    title: 'Portfolio App',
+    description: 'Mobile-first design for showcasing creative work',
+    technologies: ['React Native', 'Firebase'],
+    projectName: 3,
+  },
+]
+
+const allTechnologies = computed(() => {
+  const techs = new Set<string>()
+  projects.forEach((project) => {
+    project.technologies.forEach((tech) => techs.add(tech))
+  })
+  return Array.from(techs).sort()
+})
+
+const selectedTechnologies = ref<Array<string>>([])
+
+const filteredProjects = computed(() => {
+  if (selectedTechnologies.value.length === 0) {
+    return projects
+  }
+
+  return projects.filter((project) => {
+    return selectedTechnologies.value.some((tech) => project.technologies.includes(tech))
+  })
+})
 </script>
