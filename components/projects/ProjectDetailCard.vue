@@ -3,16 +3,9 @@
     class="relative flex min-h-fit flex-col gap-y-6 rounded-lg border border-neutral-400 p-4 text-white no-underline"
   >
     <div class="flex justify-between">
-      <div class="flex flex-row items-center gap-x-4">
-        <h2
-          class="project-title font-title text-3xl font-bold after:ml-2 after:inline-block after:h-8 after:w-8 after:translate-y-1 after:bg-white after:content-[''] md:after:ml-4"
-          :class="{
-            'project-title__solo': project.capacity === 'Solo',
-            'project-title__team': project.capacity === 'Collaborator',
-          }"
-        >
-          {{ project.title }}
-        </h2>
+      <div class="flex flex-col gap-x-4">
+        <h2 class="project-title font-title text-3xl font-bold">{{ project.title }}</h2>
+        <span class="font-title text-lg text-neutral-400">{{ project.capacity }}</span>
       </div>
       <button
         @click="closeDetails"
@@ -26,14 +19,16 @@
       {{ project.description }}
     </p>
 
-    <div class="flex flex-row flex-wrap gap-2">
-      <span
-        v-for="technology in project.technologies"
-        :key="technology"
-        class="font-title rounded bg-neutral-700 px-2 py-1 text-sm text-white"
-      >
-        {{ technology }}
-      </span>
+    <div class="grid grid-cols-[1fr_auto]">
+      <div class="flex flex-row flex-wrap gap-2">
+        <span
+          v-for="technology in project.technologies"
+          :key="technology"
+          class="font-title rounded bg-neutral-700 px-2 py-1 text-sm text-white"
+        >
+          {{ technology }}
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -81,19 +76,3 @@ const handlePopState = (event: PopStateEvent) => {
   }
 }
 </script>
-
-<style lang="scss">
-.project-title {
-  &__solo::after {
-    mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXVzZXIiPjxwYXRoIGQ9Ik0xOSAyMXYtMmE0IDQgMCAwIDAtNC00SDlhNCA0IDAgMCAwLTQgNHYyIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSI3IiByPSI0Ii8+PC9zdmc+')
-      no-repeat 50% 50%;
-    mask-size: cover;
-  }
-
-  &__team::after {
-    mask: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXVzZXJzIj48cGF0aCBkPSJNMTYgMjF2LTJhNCA0IDAgMCAwLTQtNEg2YTQgNCAwIDAgMC00IDR2MiIvPjxjaXJjbGUgY3g9IjkiIGN5PSI3IiByPSI0Ii8+PHBhdGggZD0iTTIyIDIxdi0yYTQgNCAwIDAgMC0zLTMuODciLz48cGF0aCBkPSJNMTYgMy4xM2E0IDQgMCAwIDEgMCA3Ljc1Ii8+PC9zdmc+')
-      no-repeat 50% 50%;
-    mask-size: cover;
-  }
-}
-</style>
