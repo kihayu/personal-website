@@ -40,9 +40,11 @@ export const useProjectStore = defineStore('project', {
       {
         id: 'oegb',
         title: 'ÖGB and GPA',
-        leadText: '',
-        description: '',
-        technologies: ['JavaScript', 'TypeScript', 'Node', 'React', 'TailwindCSS', 'Storybook'],
+        leadText:
+          'A new implementation of the ÖGB and GPA webpages with a fresh and modern design. Involved the implementation of a proxy server between AEM and React.',
+        description:
+          'Creating a frontend application that gets data from an Adobe Experience Manager (AEM) instance and works with Hot Module Reloading (HMR) was a challenge. I helped creating a Webpack proxy server that handled the communication and data flow between AEM and our React frontend. The application itself uses React with TailwindCSS for styling.',
+        technologies: ['JavaScript', 'TypeScript', 'Node', 'Webpack', 'React', 'TailwindCSS', 'Storybook'],
         capacity: 'Collaborator',
       },
       {
@@ -58,17 +60,11 @@ export const useProjectStore = defineStore('project', {
       {
         id: 'internal-data-analyse',
         title: 'Internal tool for data analyse',
-        leadText: '',
-        description: '',
-        technologies: ['TypeScript', 'Node', 'Nuxt', 'GraphQL', 'Storybook'],
-        capacity: 'Collaborator',
-      },
-      {
-        id: 'nv',
-        title: 'Niederösterreichische Versicherungen',
-        leadText: '',
-        description: '',
-        technologies: ['TypeScript', 'Vue.js', 'Storybook'],
+        leadText:
+          'A comprehensive data visualization platform with multiple interactive dashboards. The project included a successful migration from Nuxt 2 to Nuxt 3.',
+        description:
+          'This internal analytics tool features multiple interactive dashboards powered by d3.js charts to visualize complex datasets. I focused primarily on developing the GraphQL service and Nuxt frontend, ensuring seamless data flow with a professional dashboard UI. The project involved a complete upgrade from Nuxt 2 to Nuxt 3, requiring extensive dependency research and migration work while having Keycloak integration for secure user management across the application.',
+        technologies: ['TypeScript', 'Node', 'Nuxt', 'GraphQL', 'd3.js'],
         capacity: 'Collaborator',
       },
       {
