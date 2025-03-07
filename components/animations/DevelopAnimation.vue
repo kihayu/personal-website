@@ -42,7 +42,7 @@ import { type CSSProperties } from 'vue'
 import { Pause as PauseIcon } from 'lucide-vue-next'
 import { Play as PlayIcon } from 'lucide-vue-next'
 
-interface TypeWriterProps {
+export interface DevelopAnimationProps {
   lang?: BundledLanguage | undefined
   autoStart?: boolean
   delay?: number
@@ -54,7 +54,7 @@ interface TypeWriterProps {
   showPauseButton?: boolean
 }
 
-const props = withDefaults(defineProps<TypeWriterProps>(), {
+const props = withDefaults(defineProps<DevelopAnimationProps>(), {
   lang: 'typescript',
   autoStart: true,
   delay: 50,
