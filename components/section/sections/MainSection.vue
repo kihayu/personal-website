@@ -7,15 +7,13 @@
       <AboutMeCard />
     </div>
     <div class="min-h-fit w-full rounded-md bg-stone-800 p-6 py-8 shadow-md">
-      <Transition name="main-content-info--slide">
-        <MainContentInfo
-          v-if="selectedSection.trim() !== ''"
-          ref="mainContentInfo"
-          :selected-section="selectedSection"
-          :scroll-position="scrollY"
-          @clear-section="selectedSection = ''"
-        />
-      </Transition>
+      <MainContentInfo
+        v-if="selectedSection.trim() !== ''"
+        ref="mainContentInfo"
+        :selected-section="selectedSection"
+        :scroll-position="scrollY"
+        @clear-section="selectedSection = ''"
+      />
       <MainContent
         :class="{ hidden: !isMobile && selectedSection.trim() !== '' }"
         @click:reactive-text="setSelectedSection"
@@ -43,40 +41,3 @@ const setSelectedSection = (section: string) => {
 
 const { y: scrollY } = useWindowScroll()
 </script>
-
-<style lang="scss">
-.main-content-info--slide {
-  &-enter-active,
-  &-leave-active {
-    transition: all 300ms ease-out;
-  }
-
-  &-enter-from,
-  &-leave-to {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-
-  &-enter-to,
-  &-leave-from {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .main-content-info--slide {
-    &-enter-active,
-    &-leave-active {
-      transition: none;
-    }
-
-    &-enter {
-      &-from,
-      &-to {
-        transform: translateX(0%);
-      }
-    }
-  }
-}
-</style>
