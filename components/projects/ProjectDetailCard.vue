@@ -33,7 +33,7 @@
 
 <script setup lang="ts">
 import { XIcon } from 'lucide-vue-next'
-import type { Project } from '~/types/project'
+import type { Project } from '~/types/Project'
 import { isMobile } from '~/utils/isMobile'
 
 export interface ProjectDetailCardProps {
