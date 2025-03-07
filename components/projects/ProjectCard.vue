@@ -7,7 +7,7 @@
     @keydown.enter="emit('select')"
     @keydown.space.prevent="emit('select')"
   >
-    <h3 class="font-title text-2xl font-bold">{{ title }}</h3>
+    <h2 class="font-title text-2xl font-bold">{{ title }}</h2>
     <span class="font-paragraph flex-1 text-lg">{{ leadText }}</span>
     <div class="mt-6 flex justify-between">
       <div class="flex flex-row flex-wrap gap-2">
