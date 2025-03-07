@@ -61,16 +61,20 @@ docker build -t personal-website .
 │   ├── fonts/         # Custom fonts
 │   ├── icons/         # SVG icons
 │   └── images/        # Image assets
-├── components/        # Vue components
+├── components/        # Vue.js components
 │   ├── animations/    # Animation components
 │   ├── content-info/  # Content information components
+│   ├── projects/      # Project section related components
 │   └── section/       # Section layout components
-├── composables/       # Vue composables and hooks
+├── composables/       # Vue.js composables and hooks
 ├── constants/         # Application constants
+├── layouts/           # Layout templates
 ├── pages/             # Application pages and routing
 ├── public/            # Public static files
 ├── server/            # Server-side code
 │   └── plugins/       # Server plugins
+├── store/             # Pinia state management
+├── types/             # TypeScript type definitions
 └── utils/             # Utility functions
 ```
 
