@@ -2,18 +2,18 @@
 <template>
   <div id="root" class="flex flex-col gap-y-4">
     <div ref="mainSection">
-      <MainSection id="main-section" class="mx-4 max-w-[1280px] lg:min-h-screen" />
+      <MainSection class="mx-4 max-w-[1280px] lg:min-h-screen" />
+      <div
+        class="fixed bottom-4 left-1/2 z-10 flex -translate-x-1/2 cursor-pointer flex-col items-center opacity-0 transition-opacity duration-300"
+        :class="{ 'opacity-100': showScrollArrow }"
+        @click="scrollToProject"
+      >
+        <span class="font-semibold text-white">Project list</span>
+        <ChevronsDownIcon class="h-6 w-6 text-white" />
+      </div>
     </div>
     <div ref="projectSection">
-      <ProjectSection id="project-section" class="mx-4 min-h-screen max-w-[1280px]" />
-    </div>
-    <div
-      class="fixed bottom-4 left-1/2 z-10 flex -translate-x-1/2 cursor-pointer flex-col items-center opacity-0 transition-opacity duration-300"
-      :class="{ 'opacity-100': showScrollArrow }"
-      @click="scrollToProject"
-    >
-      <span class="font-semibold text-white">Project list</span>
-      <ChevronsDownIcon class="h-6 w-6 text-white" />
+      <ProjectSection class="mx-4 min-h-screen max-w-[1280px]" />
     </div>
   </div>
 </template>
@@ -73,7 +73,6 @@ const handleWheel = (event: WheelEvent) => {
     return
   }
 
-  console.log('event.deltaY', event.deltaY)
   if (isAtMainSection.value && event.deltaY > 0) {
     event.preventDefault()
     scrollToProject()
