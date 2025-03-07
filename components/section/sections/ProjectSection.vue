@@ -4,7 +4,7 @@
       <h1 class="font-title mb-6 text-3xl font-semibold">Projects</h1>
       <div class="w-full bg-red-500 p-1">
         <div class="border-4 border-white p-2">
-          <i class="font-semibold">Not final projects! Only examples!</i>
+          <i class="font-semibold">Not final descriptions! Texts may be changed!</i>
         </div>
       </div>
 
