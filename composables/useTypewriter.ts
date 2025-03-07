@@ -1,10 +1,4 @@
-interface TypewriterOptions {
-  text: string
-  delay?: number
-  cursorBlinkSpeed?: number
-  autoFill?: boolean
-  onComplete?: () => void
-}
+import type { TypewriterOptions } from '~/types/TypewriterOptions'
 
 export const useTypewriter = () => {
   const typedText = ref('')
