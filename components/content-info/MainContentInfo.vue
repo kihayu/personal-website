@@ -14,7 +14,7 @@
         {{ sectionToSectionName }}
       </h4>
       <div
-        class="flex items-center justify-center text-neutral-400 transition-all duration-300 lg:hover:scale-125 lg:active:scale-90"
+        class="flex h-fit -translate-x-2 translate-y-1 items-center justify-center text-neutral-400 transition-all duration-300 lg:hover:scale-125 lg:active:scale-110"
         aria-label="Close content info"
       >
         <XIcon class="h-7 w-7 translate-y-0.25" :stroke-width="2.5" tabindex="0" />

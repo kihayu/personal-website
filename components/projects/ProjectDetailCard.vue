@@ -9,10 +9,10 @@
       </div>
       <button
         @click="closeDetails"
-        class="flex translate-y-1 cursor-pointer justify-center text-neutral-400 transition-all duration-300 lg:hover:translate-y-2 lg:hover:scale-125 lg:active:scale-90"
+        class="flex h-fit translate-y-1 cursor-pointer justify-center text-neutral-400 transition-all duration-300 lg:hover:scale-125 lg:active:scale-110"
         aria-label="Close project details"
       >
-        <XIcon class="h-7 w-7 translate-y-0.25" :stroke-width="2.5" tabindex="0" />
+        <XIcon class="h-7 w-7 translate-y-0.25" :stroke-width="2.5" />
       </button>
     </div>
     <p class="font-paragraph h-full w-full border-b border-neutral-600 pb-4 text-lg">
