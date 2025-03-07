@@ -8,7 +8,7 @@
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Keanu Hie · Portfolio',
+  name: 'Keanu Hie · Developer Portfolio',
   url: 'https://www.keanuhie.com/',
 }
 

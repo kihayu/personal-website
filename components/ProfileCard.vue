@@ -20,9 +20,9 @@
       <img
         src="~/assets/images/profile-photo-431.jpg"
         alt="Profile Picture of Keanu Hie"
-        class="h-24 w-24 rounded-full object-cover"
-        width="96"
-        height="96"
+        class="h-32 w-32 rounded-full object-cover"
+        width="128"
+        height="128"
         loading="eager"
         decoding="async"
       />
