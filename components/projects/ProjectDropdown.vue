@@ -66,6 +66,7 @@ import { ref, computed, watch, nextTick } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import ProjectDropdownElement from '~/components/projects/ProjectDropdownElement.vue'
 import { ChevronDown as ChevronDownIcon } from 'lucide-vue-next'
+import { useAppStore } from '~/store/app'
 
 export interface ProjectDropdownProps {
   items: string[]
@@ -78,6 +79,7 @@ export interface ProjectDropdownEmits {
 
 const props = defineProps<ProjectDropdownProps>()
 const emit = defineEmits<ProjectDropdownEmits>()
+const appStore = useAppStore()
 
 const isOpen = ref(false)
 const searchTerm = ref('')
@@ -95,6 +97,7 @@ const filteredItems = computed((): string[] => {
 
 const toggleDropdown = (): void => {
   isOpen.value = !isOpen.value
+  appStore.setDropdownOpen(isOpen.value)
   if (isOpen.value) {
     nextTick(() => {
       if (searchInput.value) {
@@ -106,6 +109,7 @@ const toggleDropdown = (): void => {
 
 const closeDropdown = (): void => {
   isOpen.value = false
+  appStore.setDropdownOpen(false)
   activeIndex.value = -1
 }
 
