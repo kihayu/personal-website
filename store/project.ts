@@ -1,4 +1,4 @@
-import type { Project } from '~/types/project'
+import type { Project } from '~/types/Project'
 
 interface ProjectState {
   projects: Array<Project>
@@ -8,27 +8,33 @@ export const useProjectStore = defineStore('project', {
   state: (): ProjectState => ({
     projects: [
       {
-        id: 'oeamtc-styleguide',
-        title: 'ÖAMTC Styleguide',
-        leadText: '',
-        description: '',
-        technologies: ['TypeScript', 'Vue', 'Storybook'],
+        id: 'oeamtc-main',
+        title: 'ÖAMTC Website',
+        leadText:
+          'Working on multiple frontend and backend projects of ÖAMTC requires a consistent interface, fast performance, and an excellent user experience.',
+        description:
+          'As a frontend developer, I worked in a team on the website of ÖAMTC. Parts of the website are constantly rebuilt using Nuxt with TypeScript, optimized for performance and components from the styleguide. I also worked on the backend of the website, using PHP to extend and maintain the existing Content Management System. Additionally, I contributed a new technology stack for components, which needed work on frontend and backend. The design was built with a mobile-first approach, as most users nowadays use mobile devices to navigate the web.',
+        technologies: ['JavaScript', 'TypeScript', 'Vue.js', 'Nuxt', 'Node', 'PHP', 'GraphQL'],
         capacity: 'Collaborator',
       },
       {
-        id: 'oeamtc-main',
-        title: 'ÖAMTC Main Page',
-        leadText: '',
-        description: '',
-        technologies: ['JavaScript', 'TypeScript', 'Vue', 'Nuxt', 'Node', 'PHP', 'GraphQL'],
+        id: 'oeamtc-styleguide',
+        title: 'ÖAMTC Styleguide',
+        leadText:
+          'A complete overhaul of the ÖAMTC designs to be more modern, consistent and accessible. Used on all new components, sections and pages.',
+        description:
+          'One part of being on a team, working for ÖAMTC was keeping the design language consistent throughout the projects. To keep the project and the user experience fresh we got to work on a new styleguide which development started internally. Out of the existing designs we started building a Storybook application, containing all necessary components in different states for testing and showcasing purposes. The application itself uses Vue.js with TypeScript and best practices in building a frontend design with SCSS.',
+        technologies: ['TypeScript', 'Vue.js', 'Storybook'],
         capacity: 'Collaborator',
       },
       {
         id: 'cinema-reservation',
         title: 'Cinema Reservation System',
-        leadText: '',
-        description: '',
-        technologies: ['JavaScript', 'Vue', 'C#', '.NET'],
+        leadText:
+          'A complete management system for cinemas for movies, rooms, events and reservations. Made as a school project with Vue.js.js 2 and .NET Core.',
+        description:
+          'When I was a student we had a long term project in which we all had to build a fullstack project on our own. My project was a simple but complete management system for cinemas to create movie entries, rooms with a visual editor, movie events and reservations but also a user management system to handle users and permissions.',
+        technologies: ['JavaScript', 'Vue.js', 'C#', '.NET'],
         capacity: 'Solo',
       },
       {
@@ -62,16 +68,16 @@ export const useProjectStore = defineStore('project', {
         title: 'Niederösterreichische Versicherungen',
         leadText: '',
         description: '',
-        technologies: ['TypeScript', 'Vue', 'Storybook'],
+        technologies: ['TypeScript', 'Vue.js', 'Storybook'],
         capacity: 'Collaborator',
       },
       {
         id: 'personal-website',
         title: 'Personal Website',
         leadText:
-          'A responsive Vue.js website, built with the Nuxt framework, showcasing my portfolio and professional journey. Designed with performance, SEO and user experience in mind.',
+          'A responsive Nuxt website, showcasing my portfolio and professional journey. Designed with performance, SEO and user experience in mind.',
         description:
-          'This portfolio website showcases my skills as a frontend developer using modern web technologies. Built with Vue.js and Nuxt, optimized for optimal performance and SEO on all devices. It features responsive design principles and custom designs for mobile and desktop end-users. The design was made to be simple and modern, while also being accessible and easy-to-use.',
+          'This portfolio website showcases my skills as a frontend developer using modern web technologies. Built with Vue.js.js and Nuxt, optimized for optimal performance and SEO on all devices. It features responsive design principles and custom designs for mobile and desktop end-users. The design was made to be simple and modern, while also being accessible and easy-to-use.',
         technologies: ['TypeScript', 'Nuxt', 'TailwindCSS'],
         capacity: 'Solo',
       },
