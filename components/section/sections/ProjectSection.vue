@@ -1,5 +1,5 @@
 <template>
-  <SectionComponent>
+  <SectionComponent class="mt-0 mb-4 lg:mt-4 lg:mb-2">
     <div class="relative flex flex-col gap-y-4 rounded-md bg-stone-800 p-6 shadow-md">
       <h1 class="font-title mb-6 text-3xl font-semibold">Projects</h1>
       <div class="w-full bg-red-500 p-1">
