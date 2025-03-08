@@ -22,13 +22,17 @@ export interface ReactiveTextProps {
 
 const props = defineProps<ReactiveTextProps>()
 
-const emit = defineEmits(['mouseover', 'mouseleave'])
+export interface ReactiveTextEmits {
+  mouseover: [event: string]
+  mouseleave: []
+}
+const emit = defineEmits<ReactiveTextEmits>()
 
 const onMouseEnter = () => {
   emit('mouseover', props.name)
 }
 
 const onMouseLeave = async () => {
-  emit('mouseleave', props.name)
+  emit('mouseleave')
 }
 </script>

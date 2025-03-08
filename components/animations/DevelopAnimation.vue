@@ -29,8 +29,8 @@
       @keydown.space.prevent="isPaused ? pickNewRandomCode() : stopTyping(true, true)"
       @click="isPaused ? pickNewRandomCode() : stopTyping(true, true)"
     >
-      <PlayIcon v-if="isPaused" class="mx-auto my-auto h-12 w-6" />
-      <PauseIcon v-else class="mx-auto my-auto h-12 w-6" />
+      <PlayIcon v-if="isPaused" color="white" class="mx-auto my-auto" />
+      <PauseIcon v-else color="white" class="mx-auto my-auto" />
     </button>
   </div>
 </template>
@@ -39,10 +39,10 @@
 import { codeExamples } from '~/constants/codeExamples'
 import { type BundledLanguage } from 'shiki'
 import { type CSSProperties } from 'vue'
-import PauseIcon from '~/assets/icons/heroicons/pause.svg'
-import PlayIcon from '~/assets/icons/heroicons/play.svg'
+import { Pause as PauseIcon } from 'lucide-vue-next'
+import { Play as PlayIcon } from 'lucide-vue-next'
 
-interface TypeWriterProps {
+export interface DevelopAnimationProps {
   lang?: BundledLanguage | undefined
   autoStart?: boolean
   delay?: number
@@ -54,7 +54,7 @@ interface TypeWriterProps {
   showPauseButton?: boolean
 }
 
-const props = withDefaults(defineProps<TypeWriterProps>(), {
+const props = withDefaults(defineProps<DevelopAnimationProps>(), {
   lang: 'typescript',
   autoStart: true,
   delay: 50,
