@@ -31,7 +31,7 @@ export const useProjectStore = defineStore('project', {
         id: 'cinema-reservation',
         title: 'Cinema Reservation System',
         leadText:
-          'A complete management system for cinemas for movies, rooms, events and reservations. Made as a school project with Vue.js.js 2 and .NET Core.',
+          'A complete management system for cinemas for movies, rooms, events and reservations. Made as a school project with Vue.js 2 and .NET Core.',
         description:
           'When I was a student we had a long term project in which we all had to build a fullstack project on our own. My project was a simple but complete management system for cinemas to create movie entries, rooms with a visual editor, movie events and reservations but also a user management system to handle users and permissions.',
         technologies: ['JavaScript', 'Vue.js', 'C#', '.NET'],
@@ -43,7 +43,7 @@ export const useProjectStore = defineStore('project', {
         leadText:
           'A new implementation of the ÖGB and GPA webpages with a fresh and modern design. Involved the implementation of a proxy server between AEM and React.',
         description:
-          'Creating a frontend application that gets data from an Adobe Experience Manager (AEM) instance and works with Hot Module Reloading (HMR) was a challenge. I helped creating a Webpack proxy server that handled the communication and data flow between AEM and our React frontend. The application itself uses React with TailwindCSS for styling.',
+          'Creating a frontend application that gets data from an Adobe Experience Manager (AEM) instance and works with Hot Module Reloading (HMR) was a challenge. I helped create a Webpack proxy server that handled the communication and data flow between AEM and our React frontend. The application itself uses React with TailwindCSS for styling.',
         technologies: ['JavaScript', 'TypeScript', 'Node', 'Webpack', 'React', 'TailwindCSS', 'Storybook'],
         capacity: 'Collaborator',
       },
@@ -73,7 +73,7 @@ export const useProjectStore = defineStore('project', {
         leadText:
           'A responsive Nuxt website, showcasing my portfolio and professional journey. Designed with performance, SEO and user experience in mind.',
         description:
-          'This portfolio website showcases my skills as a frontend developer using modern web technologies. Built with Vue.js.js and Nuxt, optimized for optimal performance and SEO on all devices. It features responsive design principles and custom designs for mobile and desktop end-users. The design was made to be simple and modern, while also being accessible and easy-to-use.',
+          'This portfolio website showcases my skills as a frontend developer using modern web technologies. Built with Vue.js and Nuxt, optimized for optimal performance and SEO on all devices. It features responsive design principles and custom designs for mobile and desktop end-users. The design was made to be simple and modern, while also being accessible and easy-to-use.',
         technologies: ['TypeScript', 'Nuxt', 'TailwindCSS'],
         capacity: 'Solo',
       },
