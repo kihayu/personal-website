@@ -58,8 +58,8 @@ export const useProjectStore = defineStore('project', {
         capacity: 'Solo',
       },
       {
-        id: 'internal-data-analyse',
-        title: 'Internal tool for data analyse',
+        id: 'internal-data-analysis',
+        title: 'Internal data analysis tool',
         leadText:
           'A comprehensive data visualization platform with multiple interactive dashboards. The project included a successful migration from Nuxt 2 to Nuxt 3.',
         description:
