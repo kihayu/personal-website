@@ -7,14 +7,16 @@
     <div ref="projectSection">
       <ProjectSection id="project-section" class="mx-4 min-h-screen max-w-[1280px]" />
     </div>
-    <div
-      class="fixed bottom-4 left-1/2 z-10 flex -translate-x-1/2 cursor-pointer flex-col items-center opacity-0 transition-opacity duration-300"
-      :class="{ 'opacity-100': showScrollArrow }"
-      @click="scrollToProject"
-    >
-      <span class="font-semibold text-white">Project list</span>
-      <ChevronsDownIcon class="h-6 w-6 text-white" />
-    </div>
+    <ClientOnly>
+      <div
+        class="fixed bottom-4 left-1/2 z-10 flex -translate-x-1/2 cursor-pointer flex-col items-center opacity-0 transition-opacity duration-300"
+        :class="{ 'opacity-100': showScrollArrow }"
+        @click="scrollToProject"
+      >
+        <span class="font-semibold text-white">Project list</span>
+        <ChevronsDownIcon class="h-6 w-6 text-white" />
+      </div>
+    </ClientOnly>
   </div>
 </template>
 
