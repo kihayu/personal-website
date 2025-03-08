@@ -86,7 +86,7 @@ const handleWheel = (event: WheelEvent) => {
     return
   }
 
-  const isAtTopOfProjects = Math.abs(scrollY.value - projectSectionOffset.value) < 10
+  const isAtTopOfProjects = Math.abs(scrollY.value - projectSectionOffset.value) < 25
 
   if (!isAtMainSection.value && event.deltaY < 0 && isAtTopOfProjects) {
     event.preventDefault()
