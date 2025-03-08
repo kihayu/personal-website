@@ -55,7 +55,7 @@ export default defineNuxtConfig({
             'Fullstack developer crafting modern web experiences with Vue.js, TypeScript, and Python. Focused on accessible design, good looking user interface, and scalable solutions.',
         },
         { property: 'og:type', content: 'website' },
-        { property: 'og:image', content: 'https://www.keanuhie.com/images/og-image.jpg' },
+        { property: 'og:image', content: 'https://www.keanuhie.com/images/og-image.png' },
         { property: 'og:image:type', content: 'image/png' },
         { property: 'og:image:width', content: '1200' },
         { property: 'og:image:height', content: '630' },
