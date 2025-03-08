@@ -34,9 +34,15 @@ const appStore = useAppStore()
 const isAtMainSection = ref(true)
 const isScrolling = ref(false)
 const projectSectionOffset = ref(0)
-const threshold = ref(1030)
+const topScrollhreshold = ref(windowHeight.value / 10)
+const showArrowsThreshold = ref(1030)
 const showScrollArrow = computed(
-  () => !isMobile.value && isAtMainSection.value && windowHeight.value >= threshold.value && !isScrolling.value,
+  () =>
+    !isMobile.value &&
+    !isScrolling.value &&
+    isAtMainSection.value &&
+    windowHeight.value >= showArrowsThreshold.value &&
+    scrollY.value <= topScrollhreshold.value,
 )
 
 const mainSection = ref<HTMLElement | null>(null)
@@ -69,7 +75,7 @@ const scrollToMain = () => {
 }
 
 const handleWheel = (event: WheelEvent) => {
-  if (windowHeight.value < threshold.value) {
+  if (windowHeight.value < showArrowsThreshold.value) {
     return
   }
 
