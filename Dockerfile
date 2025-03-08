@@ -1,37 +1,30 @@
 # Build stage
-FROM oven/bun:1 AS builder
-
+FROM oven/bun:1.2.4 AS base
 WORKDIR /app
 
-# Copy package files
-COPY package.json .
-COPY bun.lockb .
+FROM base AS install
+WORKDIR /app
 
-# Install dependencies
+COPY package.json bun.lockb ./
 RUN bun install --frozen-lockfile
 
-# Copy source files
-COPY . .
-
-# Build the application
-RUN bun run build
-
-# Production stage
-FROM oven/bun:1-slim
-
+FROM base AS prerelease
 WORKDIR /app
 
-# Copy only necessary files from builder
-COPY --from=builder /app/.output .output
-COPY --from=builder /app/package.json .
+COPY --from=install /app/node_modules ./node_modules
+COPY . .
 
-# Set environment variables
 ENV NODE_ENV=production
-ENV HOST=0.0.0.0
-ENV PORT=3000
+RUN bun run build
 
-# Expose the port
-EXPOSE 3000
+FROM base AS release
+WORKDIR /app
 
-# Start the application
+COPY --from=install /app/node_modules /app/node_modules
+COPY --from=prerelease /app/package.json /app/package.json
+COPY --from=prerelease /app/.output /app/.output
+COPY --from=prerelease /app/nuxt.config.ts /app/nuxt.config.ts
+
+USER bun
+EXPOSE 3000/tcp
 CMD ["bun", "run", "start"]
