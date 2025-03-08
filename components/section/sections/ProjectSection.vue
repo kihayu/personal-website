@@ -2,14 +2,7 @@
   <SectionComponent class="mt-0 mb-4 lg:mt-4 lg:mb-2">
     <div class="relative flex flex-col gap-y-4 rounded-md bg-stone-800 p-6 shadow-md">
       <h1 class="font-title mb-6 text-3xl font-semibold">Projects</h1>
-      <div class="w-full bg-red-500 p-1">
-        <div class="border-4 border-white p-2">
-          <i class="font-semibold">Not final descriptions! Texts may be changed!</i>
-        </div>
-      </div>
-
-      <ProjectDropdown :items="allTechnologies" v-model="selectedTechnologies" />
-
+      <ProjectDropdown class="pb-4" :items="allTechnologies" v-model="selectedTechnologies" />
       <ClientOnly>
         <template #fallback>
           <!-- Static fallback for SSR -->
