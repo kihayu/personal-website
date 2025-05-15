@@ -2,10 +2,10 @@
 <template>
   <div id="root" class="flex flex-col gap-y-4">
     <div ref="mainSection">
-      <MainSection id="main-section" class="mx-4 max-w-[1280px] lg:min-h-screen" />
+      <MainSection class="mx-4 max-w-[1280px] lg:min-h-screen" />
     </div>
     <div ref="projectSection">
-      <ProjectSection id="project-section" class="mx-4 min-h-screen max-w-[1280px]" />
+      <ProjectSection class="mx-4 min-h-screen max-w-[1280px]" />
     </div>
     <ClientOnly>
       <div
