@@ -40,7 +40,7 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Fullstack developer crafting modern web experiences with Vue.js, TypeScript, and Python. Focused on accessible design, good looking user interface, and scalable solutions.',
+            'Fullstack developer creating modern web apps with Vue.js, TypeScript & Python. Specializing in accessible, attractive UIs and scalable solutions.',
         },
         {
           name: 'keywords',
@@ -52,7 +52,7 @@ export default defineNuxtConfig({
         {
           property: 'og:description',
           content:
-            'Fullstack developer crafting modern web experiences with Vue.js, TypeScript, and Python. Focused on accessible design, good looking user interface, and scalable solutions.',
+            'Fullstack developer creating modern web apps with Vue.js, TypeScript & Python. Specializing in accessible, attractive UIs and scalable solutions.',
         },
         { property: 'og:type', content: 'website' },
         { property: 'og:image', content: 'https://www.keanuhie.com/images/og-image.png' },
@@ -68,7 +68,7 @@ export default defineNuxtConfig({
         {
           name: 'twitter:description',
           content:
-            'Fullstack developer crafting modern web experiences with Vue.js, TypeScript, and Python. Focused on accessible design, good looking user interface, and scalable solutions.',
+            'Fullstack developer creating modern web apps with Vue.js, TypeScript & Python. Specializing in accessible, attractive UIs and scalable solutions.',
         },
         { name: 'twitter:image', content: 'https://www.keanuhie.com/images/og-image.png' },
         {
