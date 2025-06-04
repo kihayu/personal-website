@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full flex-col items-center rounded-md bg-stone-800 p-4 shadow-md" role="banner">
+  <header class="flex w-full flex-col items-center rounded-md bg-stone-800 p-4 shadow-md">
     <picture>
       <source
         srcset="
@@ -31,7 +31,7 @@
     <p class="font-subtitle mt-2 text-center text-base text-neutral-300">
       Fullstack Developer<br />Located in Vienna, Austria
     </p>
-    <div class="mt-12 flex items-center justify-center gap-6" role="navigation" aria-label="Social Links">
+    <nav class="mt-12 flex items-center justify-center gap-6" aria-label="Social Links">
       <a
         href="https://github.com/kihayu"
         target="_blank"
@@ -65,8 +65,8 @@
       >
         <MailIcon color="white" :size="32" role="img" aria-hidden="true" />
       </a>
-    </div>
-  </div>
+    </nav>
+  </header>
 </template>
 
 <script setup lang="ts">

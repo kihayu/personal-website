@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full w-full rounded-md bg-stone-800 p-4 shadow-md" role="main">
+  <main class="h-full w-full rounded-md bg-stone-800 p-4 shadow-md">
     <h2 class="font-title text-3xl font-semibold" id="about-section">About me</h2>
     <div class="mt-3 space-y-4 will-change-contents" aria-labelledby="about-section">
       <p class="font-paragraph text-lg will-change-contents md:text-xl">
@@ -12,7 +12,7 @@
         the architecture of complex systems.
       </p>
     </div>
-  </div>
+  </main>
 </template>
 
 <style>

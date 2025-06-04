@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full flex-col gap-x-16 gap-y-12">
+  <nav class="flex w-full flex-col gap-x-16 gap-y-12">
     <div
       class="flex w-full flex-col items-center justify-between gap-4 lg:flex-row lg:gap-0 lg:px-[12.5%]"
       @mouseleave="resetHoveredSection(false)"
@@ -58,7 +58,7 @@
         :auto-fill="watchedAnimations.deployment"
       />
     </MainContentWindow>
-  </div>
+  </nav>
 </template>
 <script setup lang="ts">
 import ReactiveText from '~/components/ReactiveText.vue'
