@@ -2,6 +2,7 @@
   <div
     class="project-card relative flex min-h-fit flex-col rounded-lg border border-neutral-400 p-4 text-white no-underline transition-all duration-300 hover:cursor-pointer active:scale-[0.98] active:bg-stone-700 lg:active:scale-100 lg:active:bg-transparent hover:[&_.link-arrows]:scale-120"
     tabindex="0"
+    role="button"
     :aria-label="`View details for ${title} project`"
     @keydown.enter="emit('select')"
     @keydown.space.prevent="emit('select')"
@@ -19,7 +20,7 @@
         </span>
       </div>
       <div class="link-arrows self-end select-none">
-        <ChevronsRightIcon class="link-arrows transition duration-150" />
+        <ChevronsRightIcon class="link-arrows transition duration-150" aria-hidden="true" />
       </div>
     </div>
   </div>

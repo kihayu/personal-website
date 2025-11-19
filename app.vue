@@ -5,21 +5,12 @@
 </template>
 
 <script setup lang="ts">
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Keanu Hie · Developer Portfolio',
-  url: 'https://www.keanuhie.com/',
-}
-
-useHead({
-  script: [
-    {
-      hid: 'breadcrumbs-json-ld',
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify(jsonLd),
-    },
-  ],
+useSeoMeta({
+  ogImage: 'https://www.keanuhie.com/images/og-image.png',
+  twitterCard: 'summary_large_image',
+  twitterImage: 'https://www.keanuhie.com/images/og-image.png',
+  keywords:
+    'Fullstack Developer, Frontend Development, Backend Development, Vue.js, TypeScript, Node.js, Python, UI/UX Design, Figma, Web Accessibility, DevOps, Git, Linux, Vercel, Netlify, Bun, Game Development, LLM, AI, Vienna',
 })
 </script>
 
