@@ -1,7 +1,7 @@
 <template>
   <SectionComponent class="gap-y-4 lg:gap-y-8">
     <div
-      class="flex w-full flex-col justify-center gap-x-4 gap-y-4 sm:grid sm:grid-cols-[250px_1fr] md:grid-rows-1 lg:grid-cols-[300px_1fr] lg:gap-x-8 lg:gap-y-8"
+      class="flex w-full flex-col justify-center gap-4 sm:grid sm:grid-cols-[250px_1fr] md:grid-rows-1 lg:grid-cols-[300px_1fr] lg:gap-8"
     >
       <ProfileCard />
       <AboutMeCard />
