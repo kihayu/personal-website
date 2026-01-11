@@ -11,9 +11,26 @@
         technologies is nothing new for me as I've already built diverse API's and Microservices, as well as helped with
         the architecture of complex systems.
       </p>
+      <div class="mt-2 flex flex-col gap-2">
+        <h3 class="font-subtitle text-lg font-semibold">Let's connect!</h3>
+        <p class="font-paragraph text-base text-neutral-300">
+          I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+        </p>
+        <a
+          href="mailto:hie.keanu@gmail.com"
+          class="mt-2 inline-flex w-fit items-center gap-2 rounded-md bg-white px-4 py-2 font-semibold text-stone-900 transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-800"
+        >
+          <MailIcon :size="20" aria-hidden="true" />
+          Get in Touch
+        </a>
+      </div>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { Mail as MailIcon } from 'lucide-vue-next'
+</script>
 
 <style>
 .font-paragraph {
