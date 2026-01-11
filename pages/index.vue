@@ -23,11 +23,13 @@
       <button
         v-show="showScrollToTop"
         type="button"
-        class="fixed bottom-4 right-4 z-10 rounded-full bg-white p-3 shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-stone-900"
+        class="fixed bottom-4 right-4 z-10 flex cursor-pointer flex-col items-center opacity-0 transition-opacity duration-300"
+        :class="{ 'opacity-100': showScrollToTop }"
         @click="scrollToTop"
         aria-label="Scroll to top"
       >
-        <ChevronsUpIcon class="h-6 w-6 text-stone-900" aria-hidden="true" />
+        <ChevronsUpIcon class="h-6 w-6 text-white" aria-hidden="true" />
+        <span class="font-semibold text-white">Back to top</span>
       </button>
     </ClientOnly>
   </div>
