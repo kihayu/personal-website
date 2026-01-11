@@ -25,7 +25,7 @@ useSchemaOrg([
     jobTitle: 'Fullstack Developer',
     worksFor: {
       '@type': 'Organization',
-      name: 'ÖAMTC',
+      name: 'Ringana',
     },
     address: {
       '@type': 'PostalAddress',
