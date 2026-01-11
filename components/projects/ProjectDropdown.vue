@@ -22,7 +22,7 @@
             v-model="searchTerm"
             id="technology-input"
             type="text"
-            class="placeholder:font-title w-10/12 cursor-pointer border-none bg-transparent p-0 outline-none placeholder:select-none md:w-full"
+            class="placeholder:font-title field-sizing-content max-w-full min-w-10/12 cursor-pointer border-none bg-transparent p-0 outline-none placeholder:select-none"
             placeholder="Select or search..."
             @focus="isOpen = true"
             @click.stop

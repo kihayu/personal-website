@@ -1,7 +1,7 @@
 <template>
   <SectionComponent class="mt-0 mb-4 lg:mt-4 lg:mb-2">
     <div class="relative flex flex-col gap-y-4 rounded-md bg-stone-800 p-6 shadow-md">
-      <h1 class="font-title mb-6 text-3xl font-semibold">Projects</h1>
+      <h2 class="font-title mb-6 text-3xl font-semibold">Projects</h2>
       <ProjectDropdown class="pb-4" :items="allTechnologies" v-model="selectedTechnologies" />
       <ClientOnly>
         <template #fallback>
@@ -80,7 +80,7 @@ import ProjectDropdown from '~/components/projects/ProjectDropdown.vue'
 import ProjectDetailCard from '~/components/projects/ProjectDetailCard.vue'
 import { useProjectStore } from '~/store/project'
 import { isMobile } from '~/utils/isMobile'
-import { useWindowScroll, useWindowSize } from '@vueuse/core'
+import { useWindowSize, useScrollLock } from '@vueuse/core'
 
 const route = useRoute()
 const router = useRouter()
@@ -92,24 +92,14 @@ const selectedProjects = computed(() => {
   return projects.filter((p) => selectedProjectIds.value.includes(p.id))
 })
 
-const originalScrollPosition = ref(0)
-const { y: scrollY } = useWindowScroll()
+const isLocked = useScrollLock(typeof document !== 'undefined' ? document.body : null)
 
 const lockScroll = () => {
-  originalScrollPosition.value = scrollY.value
-  document.body.style.overflow = 'hidden'
-  document.body.style.position = 'fixed'
-  document.body.style.width = '100%'
-  document.body.style.top = `-${originalScrollPosition.value}px`
+  isLocked.value = true
 }
 
-const unlockScroll = async () => {
-  document.body.style.overflow = ''
-  document.body.style.position = ''
-  document.body.style.width = ''
-  document.body.style.top = ''
-  await new Promise((resolve) => setTimeout(resolve, 25))
-  window.scrollTo(0, originalScrollPosition.value)
+const unlockScroll = () => {
+  isLocked.value = false
 }
 
 const isOneProjectSelected = computed(() => selectedProjects.value.length === 1)

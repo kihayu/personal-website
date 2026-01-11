@@ -17,3 +17,31 @@
     }
   }
 }
+
+/* Page transitions with out-in mode */
+.page-enter-active {
+  transition: opacity 0.3s ease-in-out 0.3s;
+}
+
+.page-leave-active {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+
+/* Layout transitions with out-in mode */
+.layout-enter-active {
+  transition: opacity 0.3s ease-in-out 0.3s;
+}
+
+.layout-leave-active {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.layout-enter-from,
+.layout-leave-to {
+  opacity: 0;
+}

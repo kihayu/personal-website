@@ -1,37 +1,23 @@
 <template>
-  <div class="flex w-full flex-col items-center rounded-md bg-stone-800 p-4 shadow-md" role="banner">
-    <picture>
-      <source
-        srcset="
-          ~/assets/images/profile-photo-431.webp  1x,
-          ~/assets/images/profile-photo-862.webp  2x,
-          ~/assets/images/profile-photo-1724.webp 3x
-        "
-        type="image/webp"
-      />
-      <source
-        srcset="
-          ~/assets/images/profile-photo-431.jpg  1x,
-          ~/assets/images/profile-photo-862.jpg  2x,
-          ~/assets/images/profile-photo-1724.jpg 3x
-        "
-        type="image/jpeg"
-      />
-      <img
-        src="~/assets/images/profile-photo-431.jpg"
-        alt="Profile Picture of Keanu Hie"
-        class="h-32 w-32 rounded-full object-cover"
-        width="128"
-        height="128"
-        loading="eager"
-        decoding="async"
-      />
-    </picture>
+  <header class="flex w-full flex-col items-center rounded-md bg-stone-800 p-4 shadow-md">
+    <NuxtPicture
+      src="/images/profile-photo-1724.jpg"
+      format="webp,jpg"
+      densities="x1 x2"
+      width="128"
+      height="128"
+      :imgAttrs="{
+        class: 'h-32 w-32 rounded-full object-cover',
+        alt: 'Profile Picture of Keanu Hie',
+        loading: 'eager',
+        decoding: 'async',
+      }"
+    />
     <h1 class="font-title mt-2 text-3xl font-semibold">Keanu Hie</h1>
     <p class="font-subtitle mt-2 text-center text-base text-neutral-300">
       Fullstack Developer<br />Located in Vienna, Austria
     </p>
-    <div class="mt-12 flex items-center justify-center gap-6" role="navigation" aria-label="Social Links">
+    <nav class="mt-12 flex items-center justify-center gap-6" aria-label="Social Links">
       <a
         href="https://github.com/kihayu"
         target="_blank"
@@ -65,8 +51,8 @@
       >
         <MailIcon color="white" :size="32" role="img" aria-hidden="true" />
       </a>
-    </div>
-  </div>
+    </nav>
+  </header>
 </template>
 
 <script setup lang="ts">
