@@ -1,10 +1,10 @@
 # 🎨 Personal Website
 
-A modern, interactive personal website built with Nuxt 3, featuring animated showcases of design and development skills.
+A modern, interactive personal website built with Nuxt 4, featuring animated showcases of design and development skills.
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Nuxt 3](https://nuxt.com/)
+- **Framework**: [Nuxt 4](https://nuxt.com/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Icons**: [Lucide Icons](https://lucide.dev/)
 
