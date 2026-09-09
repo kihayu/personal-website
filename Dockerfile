@@ -1,5 +1,5 @@
 # Build stage
-FROM oven/bun:1.2.23 AS base
+FROM oven/bun:1.4.2 AS base
 WORKDIR /app
 
 FROM base AS install
@@ -17,7 +17,7 @@ COPY . .
 ENV NODE_ENV=production
 RUN bun run build
 
-FROM node:22-alpine AS release
+FROM node:24-alpine AS release
 WORKDIR /app
 
 COPY --from=prerelease /app/.output /app/.output
