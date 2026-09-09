@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { XIcon } from 'lucide-vue-next'
+import { XIcon } from '@lucide/vue'
 import type { Project } from '~/types/Project'
 import { isMobile } from '~/utils/isMobile'
 

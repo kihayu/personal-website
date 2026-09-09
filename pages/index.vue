@@ -24,7 +24,7 @@
 import MainSection from '~/components/section/sections/MainSection.vue'
 import ProjectSection from '~/components/section/sections/ProjectSection.vue'
 import { useWindowScroll, useWindowSize } from '@vueuse/core'
-import { ChevronsDown as ChevronsDownIcon } from 'lucide-vue-next'
+import { ChevronsDown as ChevronsDownIcon } from '@lucide/vue'
 import { isMobile } from '~/utils/isMobile'
 
 const { y: scrollY } = useWindowScroll()

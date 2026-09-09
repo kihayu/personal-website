@@ -58,5 +58,5 @@
 <script setup lang="ts">
 import GitHubIcon from '~/assets/icons/brands/github.svg'
 import LinkedInIcon from '~/assets/icons/brands/linkedin.svg'
-import { Mail as MailIcon } from 'lucide-vue-next'
+import { Mail as MailIcon } from '@lucide/vue'
 </script>

@@ -81,8 +81,8 @@ import FrameToolIcon from '~/assets/icons/design/frame-tool.svg'
 import MoveToolIcon from '~/assets/icons/design/move-tool.svg'
 import RectangleToolIcon from '~/assets/icons/design/rectangle-tool.svg'
 import TextToolIcon from '~/assets/icons/design/text-tool.svg'
-import { Pause as PauseIcon } from 'lucide-vue-next'
-import { Play as PlayIcon } from 'lucide-vue-next'
+import { Pause as PauseIcon } from '@lucide/vue'
+import { Play as PlayIcon } from '@lucide/vue'
 
 export interface DesignAnimationProps {
   autoFill?: boolean

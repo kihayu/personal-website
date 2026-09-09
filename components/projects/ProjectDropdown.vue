@@ -65,7 +65,7 @@
 import { ref, computed, watch, nextTick } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import ProjectDropdownElement from '~/components/projects/ProjectDropdownElement.vue'
-import { ChevronDown as ChevronDownIcon } from 'lucide-vue-next'
+import { ChevronDown as ChevronDownIcon } from '@lucide/vue'
 import { useAppStore } from '~/store/app'
 
 export interface ProjectDropdownProps {

@@ -2,9 +2,9 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
+  compatibilityDate: '2026-09-09',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint', 'nuxt-shiki', 'nuxt-svgo', '@pinia/nuxt', '@nuxtjs/seo', '@nuxt/image', 'nuxt-og-image', 'nuxt-schema-org'],
+  modules: ['@nuxt/eslint', 'nuxt-shiki', 'nuxt-svgo', '@pinia/nuxt', '@nuxtjs/seo', '@nuxt/image'],
   site: {
     url: 'https://www.keanuhie.com',
     name: 'Keanu Hie · Developer Portfolio',
@@ -12,6 +12,7 @@ export default defineNuxtConfig({
       'Fullstack developer creating modern web apps with Vue.js, TypeScript & Python. Specializing in accessible, attractive UIs and scalable solutions.',
     defaultLocale: 'en',
   },
+  ogImage: { enabled: false },
   css: [
     '~/assets/css/reset.css',
     '~/assets/css/main.css',

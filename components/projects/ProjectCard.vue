@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { ChevronsRight as ChevronsRightIcon } from 'lucide-vue-next'
+import { ChevronsRight as ChevronsRightIcon } from '@lucide/vue'
 
 export interface ProjectCardProps {
   title: string

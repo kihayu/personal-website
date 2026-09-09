@@ -32,7 +32,7 @@ import DevelopInfo from '~/components/content-info/DevelopInfo.vue'
 import DeployInfo from '~/components/content-info/DeployInfo.vue'
 import { isMobile } from '~/utils/isMobile'
 import { useWindowSize } from '@vueuse/core'
-import { XIcon } from 'lucide-vue-next'
+import { XIcon } from '@lucide/vue'
 
 export interface MainContentInfoProps {
   selectedSection: string

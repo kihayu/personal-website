@@ -39,8 +39,8 @@
 import { codeExamples } from '~/constants/codeExamples'
 import { type BundledLanguage } from 'shiki'
 import { type CSSProperties } from 'vue'
-import { Pause as PauseIcon } from 'lucide-vue-next'
-import { Play as PlayIcon } from 'lucide-vue-next'
+import { Pause as PauseIcon } from '@lucide/vue'
+import { Play as PlayIcon } from '@lucide/vue'
 
 export interface DevelopAnimationProps {
   lang?: BundledLanguage | undefined
