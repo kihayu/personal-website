@@ -88,16 +88,18 @@ docker build -t personal-website .
 
 ## ✍️ Changing the site
 
-| What you want to change                                | Where                         |
-| ------------------------------------------------------ | ----------------------------- |
-| A text, an image, a link, a project, the SEO of a page | The admin, then Publish       |
-| The order of the sections, which blocks a page has     | The admin, on the page itself |
-| What an editor may fill in — a new field, a new block  | `blocks/` here, then a deploy |
-| The look of a block                                    | Its `.vue` file in `blocks/`  |
+| What you want to change                                | Where                                 |
+| ------------------------------------------------------ | ------------------------------------- |
+| A text, an image, a link, a project, the SEO of a page | The admin, then Publish               |
+| The order of the sections, which blocks a page has     | The admin, on the page itself         |
+| What an editor may fill in — a new field, a new block  | `app/blocks/` here, then a deploy     |
+| The look of a block                                    | Its component under `app/components/` |
 
-A block is two files with the same base name in `blocks/`: `Name.schema.ts` says what an editor may
-change, `Name.vue` renders it. `templates/page.schema.json` says which blocks a page may hold and
-which properties it carries. The full contract is in the CMS repository under
+A block is two files with the same base name, side by side under `app/blocks/<area>/`:
+`NameBlock.schema.ts` says what an editor may change, `NameBlock.vue` renders it. The block file
+itself stays thin: it reads `node.props`, narrows the values, and hands them to a component under
+`app/components/<area>/`, which owns the markup. `app/templates/page.schema.json` says which blocks a
+page may hold and which properties it carries. The full contract is in the CMS repository under
 `docs/guides/frontend-integration.md`.
 
 ### Starting content
@@ -117,30 +119,37 @@ editing work.
 ## 📁 Project Structure
 
 ```
-├── assets/            # Static assets
-│   ├── css/           # Global styles and utilities
-│   ├── fonts/         # Custom fonts
-│   └── icons/         # SVG icons
-├── blocks/            # The block library: one .schema.ts and one .vue per block
-├── components/        # Vue components the blocks render with
-│   ├── animations/    # Animation components
-│   ├── projects/      # Project filter components
-│   └── skills/        # The dialog a skill topic opens
-├── composables/       # Vue composables and hooks
-├── constants/         # Fallback code samples for the typing animation
-├── content/           # The starting content of the site
-├── layouts/           # Layout templates
-├── public/            # Public static files
-├── scripts/           # Build the starting content and its import archive
-├── server/            # Server-side code
-│   └── plugins/       # Server plugins
-├── templates/         # Page templates: properties and the blocks a page may hold
-├── types/             # TypeScript type definitions
-└── utils/             # Utility functions
+├── app/                     # Nuxt 4 source directory
+│   ├── app.vue
+│   ├── assets/              # Global styles, fonts and SVG icons
+│   ├── blocks/              # The block library, grouped by area
+│   │   ├── content/         # About card, text
+│   │   ├── layout/          # Page section, intro row
+│   │   ├── profile/         # Profile card, profile link
+│   │   ├── projects/        # Project gallery, project, technology
+│   │   └── skills/          # Skill showcase, topic, code sample
+│   ├── components/          # The markup the blocks render with, grouped the same way
+│   │   ├── animations/      # The design, development and deployment animations
+│   │   ├── content/         # About and text cards
+│   │   ├── profile/         # Profile card and its icon links
+│   │   ├── projects/        # Project card, detail card, filter, tag
+│   │   ├── section/         # Section and card row wrappers
+│   │   └── skills/          # Topic row, preview window, dialog, topic text
+│   ├── composables/
+│   ├── constants/           # Fallback code samples for the typing animation
+│   ├── layouts/
+│   ├── templates/           # Page templates: properties and the blocks a page may hold
+│   ├── types/
+│   └── utils/
+├── content/                 # The starting content of the site
+├── public/                  # Public static files
+├── scripts/                 # Build the starting content and its import archive
+└── server/                  # Server-side code
+    └── plugins/             # Server plugins
 ```
 
-There are no `pages/`: the CMS module registers the catch-all route that resolves every path against
-the published content.
+There is no `app/pages/`: the CMS module registers the catch-all route that resolves every path
+against the published content.
 
 ## 📝 License
 
