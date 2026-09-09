@@ -18,6 +18,8 @@ logs
 .fleet
 .idea
 
+content/*.cmsexport
+
 # Local env files
 .env
 .env.*

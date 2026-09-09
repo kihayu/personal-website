@@ -1,0 +1,908 @@
+{
+  "formatVersion": 1,
+  "sites": [
+    {
+      "id": "keanuhie",
+      "name": "Keanu Hie",
+      "locales": [
+        "en"
+      ],
+      "defaultLocale": "en",
+      "localePrefix": "never",
+      "notFoundPath": "/404",
+      "settings": {
+        "frontendId": "personal-website",
+        "environment": "production",
+        "delivery": {
+          "defaultMode": "on-demand",
+          "revalidateSeconds": 300
+        },
+        "preview": {
+          "url": "http://127.0.0.1:3000"
+        }
+      }
+    }
+  ],
+  "manifests": [],
+  "entries": [
+    {
+      "id": "keanuhie-home",
+      "siteId": "keanuhie",
+      "kind": "page",
+      "locale": "en",
+      "translationKey": "keanuhie-home",
+      "path": "/",
+      "template": "page",
+      "properties": {
+        "title": "Keanu Hie · Developer Portfolio",
+        "description": "Fullstack developer creating modern web apps with Vue.js, TypeScript & Python. Specializing in accessible, attractive UIs and scalable solutions.",
+        "robots": "index,follow",
+        "ogTitle": "Keanu Hie · Developer Portfolio",
+        "ogImage": {
+          "assetId": "share-image",
+          "alt": "Keanu Hie, Fullstack Developer"
+        },
+        "structuredData": "{\"@context\":\"https://schema.org\",\"@type\":\"Person\",\"name\":\"Keanu Hie\",\"jobTitle\":\"Fullstack Developer\",\"url\":\"https://www.keanuhie.com/\",\"email\":\"mailto:hie.keanu@gmail.com\",\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Vienna\",\"addressCountry\":\"AT\"},\"sameAs\":[\"https://github.com/kihayu\",\"https://linkedin.com/in/keanu-hie/\"]}"
+      },
+      "root": [
+        {
+          "id": "intro-section",
+          "type": "page-section",
+          "schemaVersion": 1,
+          "props": {
+            "fillScreen": true
+          },
+          "slots": {
+            "body": [
+              {
+                "id": "intro",
+                "type": "intro-row",
+                "schemaVersion": 1,
+                "props": {
+                  "variant": "sidebar"
+                },
+                "slots": {
+                  "body": [
+                    {
+                      "id": "profile",
+                      "type": "profile-card",
+                      "schemaVersion": 1,
+                      "props": {
+                        "name": "Keanu Hie",
+                        "role": "Fullstack Developer",
+                        "location": "Located in Vienna, Austria",
+                        "photo": {
+                          "assetId": "profile-photo",
+                          "alt": "Profile Picture of Keanu Hie"
+                        }
+                      },
+                      "slots": {
+                        "links": [
+                          {
+                            "id": "profile-github",
+                            "type": "social-link",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Visit Keanu's GitHub Profile",
+                              "icon": "github",
+                              "href": {
+                                "kind": "external",
+                                "href": "https://github.com/kihayu"
+                              }
+                            }
+                          },
+                          {
+                            "id": "profile-linkedin",
+                            "type": "social-link",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Visit Keanu's LinkedIn Profile",
+                              "icon": "linkedin",
+                              "href": {
+                                "kind": "external",
+                                "href": "https://linkedin.com/in/keanu-hie/"
+                              }
+                            }
+                          },
+                          {
+                            "id": "profile-mail",
+                            "type": "social-link",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Send an Email to Keanu Hie",
+                              "icon": "mail",
+                              "href": {
+                                "kind": "external",
+                                "href": "mailto:hie.keanu@gmail.com"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "about",
+                      "type": "about-card",
+                      "schemaVersion": 1,
+                      "props": {
+                        "heading": "About me",
+                        "body": {
+                          "type": "doc",
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "Hi, I'm a Fullstack Developer with a focus on Frontend and Web-Development, specifically UI/UX, functionality and clean code. With over 12 years in the business and 7 years of professional experience, I have a good understanding of diverse frontend topics such as Styleguides, Accessibility, Responsive Design, and Component-Driven Development. Most of this experience was done in Vue.js with SCSS or Tailwind, as well as Storybook on larger projects, including React and Next.js on a smaller scale. Also working on backend technologies is nothing new for me as I've already built diverse API's and Microservices, as well as helped with the architecture of complex systems."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "skills",
+                "type": "skill-showcase",
+                "schemaVersion": 1,
+                "props": {
+                  "hint": "Hover over the Titles (and click)"
+                },
+                "slots": {
+                  "items": [
+                    {
+                      "id": "skill-design",
+                      "type": "skill-topic",
+                      "schemaVersion": 1,
+                      "props": {
+                        "label": "Design",
+                        "animation": "design",
+                        "body": {
+                          "type": "doc",
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "In my work as frontend developer on customer projects I learned a lot about user experience, user interfaces and web design. I started learning about color theory and design principles to optimize the user experience for different platforms like Admin Interfaces, News, Blogs or Social Media Platforms."
+                                }
+                              ]
+                            },
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "A fitting design is very important for a good user experience and for myself as a bad interface can make or break a product or service very easily. As well as having no accessibility in mind. Accessibility is, in my opinion, best done in a way that the core functionality is usable with the least effort, without restricting any functionality."
+                                }
+                              ]
+                            },
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "Most of my work is done in Figma, as it's a great tool for beginner and intermediate users. Many of my larger projects are first, at least conceptually, done in Figma."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "id": "skill-development",
+                      "type": "skill-topic",
+                      "schemaVersion": 1,
+                      "props": {
+                        "label": "Development",
+                        "animation": "development",
+                        "body": {
+                          "type": "doc",
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "Development is a skill that is with me since 2012, when I got into a course, started with Scratch and continued learning Python and later Java. At school I learned the basics of C# and .NET and basic HTML with CSS and very little JavaScript."
+                                }
+                              ]
+                            },
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "Shortly after I got my first job as a Backend Developer, where I worked with PHP. After a short period I found myself interested in Frontend Development with Vue.js and started building my way to become a Fullstack Developer. Since 2018 I have been working and improving my skills in JavaScript/TypeScript, together with Vue.js and Node.js (incl. Bun) as my Frontend arm, with mainly Node.js and Python as my backend arm."
+                                }
+                              ]
+                            },
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "Today I enjoy working on different projects and trying new technologies like Flutter for mobile development, Godot for game development and Large Language Model APIs from providers like OpenAI, Anthropic or Google."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "slots": {
+                        "codeSamples": [
+                          {
+                            "id": "skill-development-sample-1",
+                            "type": "code-sample",
+                            "schemaVersion": 1,
+                            "props": {
+                              "language": "typescript",
+                              "code": "class Greeter {\n  private greeting: string\n\n  constructor(message: string) {\n    this.greeting = message\n  }\n\n  public greet(): string {\n    return this.greeting\n  }\n}"
+                            }
+                          },
+                          {
+                            "id": "skill-development-sample-2",
+                            "type": "code-sample",
+                            "schemaVersion": 1,
+                            "props": {
+                              "language": "typescript",
+                              "code": "const add = (a: number, b: number): number => {\n  return a + b\n}\n\nconst sum = add(5, 3) // 8"
+                            }
+                          },
+                          {
+                            "id": "skill-development-sample-3",
+                            "type": "code-sample",
+                            "schemaVersion": 1,
+                            "props": {
+                              "language": "typescript",
+                              "code": "type User = {\n  id: number\n  name: string\n  email: string\n}\n\nconst user: User = {\n  id: 1,\n  name: 'John',\n  email: 'john@example.com'\n}"
+                            }
+                          },
+                          {
+                            "id": "skill-development-sample-4",
+                            "type": "code-sample",
+                            "schemaVersion": 1,
+                            "props": {
+                              "language": "typescript",
+                              "code": "async function getData() {\n  const response = await fetch('/api/data')\n  return response.json()\n}\n\ngetData().then(console.log)"
+                            }
+                          },
+                          {
+                            "id": "skill-development-sample-5",
+                            "type": "code-sample",
+                            "schemaVersion": 1,
+                            "props": {
+                              "language": "typescript",
+                              "code": "const fruits = ['apple', 'banana', 'orange']\nconst upperFruits = fruits\n  .map(fruit => fruit.toUpperCase())\n\nconsole.log(upperFruits)"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "skill-deployment",
+                      "type": "skill-topic",
+                      "schemaVersion": 1,
+                      "props": {
+                        "label": "Deployment",
+                        "animation": "deployment",
+                        "body": {
+                          "type": "doc",
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "One thing that my younger self asked himself was: "
+                                },
+                                {
+                                  "type": "text",
+                                  "text": "Working and developing on projects is fine but how can I make the finished result accessible to others?",
+                                  "marks": [
+                                    {
+                                      "type": "italic"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "After some time I started looking into servers and hosting, proper Git and Version Controlling and what tools are available for making websites available to others. Learning tools like Jenkins and how to deploy projects was one part, the other one was learning how to set up a linux server and installing the necessary software."
+                                }
+                              ]
+                            },
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "Nowadays I also look into distribution platforms like Vercel, Netlify or Coolify, as they make publishing projects on a smaller scale very easy and more manageable for a single person."
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "projects-section",
+          "type": "page-section",
+          "schemaVersion": 1,
+          "props": {
+            "fillScreen": false
+          },
+          "slots": {
+            "body": [
+              {
+                "id": "projects",
+                "type": "project-gallery",
+                "schemaVersion": 1,
+                "props": {
+                  "heading": "Projects",
+                  "filterLabel": "Technologies",
+                  "filterPlaceholder": "Select or search...",
+                  "scrollHint": "Project list"
+                },
+                "slots": {
+                  "items": [
+                    {
+                      "id": "oeamtc-main",
+                      "type": "project-entry",
+                      "schemaVersion": 1,
+                      "props": {
+                        "title": "ÖAMTC Website",
+                        "leadText": "Working on multiple frontend and backend projects of ÖAMTC requires a consistent interface, fast performance, and an excellent user experience.",
+                        "description": {
+                          "type": "doc",
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "As a frontend developer, I worked in a team on the website of ÖAMTC. Parts of the website are constantly rebuilt using Nuxt with TypeScript, optimized for performance and components from the styleguide. I also worked on the backend of the website, using PHP to extend and maintain the existing Content Management System. Additionally, I contributed a new technology stack for components, which needed work on frontend and backend. The design was built with a mobile-first approach, as most users nowadays use mobile devices to navigate the web."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "capacity": "Collaborator",
+                        "anchor": "oeamtc-main"
+                      },
+                      "slots": {
+                        "technologies": [
+                          {
+                            "id": "oeamtc-main-tech-1",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "JavaScript"
+                            }
+                          },
+                          {
+                            "id": "oeamtc-main-tech-2",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "TypeScript"
+                            }
+                          },
+                          {
+                            "id": "oeamtc-main-tech-3",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Vue.js"
+                            }
+                          },
+                          {
+                            "id": "oeamtc-main-tech-4",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Nuxt"
+                            }
+                          },
+                          {
+                            "id": "oeamtc-main-tech-5",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Node"
+                            }
+                          },
+                          {
+                            "id": "oeamtc-main-tech-6",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "PHP"
+                            }
+                          },
+                          {
+                            "id": "oeamtc-main-tech-7",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "GraphQL"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "oeamtc-styleguide",
+                      "type": "project-entry",
+                      "schemaVersion": 1,
+                      "props": {
+                        "title": "ÖAMTC Styleguide",
+                        "leadText": "A complete overhaul of the ÖAMTC designs to be more modern, consistent and accessible. Used on all new components, sections and pages.",
+                        "description": {
+                          "type": "doc",
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "One part of being on a team, working for ÖAMTC was keeping the design language consistent throughout the projects. To keep the project and the user experience fresh we got to work on a new styleguide which development started internally. Out of the existing designs we started building a Storybook application, containing all necessary components in different states for testing and showcasing purposes. The application itself uses Vue.js with TypeScript and best practices in building a frontend design with SCSS."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "capacity": "Collaborator",
+                        "anchor": "oeamtc-styleguide"
+                      },
+                      "slots": {
+                        "technologies": [
+                          {
+                            "id": "oeamtc-styleguide-tech-1",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "TypeScript"
+                            }
+                          },
+                          {
+                            "id": "oeamtc-styleguide-tech-2",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Vue.js"
+                            }
+                          },
+                          {
+                            "id": "oeamtc-styleguide-tech-3",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Storybook"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "cinema-reservation",
+                      "type": "project-entry",
+                      "schemaVersion": 1,
+                      "props": {
+                        "title": "Cinema Reservation System",
+                        "leadText": "A complete management system for cinemas for movies, rooms, events and reservations. Made as a school project with Vue.js 2 and .NET Core.",
+                        "description": {
+                          "type": "doc",
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "When I was a student we had a long term project in which we all had to build a fullstack project on our own. My project was a simple but complete management system for cinemas to create movie entries, rooms with a visual editor, movie events and reservations but also a user management system to handle users and permissions."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "capacity": "Solo",
+                        "anchor": "cinema-reservation"
+                      },
+                      "slots": {
+                        "technologies": [
+                          {
+                            "id": "cinema-reservation-tech-1",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "JavaScript"
+                            }
+                          },
+                          {
+                            "id": "cinema-reservation-tech-2",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Vue.js"
+                            }
+                          },
+                          {
+                            "id": "cinema-reservation-tech-3",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "C#"
+                            }
+                          },
+                          {
+                            "id": "cinema-reservation-tech-4",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": ".NET"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "oegb",
+                      "type": "project-entry",
+                      "schemaVersion": 1,
+                      "props": {
+                        "title": "ÖGB and GPA",
+                        "leadText": "A new implementation of the ÖGB and GPA webpages with a fresh and modern design. Involved the implementation of a proxy server between AEM and React.",
+                        "description": {
+                          "type": "doc",
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "Creating a frontend application that gets data from an Adobe Experience Manager (AEM) instance and works with Hot Module Reloading (HMR) was a challenge. I helped create a Webpack proxy server that handled the communication and data flow between AEM and our React frontend. The application itself uses React with TailwindCSS for styling."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "capacity": "Collaborator",
+                        "anchor": "oegb"
+                      },
+                      "slots": {
+                        "technologies": [
+                          {
+                            "id": "oegb-tech-1",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "JavaScript"
+                            }
+                          },
+                          {
+                            "id": "oegb-tech-2",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "TypeScript"
+                            }
+                          },
+                          {
+                            "id": "oegb-tech-3",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Node"
+                            }
+                          },
+                          {
+                            "id": "oegb-tech-4",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Webpack"
+                            }
+                          },
+                          {
+                            "id": "oegb-tech-5",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "React"
+                            }
+                          },
+                          {
+                            "id": "oegb-tech-6",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "TailwindCSS"
+                            }
+                          },
+                          {
+                            "id": "oegb-tech-7",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Storybook"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "scrum-poker",
+                      "type": "project-entry",
+                      "schemaVersion": 1,
+                      "props": {
+                        "title": "Scrum Poker Game",
+                        "leadText": "An online poker game for Scrum teams to help with estimation and planning. Built with Nuxt and a simple Design in mind for a quick and easy use.",
+                        "description": {
+                          "type": "doc",
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "Coming from the problem of having not the right tools for estimation and planning, 2 friends and I decided to build a simple poker game to aid us and our colleagues. Over the course of a weekend, my friends Daniel and Julia joined me, providing the backend for the project, while I focused on the graphical designs and frontend application."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "capacity": "Solo",
+                        "anchor": "scrum-poker"
+                      },
+                      "slots": {
+                        "technologies": [
+                          {
+                            "id": "scrum-poker-tech-1",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "TypeScript"
+                            }
+                          },
+                          {
+                            "id": "scrum-poker-tech-2",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Nuxt"
+                            }
+                          },
+                          {
+                            "id": "scrum-poker-tech-3",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "TailwindCSS"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "internal-data-analysis",
+                      "type": "project-entry",
+                      "schemaVersion": 1,
+                      "props": {
+                        "title": "Internal data analysis tool",
+                        "leadText": "A comprehensive data visualization platform with multiple interactive dashboards. The project included a successful migration from Nuxt 2 to Nuxt 3.",
+                        "description": {
+                          "type": "doc",
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "This internal analytics tool features multiple interactive dashboards powered by d3.js charts to visualize complex datasets. I focused primarily on developing the GraphQL service and Nuxt frontend, ensuring seamless data flow with a professional dashboard UI. The project involved a complete upgrade from Nuxt 2 to Nuxt 3, requiring extensive dependency research and migration work while having Keycloak integration for secure user management across the application."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "capacity": "Collaborator",
+                        "anchor": "internal-data-analysis"
+                      },
+                      "slots": {
+                        "technologies": [
+                          {
+                            "id": "internal-data-analysis-tech-1",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "TypeScript"
+                            }
+                          },
+                          {
+                            "id": "internal-data-analysis-tech-2",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Node"
+                            }
+                          },
+                          {
+                            "id": "internal-data-analysis-tech-3",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Nuxt"
+                            }
+                          },
+                          {
+                            "id": "internal-data-analysis-tech-4",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "GraphQL"
+                            }
+                          },
+                          {
+                            "id": "internal-data-analysis-tech-5",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "d3.js"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "id": "personal-website",
+                      "type": "project-entry",
+                      "schemaVersion": 1,
+                      "props": {
+                        "title": "Personal Website",
+                        "leadText": "A responsive Nuxt website, showcasing my portfolio and professional journey. Designed with performance, SEO and user experience in mind.",
+                        "description": {
+                          "type": "doc",
+                          "content": [
+                            {
+                              "type": "paragraph",
+                              "content": [
+                                {
+                                  "type": "text",
+                                  "text": "This portfolio website showcases my skills as a frontend developer using modern web technologies. Built with Vue.js and Nuxt, optimized for optimal performance and SEO on all devices. It features responsive design principles and custom designs for mobile and desktop end-users. The design was made to be simple and modern, while also being accessible and easy-to-use."
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "capacity": "Solo",
+                        "anchor": "personal-website"
+                      },
+                      "slots": {
+                        "technologies": [
+                          {
+                            "id": "personal-website-tech-1",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "TypeScript"
+                            }
+                          },
+                          {
+                            "id": "personal-website-tech-2",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "Nuxt"
+                            }
+                          },
+                          {
+                            "id": "personal-website-tech-3",
+                            "type": "tech-tag",
+                            "schemaVersion": 1,
+                            "props": {
+                              "label": "TailwindCSS"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "status": "draft",
+      "version": 1
+    },
+    {
+      "id": "keanuhie-not-found",
+      "siteId": "keanuhie",
+      "kind": "page",
+      "locale": "en",
+      "translationKey": "keanuhie-not-found",
+      "path": "/404",
+      "template": "page",
+      "properties": {
+        "title": "Page not found",
+        "description": "This page does not exist.",
+        "robots": "noindex,follow"
+      },
+      "root": [
+        {
+          "id": "not-found-section",
+          "type": "page-section",
+          "schemaVersion": 1,
+          "props": {
+            "fillScreen": false
+          },
+          "slots": {
+            "body": [
+              {
+                "id": "not-found-text",
+                "type": "text",
+                "schemaVersion": 1,
+                "props": {
+                  "heading": "Page not found",
+                  "body": {
+                    "type": "doc",
+                    "content": [
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "This page does not exist. The way back is the start page."
+                          }
+                        ]
+                      },
+                      {
+                        "type": "paragraph",
+                        "content": [
+                          {
+                            "type": "text",
+                            "text": "Go to the start page",
+                            "marks": [
+                              {
+                                "type": "link",
+                                "attrs": {
+                                  "href": "/"
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "status": "draft",
+      "version": 1
+    }
+  ],
+  "published": [
+    "keanuhie-home",
+    "keanuhie-not-found"
+  ]
+}
