@@ -6,7 +6,7 @@
       "name": "personal-website",
       "dependencies": {
         "@cms/adapter-vue": "^0.1.0",
-        "@cms/content-model": "^0.1.0",
+        "@cms/content-model": "^0.1.1",
         "@lucide/vue": "^1.43.0",
         "h3-compression": "^1.1.0",
         "vue": "^3.5.42",
@@ -110,7 +110,7 @@
 
     "@cms/adapter-vue": ["@cms/adapter-vue@0.1.0", "https://npm.keanuhie.com/@cms/adapter-vue/-/adapter-vue-0.1.0.tgz", { "dependencies": { "@cms/adapter-conformance": "^0.1.0", "@cms/content-model": "^0.1.0", "@cms/delivery": "^0.1.0", "@cms/protocol": "^0.1.0", "@cms/schema-tooling": "^0.1.0", "@cms/sdk-core": "^0.1.0", "@nuxt/kit": "^4.5.2", "h3": "^1.15.11" }, "peerDependencies": { "nuxt": "^4.5.0", "vue": "^3.5.0" } }, "sha512-+ZwbIOW/0Xj4VDGVOuf4GJs/YKesKeHWNwGw2nQZI+KlU0XHFWnOLbfIRWg8vWJQVEr74rsHJGDOg2vYuzW1Mw=="],
 
-    "@cms/content-model": ["@cms/content-model@0.1.0", "https://npm.keanuhie.com/@cms/content-model/-/content-model-0.1.0.tgz", { "dependencies": { "semver": "^7.7.0", "zod": "^4.5.0" } }, "sha512-4I9ovXL1QJwfOricRjVj5z4SdE7YwW9PzAmgra/+WDG2sN70jNB+tYTL1I8qYWyCfV9i/aQhilYXfZ3z3q2fRg=="],
+    "@cms/content-model": ["@cms/content-model@0.1.1", "https://npm.keanuhie.com/@cms/content-model/-/content-model-0.1.1.tgz", { "dependencies": { "zod": "^4.5.0" } }, "sha512-SbOQv5Ze5/VZEpaAuTaS0nDJTgcb5x6qUxLLkg6IbwwTiWorNAWFvhOor+f6PcXcdsZKgPBKcNdCstlvIMrakw=="],
 
     "@cms/delivery": ["@cms/delivery@0.1.0", "https://npm.keanuhie.com/@cms/delivery/-/delivery-0.1.0.tgz", { "dependencies": { "@cms/content-model": "^0.1.0", "zod": "^4.5.0" } }, "sha512-2a64uT8HPW1CVTktsBKuKffgnrklCJJXJNILCw2Jm5WYQLBNz9o5GwijZ6Dege9b7ib6chCVsfoi5U3eHWh1EQ=="],
 

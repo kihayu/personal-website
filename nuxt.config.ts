@@ -1,4 +1,3 @@
-import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -52,16 +51,6 @@ export default defineNuxtConfig({
   svgo: {
     svgo: false,
     defaultImport: 'component',
-  },
-  hooks: {
-    'vite:extendConfig'(config, { isClient }) {
-      if (!isClient) {
-        return
-      }
-      Object.assign(config.resolve?.alias ?? {}, {
-        '@cms/content-model': fileURLToPath(new URL('node_modules/@cms/content-model/dist/index.js', import.meta.url)),
-      })
-    },
   },
   nitro: {
     compressPublicAssets: true,
