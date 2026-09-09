@@ -50,6 +50,9 @@ export default defineNuxtConfig({
     },
     pushManifest: process.env.CMS_PUSH_MANIFEST === 'true',
   },
+  experimental: {
+    payloadExtraction: false,
+  },
   site: {
     url: 'https://www.keanuhie.com',
     name: 'Keanu Hie · Developer Portfolio',
