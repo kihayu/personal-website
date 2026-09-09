@@ -8,9 +8,9 @@
         <span class="font-title text-lg text-neutral-400">{{ project.capacity }}</span>
       </div>
       <button
-        @click="closeDetails"
         class="flex h-fit translate-y-1 cursor-pointer justify-center text-neutral-400 transition-all duration-300 lg:hover:scale-125 lg:active:scale-110"
         aria-label="Close project details"
+        @click="closeDetails"
       >
         <XIcon class="h-7 w-7 translate-y-0.25" :stroke-width="2.5" />
       </button>

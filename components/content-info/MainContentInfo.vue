@@ -9,7 +9,7 @@
       @keydown.enter="emit('clear-section')"
       @keydown.space.prevent="emit('clear-section')"
     >
-      <div></div>
+      <div />
       <h4 class="font-title flex justify-center text-2xl !leading-8 font-bold select-none md:text-3xl xl:text-4xl">
         {{ sectionToSectionName }}
       </h4>

@@ -3,8 +3,8 @@
     <div class="relative w-fit font-mono">
       <div ref="codeContainer" class="relative">
         <Shiki
-          tabindex="-1"
           ref="shiki"
+          tabindex="-1"
           :lang="lang"
           :code="typedText"
           class="w-fit [&_code]:!bg-transparent [&_code]:!select-none [&_pre]:!bg-transparent"
@@ -37,10 +37,9 @@
 
 <script setup lang="ts">
 import { codeExamples } from '~/constants/codeExamples'
-import { type BundledLanguage } from 'shiki'
-import { type CSSProperties } from 'vue'
-import { Pause as PauseIcon } from '@lucide/vue'
-import { Play as PlayIcon } from '@lucide/vue'
+import type { BundledLanguage } from 'shiki'
+import type { CSSProperties } from 'vue'
+import { Pause as PauseIcon, Play as PlayIcon } from '@lucide/vue'
 
 export interface DevelopAnimationProps {
   lang?: BundledLanguage | undefined
@@ -118,7 +117,7 @@ const updateCursorPosition = () => {
   }
 }
 
-const { typedText, showCursor, startTyping, isTyping, isPaused, stopTyping } = useTypewriter()
+const { typedText, showCursor, startTyping, isPaused, stopTyping } = useTypewriter()
 
 watch(typedText, () => {
   nextTick(updateCursorPosition)

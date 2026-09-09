@@ -4,11 +4,11 @@
   >
     <h3
       class="font-title text-2xl font-bold select-none md:text-3xl lg:transition-all lg:duration-150 lg:hover:text-neutral-400 lg:active:text-neutral-500 xl:text-4xl"
+      tabindex="0"
       @mouseover="onMouseEnter"
       @mouseleave="onMouseLeave"
       @focusin="onMouseEnter"
       @focusout="onMouseLeave"
-      tabindex="0"
     >
       <slot />
     </h3>

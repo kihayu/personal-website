@@ -1,5 +1,5 @@
 <template>
-  <div class="font-title relative w-full" @keydown="handleKeyDown" ref="dropdownRef">
+  <div ref="dropdownRef" class="font-title relative w-full" @keydown="handleKeyDown">
     <label for="technology-input">Technologies</label>
     <div
       class="mt-1 flex h-auto w-full cursor-pointer items-center justify-between rounded-t-lg border-neutral-400 p-3 text-white transition-all duration-200"
@@ -18,9 +18,9 @@
         </div>
         <div class="min-w-[80px]">
           <input
+            id="technology-input"
             ref="searchInput"
             v-model="searchTerm"
-            id="technology-input"
             type="text"
             class="placeholder:font-title field-sizing-content max-w-full min-w-10/12 cursor-pointer border-none bg-transparent p-0 outline-none placeholder:select-none"
             placeholder="Select or search..."
@@ -36,9 +36,9 @@
     </div>
 
     <div
+      ref="dropdownListRef"
       class="absolute max-h-60 w-full overflow-y-auto rounded-b-lg border border-neutral-400 bg-stone-800 p-2 shadow-2xl transition-opacity duration-300"
       :class="{ 'z-10 opacity-100': isOpen, 'opacity-0': !isOpen }"
-      ref="dropdownListRef"
     >
       <template v-if="isOpen">
         <div
@@ -155,7 +155,7 @@ const handleKeyDown = (event: KeyboardEvent): void => {
       break
     case 'Tab':
       event.preventDefault()
-      event.shiftKey ? updateActiveIndex('prev') : updateActiveIndex('next')
+      updateActiveIndex(event.shiftKey ? 'prev' : 'next')
       break
     case 'Escape':
       event.preventDefault()

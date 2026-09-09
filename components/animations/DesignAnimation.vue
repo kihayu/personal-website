@@ -81,8 +81,7 @@ import FrameToolIcon from '~/assets/icons/design/frame-tool.svg'
 import MoveToolIcon from '~/assets/icons/design/move-tool.svg'
 import RectangleToolIcon from '~/assets/icons/design/rectangle-tool.svg'
 import TextToolIcon from '~/assets/icons/design/text-tool.svg'
-import { Pause as PauseIcon } from '@lucide/vue'
-import { Play as PlayIcon } from '@lucide/vue'
+import { Pause as PauseIcon, Play as PlayIcon } from '@lucide/vue'
 
 export interface DesignAnimationProps {
   autoFill?: boolean
@@ -108,9 +107,9 @@ const showRadiusControl = ref(false)
 const currentTool = ref('move')
 
 // Animation manager properties
-let currentStep = ref(0)
+const currentStep = ref(0)
 let animationFrame: number | null = null
-let isPaused = ref(false)
+const isPaused = ref(false)
 
 const steps = [
   // Set cursor to start position and select rectangle tool

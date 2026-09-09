@@ -2,7 +2,7 @@
   <SectionComponent class="mt-0 mb-4 lg:mt-4 lg:mb-2">
     <div class="relative flex flex-col gap-y-4 rounded-md bg-stone-800 p-6 shadow-md">
       <h2 class="font-title mb-6 text-3xl font-semibold">Projects</h2>
-      <ProjectDropdown class="pb-4" :items="allTechnologies" v-model="selectedTechnologies" />
+      <ProjectDropdown v-model="selectedTechnologies" class="pb-4" :items="allTechnologies" />
       <ClientOnly>
         <template #fallback>
           <!-- Static fallback for SSR -->
@@ -83,7 +83,6 @@ import { isMobile } from '~/utils/isMobile'
 import { useWindowSize, useScrollLock } from '@vueuse/core'
 
 const route = useRoute()
-const router = useRouter()
 const projectStore = useProjectStore()
 const projects = projectStore.projects
 const selectedProjectIds = ref<Array<string>>([])

@@ -6,7 +6,7 @@
       densities="x1 x2"
       width="128"
       height="128"
-      :imgAttrs="{
+      :img-attrs="{
         class: 'h-32 w-32 rounded-full object-cover',
         alt: 'Profile Picture of Keanu Hie',
         loading: 'eager',
