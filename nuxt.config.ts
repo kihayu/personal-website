@@ -1,39 +1,11 @@
-import { existsSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
-import { resolve } from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
-
-const cmsPackages = process.env.CMS_PACKAGES_DIR
-  ? resolve(process.env.CMS_PACKAGES_DIR)
-  : fileURLToPath(new URL('../../projects/cms/packages/', import.meta.url))
-
-const cmsPackage = (name: string, entry: string) => {
-  const file = resolve(cmsPackages, name, entry)
-  if (!existsSync(file)) {
-    throw new Error(
-      `The CMS package "${name}" has no build output at ${file}. ` +
-        'Run "pnpm install && pnpm build" in the CMS checkout, or point CMS_PACKAGES_DIR at its packages directory.',
-    )
-  }
-  return file
-}
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2026-09-09',
   devtools: { enabled: true },
-  modules: [
-    cmsPackage('adapter-vue', 'dist/nuxt/module.js'),
-    '@nuxt/eslint',
-    'nuxt-shiki',
-    'nuxt-svgo',
-    '@nuxtjs/seo',
-    '@nuxt/image',
-  ],
-  alias: {
-    '@cms/adapter-vue': cmsPackage('adapter-vue', 'dist/index.js'),
-    '@cms/content-model': cmsPackage('content-model', 'dist/index.js'),
-  },
+  modules: ['@cms/adapter-vue/nuxt', '@nuxt/eslint', 'nuxt-shiki', 'nuxt-svgo', '@nuxtjs/seo', '@nuxt/image'],
   cms: {
     siteId: 'keanuhie',
     frontendId: 'personal-website',
@@ -76,18 +48,20 @@ export default defineNuxtConfig({
     build: {
       sourcemap: false,
     },
-    resolve: {
-      dedupe: ['vue'],
-    },
-    server: {
-      fs: {
-        allow: [resolve(cmsPackages, '..')],
-      },
-    },
   },
   svgo: {
     svgo: false,
     defaultImport: 'component',
+  },
+  hooks: {
+    'vite:extendConfig'(config, { isClient }) {
+      if (!isClient) {
+        return
+      }
+      Object.assign(config.resolve?.alias ?? {}, {
+        '@cms/content-model': fileURLToPath(new URL('node_modules/@cms/content-model/dist/index.js', import.meta.url)),
+      })
+    },
   },
   nitro: {
     compressPublicAssets: true,

@@ -8,7 +8,7 @@ library that renders that content — adding or rewording something is done in t
 ## 🛠️ Tech Stack
 
 - **Framework**: [Nuxt 4](https://nuxt.com/)
-- **Content**: the private CMS at `../../projects/cms`, through `@cms/adapter-vue`
+- **Content**: the private CMS, through `@cms/adapter-vue` from `https://npm.keanuhie.com/`
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Icons**: [Lucide Icons](https://lucide.dev/)
 
@@ -17,8 +17,15 @@ library that renders that content — adding or rewording something is done in t
 ### Prerequisites
 
 - Bun package manager
-- A checkout of the CMS next to this one, built once with `pnpm install && pnpm build`.
-  It is expected at `../../projects/cms`; `CMS_PACKAGES_DIR` points at another location.
+- Access to the private registry the CMS packages are published to. Authenticate once, which
+  writes the token to `~/.npmrc`:
+
+  ```bash
+  npm login --registry=https://npm.keanuhie.com/ --scope=@cms
+  ```
+
+  `.npmrc` in this repository names the registry for the `@cms` scope and holds no credential.
+
 - A running CMS API. From the CMS checkout: `CMS_DATA_DIR=./data node packages/api/src/cli.ts serve`
 
 ### Installation
@@ -41,7 +48,7 @@ bun install --frozen-lockfile
 Start the CMS API first, then the site with the manifest token, so every block reaches the admin:
 
 ```bash
-export CMS_MANIFEST_TOKEN=$(node -e "console.log(require('../../projects/cms/data/secrets.json').manifestToken)")
+export CMS_MANIFEST_TOKEN=$(node -e "console.log(require('<cms checkout>/data/secrets.json').manifestToken)")
 bun run dev
 ```
 
@@ -80,10 +87,11 @@ webhook, and at the latest after five minutes, without a rebuild. Subscribe
 `https://<site>/_cms/revalidate` to `entry.published`, `entry.unpublished` and `asset.replaced` in
 the admin under Settings → Webhooks, with the secret the build was given.
 
-Build Docker image:
+Build Docker image. The install step needs the registry token, mounted as a build secret so it
+never lands in a layer:
 
 ```bash
-docker build -t personal-website .
+docker build --secret id=npmrc,src=$HOME/.npmrc -t personal-website .
 ```
 
 ## ✍️ Changing the site

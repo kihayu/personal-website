@@ -1,7 +1,4 @@
 {
   // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json",
-  // The CMS packages are a separate codebase with their own compiler settings. They are
-  // resolved from a checkout outside this project and are not checked with this project's.
-  "exclude": ["../../projects/cms/**"]
+  "extends": "./.nuxt/tsconfig.json"
 }
