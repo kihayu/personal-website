@@ -5,22 +5,8 @@
 </template>
 
 <script setup lang="ts">
-useSeoMeta({
-  ogImage: 'https://www.keanuhie.com/images/og-image.png',
-  twitterCard: 'summary_large_image',
-  twitterImage: 'https://www.keanuhie.com/images/og-image.png',
-})
-
-// Unhead v3 dropped `keywords` from useSeoMeta's input type; it still renders
-// via the generic meta array.
 useHead({
-  meta: [
-    {
-      name: 'keywords',
-      content:
-        'Fullstack Developer, Frontend Development, Backend Development, Vue.js, TypeScript, Node.js, Python, UI/UX Design, Figma, Web Accessibility, DevOps, Git, Linux, Vercel, Netlify, Bun, Game Development, LLM, AI, Vienna',
-    },
-  ],
+  meta: [{ name: 'twitter:card', content: 'summary_large_image' }],
 })
 </script>
 

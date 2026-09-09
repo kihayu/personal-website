@@ -1,0 +1,76 @@
+{
+  "name": "page",
+  "label": "Page",
+  "schemaVersion": 1,
+  "kind": "page",
+  "fields": {
+    "title": {
+      "type": "text",
+      "required": true,
+      "max": 70
+    },
+    "description": {
+      "type": "text",
+      "max": 160,
+      "multiline": true
+    },
+    "canonical": {
+      "type": "text",
+      "max": 2000,
+      "label": "Canonical URL",
+      "description": "The address search engines treat as the original. Leave empty to use this page's own address."
+    },
+    "robots": {
+      "type": "enum",
+      "options": ["index,follow", "noindex,follow", "index,nofollow", "noindex,nofollow"],
+      "labels": {
+        "index,follow": "Index and follow",
+        "noindex,follow": "Do not index, follow",
+        "index,nofollow": "Index, do not follow",
+        "noindex,nofollow": "Do not index, do not follow"
+      },
+      "label": "Robots"
+    },
+    "ogTitle": {
+      "type": "text",
+      "max": 95,
+      "label": "Share title",
+      "description": "Shown when the page is shared. Falls back to the title."
+    },
+    "ogDescription": {
+      "type": "text",
+      "max": 200,
+      "multiline": true,
+      "label": "Share description",
+      "description": "Falls back to the description."
+    },
+    "ogImage": {
+      "type": "asset",
+      "accept": ["image"],
+      "label": "Share image"
+    },
+    "structuredData": {
+      "type": "text",
+      "multiline": true,
+      "max": 20000,
+      "label": "Structured data",
+      "description": "JSON-LD as search engines read it. Invalid JSON is not shipped."
+    }
+  },
+  "root": {
+    "allow": ["page-section", "intro-row", "skill-showcase", "project-gallery", "text", "profile-card", "about-card"]
+  },
+  "sections": [
+    {
+      "key": "page",
+      "label": "Page",
+      "fields": ["title", "description"]
+    },
+    {
+      "key": "seo",
+      "label": "SEO",
+      "fields": ["canonical", "robots", "ogTitle", "ogDescription", "ogImage", "structuredData"],
+      "advanced": true
+    }
+  ]
+}

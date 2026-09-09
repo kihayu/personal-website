@@ -5,7 +5,7 @@
         <Shiki
           ref="shiki"
           tabindex="-1"
-          :lang="lang"
+          :lang="currentLanguage"
           :code="typedText"
           class="w-fit [&_code]:!bg-transparent [&_code]:!select-none [&_pre]:!bg-transparent"
           :class="fontSize"
@@ -37,6 +37,7 @@
 
 <script setup lang="ts">
 import { codeExamples } from '~/constants/codeExamples'
+import type { CodeSample } from '~/types/CodeSample'
 import type { BundledLanguage } from 'shiki'
 import type { CSSProperties } from 'vue'
 import { Pause as PauseIcon, Play as PlayIcon } from '@lucide/vue'
@@ -51,6 +52,7 @@ export interface DevelopAnimationProps {
   greetingCode?: boolean
   loop?: boolean
   showPauseButton?: boolean
+  samples?: ReadonlyArray<CodeSample>
 }
 
 const props = withDefaults(defineProps<DevelopAnimationProps>(), {
@@ -63,6 +65,7 @@ const props = withDefaults(defineProps<DevelopAnimationProps>(), {
   greetingCode: true,
   loop: false,
   showPauseButton: false,
+  samples: undefined,
 })
 
 const codeContainer: Ref<ComponentPublicInstance<HTMLDivElement> | null> = ref(null)
@@ -123,18 +126,24 @@ watch(typedText, () => {
   nextTick(updateCursorPosition)
 })
 
-const codeSamples: Ref<Array<string>> = ref(codeExamples)
+const codeSamples = computed<Array<CodeSample>>(() =>
+  props.samples !== undefined && props.samples.length > 0
+    ? [...props.samples]
+    : codeExamples.map((code) => ({ code, language: props.lang })),
+)
 const randomIndex = (): number => Math.floor(Math.random() * codeSamples.value.length)
 
-const code: Ref<string> = ref(props.greetingCode ? codeSamples.value[0] : codeSamples.value[randomIndex()])
+const sampleIndex: Ref<number> = ref(props.greetingCode ? 0 : randomIndex())
+const currentSample = computed<CodeSample | undefined>(() => codeSamples.value[sampleIndex.value])
+const code = computed<string>(() => currentSample.value?.code ?? '')
+const currentLanguage = computed<BundledLanguage>(() => currentSample.value?.language ?? props.lang)
 
 const pickNewRandomCode = async () => {
   if (props.greetingCode) {
     return
   }
 
-  const newIndex = randomIndex()
-  code.value = codeSamples.value[newIndex]
+  sampleIndex.value = randomIndex()
   await startTyping({
     text: code.value,
     delay: props.delay,

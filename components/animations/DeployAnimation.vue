@@ -91,7 +91,7 @@ const animate = async () => {
   }
 
   // Execute current step
-  steps[currentStep.value + 1]()
+  steps[currentStep.value + 1]?.()
 
   // Schedule next step
   setTimeout(() => {

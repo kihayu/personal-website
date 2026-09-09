@@ -10,7 +10,8 @@
         <div class="h-3 w-3 rounded-full bg-green-500" />
       </div>
       <span class="flex justify-center text-xs text-neutral-200 select-none" :class="{ italic: !title }" role="status">
-        {{ title || 'Hover over the Titles (and click)' }}
+        <template v-if="title">{{ title }}</template>
+        <span v-else v-bind="hintAttrs">{{ hint }}</span>
       </span>
     </div>
     <div class="relative h-full rounded-md bg-neutral-900 p-4">
@@ -22,9 +23,15 @@
 <script setup lang="ts">
 export interface MainContentBoxProps {
   title?: string
+  hint?: string
+  hintAttrs?: Record<string, string>
 }
 
-defineProps<MainContentBoxProps>()
+withDefaults(defineProps<MainContentBoxProps>(), {
+  title: '',
+  hint: '',
+  hintAttrs: () => ({}),
+})
 
 defineOptions({
   inheritAttrs: false,

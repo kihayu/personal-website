@@ -190,7 +190,7 @@ const animate = () => {
     return
   }
 
-  steps[currentStep.value]()
+  steps[currentStep.value]?.()
   currentStep.value++
 
   animationFrame = setTimeout(

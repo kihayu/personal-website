@@ -1,6 +1,6 @@
 <template>
   <div ref="dropdownRef" class="font-title relative w-full" @keydown="handleKeyDown">
-    <label for="technology-input">Technologies</label>
+    <label :for="inputId">{{ label }}</label>
     <div
       class="mt-1 flex h-auto w-full cursor-pointer items-center justify-between rounded-t-lg border-neutral-400 p-3 text-white transition-all duration-200"
       :class="{ 'border-x border-t': isOpen, 'rounded-b-lg border': !isOpen }"
@@ -18,12 +18,12 @@
         </div>
         <div class="min-w-[80px]">
           <input
-            id="technology-input"
+            :id="inputId"
             ref="searchInput"
             v-model="searchTerm"
             type="text"
             class="placeholder:font-title field-sizing-content max-w-full min-w-10/12 cursor-pointer border-none bg-transparent p-0 outline-none placeholder:select-none"
-            placeholder="Select or search..."
+            :placeholder="placeholder"
             @focus="isOpen = true"
             @click.stop
             @keydown="handleInputKeydown"
@@ -62,24 +62,28 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, nextTick } from 'vue'
+import { ref, computed, useId, watch, nextTick } from 'vue'
 import { onClickOutside } from '@vueuse/core'
 import ProjectDropdownElement from '~/components/projects/ProjectDropdownElement.vue'
 import { ChevronDown as ChevronDownIcon } from '@lucide/vue'
-import { useAppStore } from '~/store/app'
 
 export interface ProjectDropdownProps {
   items: string[]
   modelValue: string[]
+  label?: string
+  placeholder?: string
 }
 
 export interface ProjectDropdownEmits {
   'update:modelValue': [value: string[]]
 }
 
-const props = defineProps<ProjectDropdownProps>()
+const props = withDefaults(defineProps<ProjectDropdownProps>(), {
+  label: 'Technologies',
+  placeholder: 'Select or search...',
+})
 const emit = defineEmits<ProjectDropdownEmits>()
-const appStore = useAppStore()
+const inputId = useId()
 
 const isOpen = ref(false)
 const searchTerm = ref('')
@@ -97,7 +101,6 @@ const filteredItems = computed((): string[] => {
 
 const toggleDropdown = (): void => {
   isOpen.value = !isOpen.value
-  appStore.setDropdownOpen(isOpen.value)
   if (isOpen.value) {
     nextTick(() => {
       if (searchInput.value) {
@@ -109,7 +112,6 @@ const toggleDropdown = (): void => {
 
 const closeDropdown = (): void => {
   isOpen.value = false
-  appStore.setDropdownOpen(false)
   activeIndex.value = -1
 }
 
@@ -175,7 +177,7 @@ const handleInputKeydown = (event: KeyboardEvent): void => {
         return
       }
 
-      toggleItem(filteredItems.value[0])
+      toggleItem(filteredItems.value[0] as string)
       break
     case 'Backspace':
       if (searchTerm.value || selectedItems.value.length === 0) {
@@ -183,7 +185,7 @@ const handleInputKeydown = (event: KeyboardEvent): void => {
       }
 
       event.preventDefault()
-      toggleItem(selectedItems.value[selectedItems.value.length - 1])
+      toggleItem(selectedItems.value[selectedItems.value.length - 1] as string)
       break
   }
 }
@@ -193,7 +195,7 @@ const focusElement = (): void => {
     itemRefs.value = itemRefs.value.filter(Boolean)
 
     if (activeIndex.value >= 0 && activeIndex.value < itemRefs.value.length) {
-      const elementToFocus = itemRefs.value[activeIndex.value].querySelector('div[tabindex="0"]') as HTMLElement
+      const elementToFocus = itemRefs.value[activeIndex.value]?.querySelector('div[tabindex="0"]') as HTMLElement
       if (elementToFocus) {
         elementToFocus.focus()
       }
