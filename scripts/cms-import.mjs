@@ -7,7 +7,7 @@ import { gzipSync } from 'node:zlib'
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
 const EXPORT_MAGIC = 'CMSEXPORT1\n'
-const EXPORT_FORMAT_VERSION = 1
+const EXPORT_FORMAT_VERSION = 2
 const BLOCK = 512
 
 const SITE_ID = 'keanuhie'

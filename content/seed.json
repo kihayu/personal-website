@@ -1,5 +1,5 @@
 {
-  "formatVersion": 1,
+  "formatVersion": 2,
   "sites": [
     {
       "id": "keanuhie",
@@ -829,7 +829,7 @@
         }
       ],
       "status": "draft",
-      "version": 1
+      "version": "0.1"
     },
     {
       "id": "keanuhie-not-found",
@@ -898,7 +898,7 @@
         }
       ],
       "status": "draft",
-      "version": 1
+      "version": "0.1"
     }
   ],
   "published": [

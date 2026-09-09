@@ -4,6 +4,9 @@ import { fileURLToPath } from 'node:url'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 
+export const SEED_FORMAT_VERSION = 2
+export const FIRST_ENTRY_VERSION = '0.1'
+
 export const SITE_ID = 'keanuhie'
 export const FRONTEND_ID = 'personal-website'
 export const PROFILE_PHOTO_ASSET = 'profile-photo'
@@ -298,7 +301,7 @@ const home = {
     node('projects-section', 'page-section', { fillScreen: false }, { body: [projectGallery] }),
   ],
   status: 'draft',
-  version: 1,
+  version: FIRST_ENTRY_VERSION,
 }
 
 const notFound = {
@@ -332,11 +335,11 @@ const notFound = {
     ),
   ],
   status: 'draft',
-  version: 1,
+  version: FIRST_ENTRY_VERSION,
 }
 
 const seed = {
-  formatVersion: 1,
+  formatVersion: SEED_FORMAT_VERSION,
   sites: [
     {
       id: SITE_ID,
